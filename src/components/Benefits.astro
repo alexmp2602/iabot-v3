@@ -1,0 +1,55 @@
+---
+import IconLego from "./icons/IconLego.astro";
+import IconCode from "./icons/IconCode.astro";
+import IconUsersGroup from "./icons/IconUsersGroup.astro";
+import IconRocket from "./icons/IconRocket.astro";
+
+const beneficios = [
+  {
+    icon: IconLego,
+    title: "Aprendé jugando",
+    text: "Usamos kits LEGO para despertar la curiosidad y el pensamiento lógico.",
+  },
+  {
+    icon: IconCode,
+    title: "Programación creativa",
+    text: "Resolvé desafíos reales mediante programación visual y divertida.",
+  },
+  {
+    icon: IconUsersGroup,
+    title: "Trabajo en equipo",
+    text: "Fomentamos la empatía, la colaboración y la comunicación.",
+  },
+  {
+    icon: IconRocket,
+    title: "Proyectos reales",
+    text: "Cada grupo crea y programa su propio robot funcional.",
+  },
+];
+---
+
+<section id="benefits" class="section text-center">
+  <h2 class="section-title">¿Por qué elegir IABOT?</h2>
+  <p
+    class="text-lg text-neutral-700 dark:text-neutral-300 mb-10 max-w-2xl mx-auto"
+  >
+    Combinamos creatividad, juego y tecnología para formar a la próxima
+    generación de pensadores y solucionadores de problemas.
+  </p>
+
+  <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
+    {
+      beneficios.map(({ icon: Icon, title, text }) => (
+        <article class="flex flex-col items-center text-center gap-3 px-4 py-6 bg-white dark:bg-neutral-900 rounded-xl shadow-md transition duration-300 hover:-translate-y-1 hover:shadow-lg">
+          <div class="w-9 h-9 text-primary">
+            <Icon />
+          </div>
+          <h3 class="text-xl font-semibold text-black dark:text-white">
+            {title}
+          </h3>
+          <p class="text-sm text-neutral-600 dark:text-neutral-400">{text}</p>
+        </article>
+      ))
+    }
+  </div>
+</section>

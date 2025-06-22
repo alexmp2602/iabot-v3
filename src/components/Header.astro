@@ -1,10 +1,9 @@
 ---
-import ToggleModoOscuro from "./ToggleModoOscuro.astro";
+import ThemeToggle from "../components/ThemeToggle.astro";
 ---
 
 <header
-  class="sticky top-0 z-50 w-full border-b border-neutral-200 dark:border-neutral-700 bg-white dark:bg-black/90 backdrop-blur-md"
-  x-data="{ open: false }"
+  class="sticky top-0 z-50 w-full border-b border-neutral-200 dark:border-neutral-700 bg-white/90 dark:bg-black/90 backdrop-blur-md transition-colors duration-300"
 >
   <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
     <!-- Logo -->
@@ -42,8 +41,8 @@ import ToggleModoOscuro from "./ToggleModoOscuro.astro";
         >
       </nav>
 
-      <!-- Toggle modo oscuro -->
-      <ToggleModoOscuro />
+      <!-- Botón de cambio de tema -->
+      <ThemeToggle />
 
       <!-- Menú móvil -->
       <button
@@ -71,6 +70,7 @@ import ToggleModoOscuro from "./ToggleModoOscuro.astro";
   <!-- Panel menú móvil -->
   <nav
     class="md:hidden px-4 pb-4 space-y-3 bg-white dark:bg-black transition-all duration-300"
+    x-data="{ open: false }"
     x-show="open"
     x-transition
     @click.outside="open = false"

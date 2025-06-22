@@ -1,22 +1,25 @@
 ---
-const { title, level, age, description, link } = Astro.props;
+const { icon: Icon, title, age, description, link } = Astro.props;
 ---
 
 <article
-  class="bg-white dark:bg-neutral-900 text-left rounded-xl shadow-md hover:shadow-lg transition p-6 flex flex-col justify-between h-full"
+  class="bg-white dark:bg-neutral-900 rounded-xl shadow-md hover:shadow-lg transition p-6 text-left flex flex-col gap-4"
 >
-  <div>
-    <h3 class="text-xl font-semibold text-primary mb-1">{title}</h3>
-    <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-1">
-      {level} · {age}
-    </p>
-    <p class="text-sm text-neutral-700 dark:text-neutral-300">{description}</p>
+  <!-- Ícono con fondo circular -->
+  <div
+    class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition duration-300"
+  >
+    <Icon class="w-6 h-6" />
   </div>
-  <div class="mt-4">
-    <a
-      href={link}
-      class="inline-block text-sm font-medium text-primary hover:underline"
-      >Ver más</a
-    >
-  </div>
+
+  <h3 class="text-xl font-semibold text-black dark:text-white">{title}</h3>
+  <p class="text-sm text-primary font-medium">{age}</p>
+  <p class="text-sm text-neutral-600 dark:text-neutral-400">{description}</p>
+
+  <a
+    href={link}
+    class="mt-auto text-sm text-primary hover:text-secondary transition font-semibold"
+  >
+    Ver más →
+  </a>
 </article>

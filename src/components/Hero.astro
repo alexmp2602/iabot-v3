@@ -7,26 +7,97 @@ const ctaLink = "/cursos";
 ---
 
 <section
-  class="hero-section section flex flex-col-reverse md:flex-row items-center justify-between gap-10"
+  class="relative flex flex-col-reverse md:flex-row items-center justify-center gap-10 min-h-[90vh] px-6 md:px-12 lg:px-20 overflow-hidden text-center md:text-left"
 >
-  <div class="text-left max-w-xl">
-    <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6 section-title">
+  <!-- Fondo SVG decorativo -->
+  <svg
+    class="absolute top-0 left-0 w-full h-full text-white/5 dark:text-white/10 pointer-events-none"
+    xmlns="http://www.w3.org/2000/svg"
+    preserveAspectRatio="none"
+    viewBox="0 0 100 100"
+  >
+    <defs>
+      <pattern
+        id="lightGrid"
+        width="10"
+        height="10"
+        patternUnits="userSpaceOnUse"
+      >
+        <path
+          d="M10 0L0 0 0 10"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="0.5"></path>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#lightGrid)"></rect>
+  </svg>
+
+  <!-- Gradiente animado -->
+  <div
+    class="absolute inset-0 bg-gradient-to-br from-[rgba(50,205,219,0.15)] via-[rgba(120,235,44,0.12)] to-transparent animate-gradientBlur z-0"
+  >
+  </div>
+
+  <!-- Contenido -->
+  <div class="relative z-10 max-w-xl animate-fade-in-up">
+    <h1 class="text-4xl md:text-5xl font-bold mb-6 font-title text-balance">
       {title}
     </h1>
-    <p class="text-lg mb-8 text-gray-700 dark:text-gray-300">
+    <p
+      class="text-lg md:text-xl text-neutral-700 dark:text-neutral-300 mb-8 leading-relaxed"
+    >
       {description}
     </p>
-    <a href={ctaLink} class="btn">
+    <a
+      href={ctaLink}
+      class="inline-block bg-primary hover:bg-primary/90 text-white font-semibold py-3 px-6 rounded-xl shadow-lg transition-colors duration-300"
+    >
       {ctaLabel}
     </a>
   </div>
 
-  <div class="w-full max-w-md md:max-w-lg">
+  <!-- Imagen -->
+  <div
+    class="relative z-10 w-full max-w-md md:max-w-lg animate-fade-in-up"
+    style="animation-delay: 0.2s;"
+  >
     <img
       src="/assets/img/robot-hero.webp"
       alt="Robot educativo"
-      class="w-full h-auto rounded-xl shadow-xl object-contain"
+      class="w-full h-auto rounded-2xl object-contain"
       loading="lazy"
     />
   </div>
 </section>
+
+<style>
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out both;
+  }
+
+  @keyframes gradientBlur {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.03) translate(5px, -5px);
+    }
+  }
+
+  .animate-gradientBlur {
+    animation: gradientBlur 16s ease-in-out infinite;
+  }
+</style>

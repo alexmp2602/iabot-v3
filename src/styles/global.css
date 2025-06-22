@@ -1,11 +1,17 @@
-/* ===== GOOGLE FONTS ===== */
+/* ================================
+   ✅ 1. GOOGLE FONTS
+================================== */
 @import url("https://fonts.googleapis.com/css2?family=Bruno+Ace&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
 
-/* ===== TAILWIND ===== */
+/* ================================
+   ✅ 2. TAILWIND BASE
+================================== */
 @import "tailwindcss";
 
-/* ===== DESIGN TOKENS ===== */
+/* ================================
+   ✅ 3. DESIGN TOKENS
+================================== */
 :root {
   /* 🎨 Colors */
   --color-primary: #32cddb;
@@ -16,21 +22,27 @@
   --color-bg-light: var(--color-white);
   --color-text-light: var(--color-black);
 
-  --color-bg-dark: var(--color-black);
-  --color-text-dark: var(--color-white);
+  --color-bg-dark: #121212;
+  --color-text-dark: #f0f0f0;
+
+  --glass-bg-light: rgba(255, 255, 255, 0.6);
+  --glass-bg-dark: rgba(28, 28, 28, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.1);
 
   /* 🔤 Fonts */
   --font-title: "Bruno Ace", cursive;
   --font-body: "Inter", sans-serif;
 
-  /* 📐 Sizing & Spacing */
+  /* 📐 Sizes */
   --radius: 0.75rem;
   --shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
-  --shadow-hover: 0 12px 24px rgba(0, 0, 0, 0.1);
-  --transition: all 0.3s ease;
+  --shadow-hover: 0 12px 24px rgba(0, 0, 0, 0.12);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ===== DARK MODE ===== */
+/* ================================
+   ✅ 4. DARK MODE TOKENS
+================================== */
 :root.dark {
   --color-bg: var(--color-bg-dark);
   --color-text: var(--color-text-dark);
@@ -41,9 +53,15 @@
   --color-text: var(--color-text-light);
 }
 
-/* ===== BASE / RESET ===== */
-html {
-  scroll-behavior: smooth;
+/* ================================
+   ✅ 5. GLOBAL RESET & BASE
+================================== */
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
   font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.6;
@@ -52,11 +70,19 @@ html {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-body {
-  margin: 0;
-  padding: 0;
+main {
+  flex: 1;
+  width: 100%;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ================================
+   ✅ 6. TYPOGRAFÍA
+================================== */
 h1,
 h2,
 h3,
@@ -72,30 +98,64 @@ h6 {
 a {
   color: var(--color-primary);
   text-decoration: none;
+  transition: var(--transition);
 }
+
 a:hover,
 a:focus {
   text-decoration: underline;
+  color: var(--color-secondary);
 }
 
-/* ===== UTILIDADES Y COMPONENTES ===== */
+/* ================================
+   ✅ 7. UTILIDADES GLOBALES
+================================== */
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out both;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================================
+   ✅ 8. BOTÓN GENÉRICO
+================================== */
 .btn {
   display: inline-block;
   padding: 0.75rem 1.5rem;
   border-radius: var(--radius);
-  font-weight: 500;
+  font-weight: 600;
   background-color: var(--color-primary);
   color: var(--color-black);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: var(--transition);
 }
+
 .btn:hover {
   background-color: var(--color-secondary);
+  transform: scale(1.03);
 }
 
+.btn:focus-visible {
+  outline: 3px solid var(--color-secondary);
+  outline-offset: 2px;
+}
+
+/* ================================
+   ✅ 9. SECCIONES Y TÍTULOS
+================================== */
 .section {
   padding: 5rem 1rem;
-  max-width: 72rem;
-  margin: 0 auto;
+  width: 100%;
+  max-width: 100%;
 }
 
 .section-title {
@@ -106,19 +166,33 @@ a:focus {
   margin-bottom: 2rem;
 }
 
+/* ================================
+   ✅ 10. CARD (GLASS STYLE)
+================================== */
 .card {
-  background-color: var(--color-white);
+  background-color: var(--glass-bg-light);
   color: var(--color-black);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
   overflow: hidden;
   transition: var(--transition);
 }
+
+.card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: var(--shadow-hover);
+}
+
 .dark .card {
-  background-color: #1c1c1c;
+  background-color: var(--glass-bg-dark);
   color: var(--color-white);
 }
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-hover);
+
+/* ================================
+   ✅ 11. LINKS DEL NAV
+================================== */
+.nav-link {
+  @apply text-neutral-700 dark:text-neutral-300 hover:text-[color:var(--color-primary)] dark:hover:text-[color:var(--color-secondary)] transition;
 }

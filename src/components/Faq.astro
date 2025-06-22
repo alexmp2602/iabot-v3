@@ -1,35 +1,99 @@
----
-const faqs = [
-  {
-    question: "¿Qué edad deben tener los chicos para empezar?",
-    answer:
-      "Pueden comenzar desde los 6 años. Adaptamos los niveles según su edad y experiencia previa.",
-  },
-  {
-    question: "¿Necesitan traer su propio material?",
-    answer:
-      "No. Todos los materiales (kits LEGO, tablets, etc.) están incluidos durante las clases.",
-  },
-  {
-    question: "¿Se necesita experiencia previa en programación?",
-    answer:
-      "No hace falta. Empezamos desde cero y acompañamos su progreso paso a paso.",
-  },
-];
----
-
-<div class="max-w-2xl mx-auto text-left">
-  {
-    faqs.slice(0, 3).map((faq, i) => (
-      <details class="mb-4 border-b border-neutral-300 dark:border-neutral-700 group">
-        <summary class="cursor-pointer text-primary font-medium py-2 flex justify-between items-center">
-          {faq.question}
-          <span class="transition transform group-open:rotate-180">⌄</span>
-        </summary>
-        <p class="text-sm text-neutral-700 dark:text-neutral-300 pb-3 pl-1">
-          {faq.answer}
-        </p>
-      </details>
-    ))
-  }
+<div class="faq-container max-w-2xl mx-auto">
+  <!-- Aquí se cargan las preguntas -->
 </div>
+
+<div class="text-center mt-4">
+  <button
+    id="toggleBtn"
+    class="text-sm font-medium text-primary hover:underline transition"
+  >
+    Ver más preguntas
+  </button>
+</div>
+
+<script type="module" is:inline>
+  const faqs = [
+    {
+      question: "¿Qué edad deben tener los chicos para empezar?",
+      answer:
+        "Pueden comenzar desde los 6 años. Adaptamos los cursos según su edad y experiencia previa.",
+    },
+    {
+      question: "¿Necesitan traer su propio material?",
+      answer:
+        "No. Todos los materiales (kits LEGO, tablets, etc.) están incluidos durante las clases.",
+    },
+    {
+      question: "¿Se necesita experiencia previa en programación?",
+      answer:
+        "No hace falta. Empezamos desde cero y acompañamos su progreso paso a paso.",
+    },
+    {
+      question: "¿Las clases son grupales o individuales?",
+      answer:
+        "Las clases son grupales, promoviendo el trabajo en equipo, pero con seguimiento individual.",
+    },
+    {
+      question: "¿Cómo me inscribo?",
+      answer:
+        "Podés hacerlo desde la sección de contacto o inscripciones. También vía WhatsApp.",
+    },
+  ];
+
+  const faqContainer = document.querySelector(".faq-container");
+  const toggleBtn = document.getElementById("toggleBtn");
+  let expanded = false;
+
+  function renderFaqs() {
+    faqContainer.innerHTML = "";
+    const list = expanded ? faqs : faqs.slice(0, 3);
+    for (const faq of list) {
+      const details = document.createElement("details");
+      details.className =
+        "group mb-4 rounded-lg border border-neutral-200 dark:border-neutral-700 overflow-hidden transition-colors duration-200";
+
+      const summary = document.createElement("summary");
+      summary.className =
+        "cursor-pointer select-none py-3 px-4 flex justify-between items-center bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors";
+
+      const span = document.createElement("span");
+      span.textContent = faq.question;
+      span.className = "text-primary font-medium";
+
+      const icon = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "svg"
+      );
+      icon.setAttribute(
+        "class",
+        "w-5 h-5 text-primary transition-transform duration-200"
+      );
+      icon.setAttribute("fill", "none");
+      icon.setAttribute("stroke", "currentColor");
+      icon.setAttribute("stroke-width", "2");
+      icon.setAttribute("viewBox", "0 0 24 24");
+      icon.innerHTML = `<path d="M6 9l6 6 6-6" />`;
+
+      summary.appendChild(span);
+      summary.appendChild(icon);
+
+      const answer = document.createElement("div");
+      answer.className =
+        "px-4 pb-4 text-sm text-neutral-700 dark:text-neutral-300";
+      answer.textContent = faq.answer;
+
+      details.appendChild(summary);
+      details.appendChild(answer);
+      faqContainer.appendChild(details);
+    }
+
+    toggleBtn.textContent = expanded ? "Ver menos" : "Ver más preguntas";
+  }
+
+  toggleBtn.addEventListener("click", () => {
+    expanded = !expanded;
+    renderFaqs();
+  });
+
+  renderFaqs();
+</script>

@@ -1,35 +1,48 @@
 ---
 import CourseCard from "./CourseCard.astro";
+import IconPuzzle from "./icons/IconPuzzle.astro";
+import IconTools from "./icons/IconTools.astro";
+import IconRocket from "./icons/IconRocket.astro";
 
-// Simulación de cursos destacados
+// Cursos destacados
 const courses = [
   {
-    title: "Inicial - Exploradores",
-    level: "Nivel 1 a 2",
+    icon: IconPuzzle,
+    title: "Curso Inicial - Exploradores",
     age: "Desde 6 años",
     description:
       "Proyectos guiados con LEGO WeDo 2.0 para descubrir el mundo de la robótica jugando.",
     link: "/cursos#inicial",
   },
   {
-    title: "Intermedio - Constructores",
-    level: "Nivel 3 a 4",
+    icon: IconTools,
+    title: "Curso Intermedio - Constructores",
     age: "Desde 8 años",
     description:
       "Desarrollan lógica, programación y creatividad con LEGO Spike Essential.",
     link: "/cursos#intermedio",
   },
   {
-    title: "Avanzado - Makers",
-    level: "Nivel 5 a 8",
+    icon: IconRocket,
+    title: "Curso Avanzado - Makers",
     age: "Desde 11 años",
     description:
-      "Usan Spike Prime y EV3, programan en Python y crean proyectos tecnológicos.",
+      "Usan Spike Prime y EV3, programan en Python y crean proyectos tecnológicos reales.",
     link: "/cursos#avanzado",
   },
 ];
 ---
 
-<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
-  {courses.map((course) => <CourseCard {...course} />)}
-</div>
+<section id="cursos-destacados" class="section text-center">
+  <h2 class="section-title">Nuestros Cursos</h2>
+  <p
+    class="text-lg text-neutral-700 dark:text-neutral-300 mb-10 max-w-2xl mx-auto"
+  >
+    Diseñados para acompañar el desarrollo de habilidades tecnológicas desde los
+    primeros pasos hasta proyectos avanzados.
+  </p>
+
+  <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+    {courses.map((course) => <CourseCard {...course} />)}
+  </div>
+</section>

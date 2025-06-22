@@ -1,0 +1,26 @@
+---
+const {
+  title = "¿Querés sumarte a la nueva generación?",
+  description = "Inscribite hoy y comenzá tu camino en la robótica educativa con LEGO y programación creativa.",
+  ctaLabel = "Inscribirme ahora",
+  ctaLink = "/inscripcion",
+} = Astro.props;
+---
+
+<section
+  id="cta"
+  class="section text-center bg-[--color-primary] dark:bg-[--color-secondary] text-black dark:text-black"
+>
+  <h2
+    class="text-3xl md:text-4xl font-bold mb-6 font-title"
+    style="color: var(--color-text);"
+  >
+    {title}
+  </h2>
+  <p class="text-lg md:text-xl mb-8" style="color: var(--color-text);">
+    {description}
+  </p>
+  <a href={ctaLink} class="btn text-sm sm:text-base font-bold">
+    {ctaLabel}
+  </a>
+</section>
