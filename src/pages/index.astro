@@ -3,57 +3,114 @@ import "../styles/global.css";
 
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
-import CursosDestacados from "../components/CursosDestacados.astro";
+import FeaturedCourses from "../components/Courses.astro";
+import FeaturedProjects from "../components/Projects.astro";
+import TestimonialsSlider from "../components/Testimonials.astro";
+import FaqPreview from "../components/Faq.astro";
+import IconInfoSquare from "../components/icons/IconInfoSquare.astro";
 ---
 
 <BaseLayout
   title="IABOT - Robótica Educativa"
   description="Cursos de robótica con LEGO y programación para chicos y chicas desde los 6 años."
 >
+  <!-- Hero Section -->
   <Hero />
 
-  <!-- Sección: Cursos -->
-  <section class="section text-center">
-    <h2 class="section-title">Nuestros Cursos</h2>
-    <p class="text-lg text-gray-700 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
-      Cada curso está diseñado para despertar la curiosidad, fortalecer la
-      lógica y promover el trabajo en equipo desde la infancia hasta la
-      adolescencia.
+  <!-- Sección: Beneficios -->
+  <section id="benefits" class="section text-center">
+    <h2 class="section-title">¿Por qué elegir IABOT?</h2>
+    <p
+      class="text-lg text-neutral-700 dark:text-neutral-300 mb-8 max-w-2xl mx-auto"
+    >
+      Combinamos creatividad, juego y tecnología para formar a la próxima
+      generación de pensadores y solucionadores de problemas.
     </p>
-    <!-- Tarjetas de cursos dinámicas -->
-    <CursosDestacados />
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
+      <IconInfoSquare
+        icon="lego"
+        title="Aprendé jugando"
+        text="Usamos kits LEGO para despertar la curiosidad y el pensamiento lógico."
+      />
+      <IconInfoSquare
+        icon="code"
+        title="Programación creativa"
+        text="Resolvé desafíos reales mediante programación visual y divertida."
+      />
+      <IconInfoSquare
+        icon="users-group"
+        title="Trabajo en equipo"
+        text="Fomentamos la empatía, la colaboración y la comunicación."
+      />
+
+      <IconInfoSquare
+        icon="rocket"
+        title="Proyectos reales"
+        text="Cada grupo crea y programa su propio robot funcional."
+      />
+    </div>
+  </section>
+
+  <!-- Sección: Cursos -->
+  <section id="courses" class="section text-center">
+    <h2 class="section-title">Nuestros Cursos</h2>
+    <p
+      class="text-lg text-neutral-700 dark:text-neutral-300 mb-8 max-w-2xl mx-auto"
+    >
+      Desde los 6 años hasta la adolescencia, acompañamos cada etapa con
+      propuestas que se adaptan al crecimiento de cada estudiante.
+    </p>
+    <FeaturedCourses />
+    <a href="/cursos" class="btn mt-6">Ver todos los cursos</a>
   </section>
 
   <!-- Sección: Proyectos -->
-  <section class="section text-center bg-gray-50 dark:bg-gray-900">
+  <section
+    id="projects"
+    class="section text-center bg-neutral-100 dark:bg-neutral-900"
+  >
     <h2 class="section-title">Proyectos Destacados</h2>
-    <p class="text-lg text-gray-700 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
-      Mirá algunos de los proyectos increíbles que nuestros alumnos han creado
-      en el taller.
+    <p
+      class="text-lg text-neutral-700 dark:text-neutral-300 mb-8 max-w-2xl mx-auto"
+    >
+      Mirá lo que los chicos y chicas logran crear combinando robótica,
+      programación y mucha imaginación.
     </p>
-    <!-- <ProyectosDestacados /> -->
+    <FeaturedProjects />
+    <a href="/proyectos" class="btn mt-6">Ver todos los proyectos</a>
   </section>
 
   <!-- Sección: Testimonios -->
-  <section class="section text-center">
+  <section id="testimonials" class="section text-center">
     <h2 class="section-title">Testimonios</h2>
-    <p class="text-lg text-gray-700 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
-      Padres, madres y alumnos nos cuentan su experiencia con IABOT.
+    <p
+      class="text-lg text-neutral-700 dark:text-neutral-300 mb-8 max-w-2xl mx-auto"
+    >
+      Madres, padres y estudiantes cuentan su experiencia en IABOT.
     </p>
-    <!-- <TestimoniosSlider /> -->
+    <TestimonialsSlider />
   </section>
 
-  <!-- Sección: CTA final -->
+  <!-- Sección: Preguntas frecuentes -->
   <section
+    id="faq"
+    class="section text-center bg-neutral-100 dark:bg-neutral-900"
+  >
+    <h2 class="section-title">Preguntas Frecuentes</h2>
+    <FaqPreview />
+    <a href="/faq" class="btn mt-6">Ver todas las preguntas</a>
+  </section>
+
+  <!-- Sección: Llamado a la acción final -->
+  <section
+    id="cta"
     class="section text-center bg-[color:var(--color-primary)] text-black dark:bg-[color:var(--color-secondary)] dark:text-black"
   >
-    <h2 class="text-3xl font-bold mb-4" style="font-family: var(--font-title);">
-      ¿Querés sumarte?
-    </h2>
+    <h2 class="text-3xl font-bold mb-4 font-title">¿Querés sumarte?</h2>
     <p class="text-lg mb-6 max-w-xl mx-auto">
       Inscribite hoy y comenzá tu camino en la robótica educativa con LEGO y
       programación creativa.
     </p>
-    <a href="/inscripcion" class="btn"> Inscribirme ahora </a>
+    <a href="/inscripcion" class="btn">Inscribirme ahora</a>
   </section>
 </BaseLayout>

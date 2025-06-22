@@ -1,0 +1,32 @@
+---
+import ProjectCard from "./ProjectCard.astro";
+
+// Proyectos destacados
+const projects = [
+  {
+    title: "El Acróbata",
+    kit: "LEGO WeDo 2.0",
+    description:
+      "Un robot que realiza movimientos de equilibrio como si estuviera en un circo.",
+    image: "/img/proyectos/acrobata.jpg",
+  },
+  {
+    title: "Recolector Robótico",
+    kit: "LEGO Spike Essential",
+    description:
+      "Detecta objetos con sensores y simula una cosechadora automática.",
+    image: "/img/proyectos/recolector.jpg",
+  },
+  {
+    title: "Robofit",
+    kit: "LEGO Spike Prime",
+    description:
+      "Un entrenador robótico que guía rutinas de ejercicios con movimientos programados.",
+    image: "/img/proyectos/robofit.jpg",
+  },
+];
+---
+
+<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+  {projects.map((project) => <ProjectCard {...project} />)}
+</div>

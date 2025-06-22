@@ -1,0 +1,35 @@
+---
+import CourseCard from "./CourseCard.astro";
+
+// Simulación de cursos destacados
+const courses = [
+  {
+    title: "Inicial - Exploradores",
+    level: "Nivel 1 a 2",
+    age: "Desde 6 años",
+    description:
+      "Proyectos guiados con LEGO WeDo 2.0 para descubrir el mundo de la robótica jugando.",
+    link: "/cursos#inicial",
+  },
+  {
+    title: "Intermedio - Constructores",
+    level: "Nivel 3 a 4",
+    age: "Desde 8 años",
+    description:
+      "Desarrollan lógica, programación y creatividad con LEGO Spike Essential.",
+    link: "/cursos#intermedio",
+  },
+  {
+    title: "Avanzado - Makers",
+    level: "Nivel 5 a 8",
+    age: "Desde 11 años",
+    description:
+      "Usan Spike Prime y EV3, programan en Python y crean proyectos tecnológicos.",
+    link: "/cursos#avanzado",
+  },
+];
+---
+
+<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+  {courses.map((course) => <CourseCard {...course} />)}
+</div>

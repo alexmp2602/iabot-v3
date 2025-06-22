@@ -1,0 +1,50 @@
+---
+import IconLego from "./IconLego.astro";
+import IconCode from "./IconCode.astro";
+import IconUsersGroup from "./IconUsersGroup.astro";
+import IconRocket from "./IconRocket.astro";
+import IconFallback from "./IconFallback.astro"; // ✅ Fallback separado
+
+const iconKeys = [
+  "lego",
+  "code",
+  "users-group",
+  "rocket",
+  "info-square",
+] as const;
+type IconKey = (typeof iconKeys)[number];
+const {
+  icon = "info-square",
+  title = "",
+  text = "",
+} = Astro.props as {
+  icon?: IconKey;
+  title?: string;
+  text?: string;
+};
+
+const icons: Record<IconKey, any> = {
+  lego: IconLego,
+  code: IconCode,
+  "users-group": IconUsersGroup,
+  rocket: IconRocket,
+  "info-square": IconFallback, // 👈 evita recursividad
+};
+
+const SelectedIcon = icons[icon] || IconFallback;
+---
+
+<article
+  class="flex flex-col items-center text-center gap-3 px-4 py-6 bg-white dark:bg-neutral-900 rounded-xl shadow-md transition duration-300 hover:-translate-y-1 hover:shadow-lg"
+>
+  <!-- Ícono dinámico -->
+  <div class="w-9 h-9 text-primary">
+    <SelectedIcon />
+  </div>
+
+  <!-- Título -->
+  <h3 class="text-xl font-semibold text-black dark:text-white">{title}</h3>
+
+  <!-- Descripción -->
+  <p class="text-sm text-neutral-600 dark:text-neutral-400">{text}</p>
+</article>

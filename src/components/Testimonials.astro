@@ -1,0 +1,60 @@
+---
+const testimonials = [
+  {
+    name: "Laura (mamá de Joaquín)",
+    quote:
+      "Mi hijo espera con entusiasmo cada clase. No solo aprende, ¡sino que se divierte muchísimo!",
+  },
+  {
+    name: "Carlos (papá de Sofía)",
+    quote:
+      "Gracias a IABOT, mi hija ahora dice que quiere ser ingeniera. ¡Increíble lo que lograron!",
+  },
+  {
+    name: "Tobías (alumno de 12 años)",
+    quote:
+      "¡Hice mi primer robot! Nunca pensé que programar podía ser tan divertido.",
+  },
+];
+---
+
+<div
+  x-data="{ active: 0, total: {testimonials.length} }"
+  class="relative max-w-3xl mx-auto"
+>
+  <!-- Slider -->
+  <div class="overflow-hidden rounded-lg">
+    <template
+      x-for="(testimonial, index) in [{JSON.stringify(testimonials)}]"
+      :key="index"
+    >
+      <div
+        x-show="active === index"
+        x-transition
+        class="bg-white dark:bg-neutral-900 p-6 shadow-md rounded-lg"
+      >
+        <p
+          class="text-lg text-neutral-800 dark:text-neutral-100 italic mb-4"
+          x-text="testimonial.quote"
+        >
+        </p>
+        <p
+          class="text-sm text-neutral-600 dark:text-neutral-400 font-medium text-right"
+          x-text="`— ${testimonial.name}`"
+        >
+        </p>
+      </div>
+    </template>
+  </div>
+
+  <!-- Controles -->
+  <div class="flex justify-center gap-3 mt-6">
+    <template x-for="(_, i) in Array.from({ length: total })" :key="i">
+      <button
+        class="w-3 h-3 rounded-full"
+        :class="active === i ? 'bg-primary' : 'bg-neutral-400 dark:bg-neutral-600'"
+        @click="active = i"
+        aria-label="Ver testimonio"></button>
+    </template>
+  </div>
+</div>

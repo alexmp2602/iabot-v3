@@ -1,84 +1,95 @@
 /* ===== GOOGLE FONTS ===== */
 @import url("https://fonts.googleapis.com/css2?family=Bruno+Ace&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Avenir&display=swap"); /* Fallback: no existe en Google Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap"); /* Reemplazo temporal para Avenir */
-/* ===== TAILWIND CSS ===== */
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+
+/* ===== TAILWIND ===== */
 @import "tailwindcss";
-/* ===== VARIABLES ===== */
+
+/* ===== DESIGN TOKENS ===== */
 :root {
+  /* 🎨 Colors */
   --color-primary: #32cddb;
   --color-secondary: #78eb2c;
   --color-black: #000000;
+  --color-white: #ffffff;
 
+  --color-bg-light: var(--color-white);
+  --color-text-light: var(--color-black);
+
+  --color-bg-dark: var(--color-black);
+  --color-text-dark: var(--color-white);
+
+  /* 🔤 Fonts */
   --font-title: "Bruno Ace", cursive;
   --font-body: "Inter", sans-serif;
+
+  /* 📐 Sizing & Spacing */
+  --radius: 0.75rem;
+  --shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 12px 24px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg: #000000;
-    --color-text: #ffffff;
-  }
+/* ===== DARK MODE ===== */
+:root.dark {
+  --color-bg: var(--color-bg-dark);
+  --color-text: var(--color-text-dark);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --color-bg: #ffffff;
-    --color-text: #000000;
-  }
+:root:not(.dark) {
+  --color-bg: var(--color-bg-light);
+  --color-text: var(--color-text-light);
 }
 
-/* ===== RESET / BASE ===== */
+/* ===== BASE / RESET ===== */
 html {
   scroll-behavior: smooth;
-  background-color: var(--color-bg);
-  color: var(--color-text);
   font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.6;
-  transition: background-color 0.3s, color 0.3s;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+  margin: 0;
+  padding: 0;
 }
 
 h1,
 h2,
 h3,
 h4,
-h5 {
+h5,
+h6 {
   font-family: var(--font-title);
   line-height: 1.2;
-  color: var(--color-black);
+  color: var(--color-text);
+  margin: 0 0 1rem 0;
 }
 
 a {
   color: var(--color-primary);
   text-decoration: none;
 }
-
-a:hover {
+a:hover,
+a:focus {
   text-decoration: underline;
 }
 
-/* ===== COMPONENT CLASSES ===== */
+/* ===== UTILIDADES Y COMPONENTES ===== */
 .btn {
   display: inline-block;
   padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
+  border-radius: var(--radius);
   font-weight: 500;
   background-color: var(--color-primary);
   color: var(--color-black);
-  transition: all 0.3s ease;
+  transition: var(--transition);
 }
-
 .btn:hover {
   background-color: var(--color-secondary);
-}
-
-.section-title {
-  font-family: var(--font-title);
-  font-size: 2.25rem;
-  margin-bottom: 1rem;
-  color: var(--color-black);
-  text-align: center;
 }
 
 .section {
@@ -87,15 +98,27 @@ a:hover {
   margin: 0 auto;
 }
 
-.card {
-  background-color: white;
-  border-radius: 0.75rem;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
-  transition: all 0.3s ease;
+.section-title {
+  font-family: var(--font-title);
+  font-size: 2.25rem;
+  text-align: center;
+  color: var(--color-text);
+  margin-bottom: 2rem;
 }
 
+.card {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: var(--transition);
+}
+.dark .card {
+  background-color: #1c1c1c;
+  color: var(--color-white);
+}
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-hover);
 }

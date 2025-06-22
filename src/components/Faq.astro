@@ -1,0 +1,35 @@
+---
+const faqs = [
+  {
+    question: "¿Qué edad deben tener los chicos para empezar?",
+    answer:
+      "Pueden comenzar desde los 6 años. Adaptamos los niveles según su edad y experiencia previa.",
+  },
+  {
+    question: "¿Necesitan traer su propio material?",
+    answer:
+      "No. Todos los materiales (kits LEGO, tablets, etc.) están incluidos durante las clases.",
+  },
+  {
+    question: "¿Se necesita experiencia previa en programación?",
+    answer:
+      "No hace falta. Empezamos desde cero y acompañamos su progreso paso a paso.",
+  },
+];
+---
+
+<div class="max-w-2xl mx-auto text-left">
+  {
+    faqs.slice(0, 3).map((faq, i) => (
+      <details class="mb-4 border-b border-neutral-300 dark:border-neutral-700 group">
+        <summary class="cursor-pointer text-primary font-medium py-2 flex justify-between items-center">
+          {faq.question}
+          <span class="transition transform group-open:rotate-180">⌄</span>
+        </summary>
+        <p class="text-sm text-neutral-700 dark:text-neutral-300 pb-3 pl-1">
+          {faq.answer}
+        </p>
+      </details>
+    ))
+  }
+</div>
