@@ -1,0 +1,52 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+---
+
+<BaseLayout
+  title="Proyectos - IABOT"
+  description="Explorá los proyectos que crean nuestros alumnos con LEGO y programación."
+>
+  <section class="section text-center">
+    <h1 class="section-title mb-6">Proyectos Destacados</h1>
+    <p
+      class="text-lg text-neutral-700 dark:text-neutral-300 mb-10 max-w-2xl mx-auto"
+    >
+      Estos son algunos de los proyectos que nuestros alumnos crearon en el
+      taller, resolviendo desafíos con creatividad, tecnología y trabajo en
+      equipo.
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <ProjectCard
+        title="Recolector Robótico"
+        description="Un vehículo programado para recoger objetos simulando una cosechadora automatizada."
+      />
+
+      <ProjectCard
+        title="Robofit"
+        description="Un robot que simula ejercicios de abdominales para trabajar lógica de movimientos y repeticiones."
+      />
+
+      <ProjectCard
+        title="La llama Liam"
+        description="Robot con diseño animal que reacciona a estímulos y expresa emociones con movimiento."
+      />
+
+      <ProjectCard
+        title="Servidor de Agua"
+        description="Dispensador automático que reconoce la presencia del vaso para evitar derrames."
+      />
+
+      <ProjectCard
+        title="Danza Giratoria"
+        description="Un robot que gira su cabeza al ritmo de música, trabajando eventos y sincronización."
+      />
+
+      <ProjectCard
+        title="Explorador Espacial"
+        description="Simulación de robot explorador en terreno lunar con sensores y control remoto."
+      />
+    </div>
+  </section>
+</BaseLayout>

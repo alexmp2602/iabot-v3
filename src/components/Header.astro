@@ -1,0 +1,99 @@
+---
+import ToggleModoOscuro from "./ToggleModoOscuro.astro";
+---
+
+<header
+  class="sticky top-0 z-50 w-full border-b border-neutral-200 dark:border-neutral-700 bg-white dark:bg-black/90 backdrop-blur-md"
+  x-data="{ open: false }"
+>
+  <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+    <!-- Logo -->
+    <a
+      href="/"
+      class="text-2xl font-bold tracking-wide"
+      style="font-family: var(--font-title); color: var(--color-primary);"
+    >
+      IABOT
+    </a>
+
+    <!-- Toggle + nav desktop -->
+    <div class="flex items-center gap-4">
+      <!-- Nav desktop -->
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+        <a
+          href="/cursos"
+          class="text-neutral-700 dark:text-neutral-300 hover:text-primary dark:hover:text-secondary transition"
+          >Cursos</a
+        >
+        <a
+          href="/proyectos"
+          class="text-neutral-700 dark:text-neutral-300 hover:text-primary dark:hover:text-secondary transition"
+          >Proyectos</a
+        >
+        <a
+          href="/inscripcion"
+          class="text-neutral-700 dark:text-neutral-300 hover:text-primary dark:hover:text-secondary transition"
+          >Inscripción</a
+        >
+        <a
+          href="/contacto"
+          class="text-neutral-700 dark:text-neutral-300 hover:text-primary dark:hover:text-secondary transition"
+          >Contacto</a
+        >
+      </nav>
+
+      <!-- Toggle modo oscuro -->
+      <ToggleModoOscuro />
+
+      <!-- Menú móvil -->
+      <button
+        @click="open = !open"
+        class="md:hidden text-neutral-700 dark:text-neutral-300"
+        aria-label="Abrir menú"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-6 h-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Panel menú móvil -->
+  <nav
+    class="md:hidden px-4 pb-4 space-y-3 bg-white dark:bg-black transition-all duration-300"
+    x-show="open"
+    x-transition
+    @click.outside="open = false"
+  >
+    <a
+      href="/cursos"
+      class="block text-base text-neutral-800 dark:text-neutral-200 hover:text-primary dark:hover:text-secondary"
+      >Cursos</a
+    >
+    <a
+      href="/proyectos"
+      class="block text-base text-neutral-800 dark:text-neutral-200 hover:text-primary dark:hover:text-secondary"
+      >Proyectos</a
+    >
+    <a
+      href="/inscripcion"
+      class="block text-base text-neutral-800 dark:text-neutral-200 hover:text-primary dark:hover:text-secondary"
+      >Inscripción</a
+    >
+    <a
+      href="/contacto"
+      class="block text-base text-neutral-800 dark:text-neutral-200 hover:text-primary dark:hover:text-secondary"
+      >Contacto</a
+    >
+  </nav>
+</header>

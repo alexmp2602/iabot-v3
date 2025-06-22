@@ -1,0 +1,42 @@
+---
+import CourseCard from "./CourseCard.astro";
+import IconRobot from "./icons/IconRobot.astro";
+import IconAi from "./icons/IconAi.astro";
+import IconAssemblyOff from "./icons/IconAssemblyOff.astro";
+---
+
+<section class="section text-center">
+  <header class="mb-12">
+    <h2 class="section-title">Nuestros Cursos</h2>
+    <p class="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
+      Diseñados para cada etapa del aprendizaje, nuestros cursos combinan
+      robótica, programación y creatividad con kits LEGO.
+    </p>
+  </header>
+
+  <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+    <CourseCard
+      title="Curso Inicial de Robótica"
+      ageRange="6 a 7 años"
+      description="Exploran conceptos básicos con LEGO WeDo: construyen modelos simples y los programan con acciones lógicas."
+      icon={IconRobot}
+      href="/cursos/inicial"
+    />
+
+    <CourseCard
+      title="Curso Intermedio"
+      ageRange="8 a 10 años"
+      description="Desarrollan habilidades con Spike Essential: sensores, eventos, y resolución de problemas en equipo."
+      icon={IconAi}
+      href="/cursos/intermedio"
+    />
+
+    <CourseCard
+      title="Curso Avanzado"
+      ageRange="11 años en adelante"
+      description="Desafíos técnicos con Spike Prime y EV3: programación avanzada, estructuras complejas e introducción a Python."
+      icon={IconAssemblyOff}
+      href="/cursos/avanzado"
+    />
+  </div>
+</section>

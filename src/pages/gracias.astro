@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Gracias por contactarte - IABOT">
+  <section
+    class="section flex flex-col items-center justify-center text-center"
+  >
+    <img
+      src="/assets/img/thank-you-robot.webp"
+      alt="Robot agradeciendo"
+      class="w-full max-w-sm mb-8"
+      loading="lazy"
+    />
+
+    <h1
+      class="text-4xl font-bold mb-4"
+      style="font-family: var(--font-title); color: var(--color-primary);"
+    >
+      ¡Gracias por tu mensaje!
+    </h1>
+    <p class="text-lg text-neutral-700 dark:text-neutral-300 max-w-md mb-6">
+      Recibimos tu información correctamente. En breve nos pondremos en contacto
+      con vos para responder tu consulta o confirmar tu inscripción.
+    </p>
+    <a href="/" class="btn">Volver al inicio</a>
+  </section>
+</BaseLayout>

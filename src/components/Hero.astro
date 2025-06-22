@@ -1,0 +1,32 @@
+---
+const title = "Robótica Educativa para el Futuro";
+const description =
+  "Explorá nuestros cursos de robótica con LEGO y programación para chicos y chicas. Desarrollamos creatividad, lógica y trabajo en equipo desde los 6 años.";
+const ctaLabel = "Ver cursos disponibles";
+const ctaLink = "/cursos";
+---
+
+<section
+  class="hero-section section flex flex-col-reverse md:flex-row items-center justify-between gap-10"
+>
+  <div class="text-left max-w-xl">
+    <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6 section-title">
+      {title}
+    </h1>
+    <p class="text-lg mb-8 text-gray-700 dark:text-gray-300">
+      {description}
+    </p>
+    <a href={ctaLink} class="btn">
+      {ctaLabel}
+    </a>
+  </div>
+
+  <div class="w-full max-w-md md:max-w-lg">
+    <img
+      src="/assets/img/robot-hero.webp"
+      alt="Robot educativo"
+      class="w-full h-auto rounded-xl shadow-xl object-contain"
+      loading="lazy"
+    />
+  </div>
+</section>

@@ -1,0 +1,28 @@
+---
+const {
+  title,
+  description,
+  image = "/assets/img/proyectos/default.webp", // Ruta por defecto
+  alt = `Imagen del proyecto ${title}`
+} = Astro.props;
+---
+
+<article
+  class="card overflow-hidden flex flex-col h-full transition-all hover:shadow-lg dark:bg-neutral-900 bg-white border border-neutral-200 dark:border-neutral-700 rounded-xl"
+>
+  <img
+    src={image}
+    alt={alt}
+    class="w-full h-48 object-cover"
+    loading="lazy"
+  />
+
+  <div class="p-6 flex flex-col justify-between h-full">
+    <h3 class="text-xl font-semibold mb-2 text-neutral-900 dark:text-white" style="font-family: var(--font-title);">
+      {title}
+    </h3>
+    <p class="text-base text-neutral-700 dark:text-neutral-300 leading-relaxed">
+      {description}
+    </p>
+  </div>
+</article>

@@ -1,0 +1,19 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/global.css";
+---
+
+<BaseLayout title="Página no encontrada - IABOT">
+  <section
+    class="section flex flex-col items-center justify-center text-center"
+  >
+    <img
+      src="/assets/img/404-robot.webp"
+      alt="Robot confundido con mensaje 404"
+      class="w-full max-w-md mb-8 drop-shadow-lg"
+      loading="lazy"
+    />
+
+    <a href="/" class="btn">Volver al inicio</a>
+  </section>
+</BaseLayout>

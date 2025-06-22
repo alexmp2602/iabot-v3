@@ -1,0 +1,53 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Inscripción - IABOT"
+  description="Completá el formulario para inscribirte a los cursos de robótica de IABOT."
+>
+  <section class="section text-center">
+    <h1 class="section-title mb-6">Formulario de Inscripción</h1>
+    <p
+      class="text-lg text-neutral-700 dark:text-neutral-300 mb-10 max-w-2xl mx-auto"
+    >
+      Completá el siguiente formulario para inscribirte a nuestros cursos. Nos
+      pondremos en contacto lo antes posible.
+    </p>
+
+    <div class="w-full max-w-4xl mx-auto aspect-[9/16] sm:aspect-[4/3]">
+      <iframe
+        src="https://docs.google.com/forms/d/e/1FAIpQLSdOqv7K6jisyiLCJLVaXudGCL6BHCZAoo2DCNjW-XlSP99MwQ/viewform?embedded=true"
+        width="100%"
+        height="100%"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        loading="lazy"
+        class="w-full h-full rounded-lg border border-neutral-200 dark:border-neutral-700"
+      >
+        Cargando…
+      </iframe>
+    </div>
+
+    <details
+      class="mt-10 max-w-xl mx-auto bg-neutral-100 dark:bg-neutral-800 p-6 rounded-lg text-left shadow-md"
+    >
+      <summary
+        class="cursor-pointer text-base font-semibold text-neutral-800 dark:text-white"
+      >
+        ¿Qué pasa después de enviar el formulario?
+      </summary>
+      <div
+        class="mt-4 text-sm text-neutral-700 dark:text-neutral-300 space-y-2"
+      >
+        <p>¡Gracias por inscribirte!</p>
+        <p>
+          Revisaremos tu información y nos pondremos en contacto con vos en
+          breve para confirmar tu cupo y responder cualquier consulta.
+        </p>
+        <p>Recordá revisar tu correo electrónico o WhatsApp.</p>
+      </div>
+    </details>
+  </section>
+</BaseLayout>
