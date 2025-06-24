@@ -3,46 +3,55 @@ import CourseCard from "./CourseCard.astro";
 import IconPuzzle from "./icons/IconPuzzle.astro";
 import IconTools from "./icons/IconTools.astro";
 import IconRocket from "./icons/IconRocket.astro";
+import IconBrain from "./icons/IconBrain.astro";
 
-// Cursos destacados
 const courses = [
   {
     icon: IconPuzzle,
-    title: "Curso Inicial - Exploradores",
-    age: "Desde 6 años",
+    title: "Inventores",
+    age: "6 a 9 años",
     description:
-      "Proyectos guiados con LEGO WeDo 2.0 para descubrir el mundo de la robótica jugando.",
-    link: "/cursos#inicial",
+      "Exploración creativa con LEGO WeDo 2.0. Modelos simples, historias animadas y mecanismos básicos.",
+    link: "/cursos#inventores",
   },
   {
     icon: IconTools,
-    title: "Curso Intermedio - Constructores",
-    age: "Desde 8 años",
+    title: "Constructores",
+    age: "9 a 11 años",
     description:
-      "Desarrollan lógica, programación y creatividad con LEGO Spike Essential.",
-    link: "/cursos#intermedio",
+      "Uso de sensores, bucles y lógica con LEGO Spike Essential. Robots que interactúan con su entorno.",
+    link: "/cursos#constructores",
   },
   {
     icon: IconRocket,
-    title: "Curso Avanzado - Makers",
-    age: "Desde 11 años",
+    title: "Programadores",
+    age: "11 a 13 años",
     description:
-      "Usan Spike Prime y EV3, programan en Python y crean proyectos tecnológicos reales.",
-    link: "/cursos#avanzado",
+      "Estructuras avanzadas y múltiples motores con LEGO Spike Prime. Programación de robots más complejos.",
+    link: "/cursos#programadores",
+  },
+  {
+    icon: IconBrain,
+    title: "Maestros",
+    age: "13 a 14 años",
+    description:
+      "Proyectos personalizados con LEGO EV3 y Python. Introducción a inteligencia artificial y visión computacional.",
+    link: "/cursos#maestros",
   },
 ];
 ---
 
-<section id="cursos-destacados" class="section text-center">
+<section id="cursos" class="section text-center animate-fade-in">
   <h2 class="section-title">Nuestros Cursos</h2>
+
   <p
-    class="text-lg text-neutral-700 dark:text-neutral-300 mb-10 max-w-2xl mx-auto"
+    class="text-lg sm:text-xl text-[var(--color-text)] opacity-80 mb-12 max-w-2xl mx-auto font-body leading-relaxed"
   >
-    Diseñados para acompañar el desarrollo de habilidades tecnológicas desde los
-    primeros pasos hasta proyectos avanzados.
+    Desde los primeros pasos en robótica hasta programación avanzada con Python.
+    Nuestro recorrido acompaña el crecimiento de cada estudiante.
   </p>
 
-  <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+  <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
     {courses.map((course) => <CourseCard {...course} />)}
   </div>
 </section>

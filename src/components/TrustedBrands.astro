@@ -1,0 +1,46 @@
+---
+const logos = [
+  { name: "Axion Energy", src: "/assets/img/marcas/axion-energy.jpg" },
+  {
+    name: "Colegio Los Robles",
+    src: "/assets/img/marcas/colegio-los-robles-logo.png",
+  },
+  { name: "Colegio SM", src: "/assets/img/marcas/colegio-sm.png" },
+  { name: "Colegio Nuevo", src: "/assets/img/marcas/cole-nuevo.png" },
+  { name: "Medifé", src: "/assets/img/marcas/medife.png" },
+  { name: "Shell Box", src: "/assets/img/marcas/shell-box.png" },
+  { name: "Swiss Medical", src: "/assets/img/marcas/swiss-medical-logo.png" },
+];
+---
+
+<section
+  class="bg-[var(--color-background)] text-[var(--color-text)] py-16 px-6 text-center"
+>
+  <h2 class="text-3xl sm:text-4xl font-bold font-title mb-4">
+    Confían en nosotros
+  </h2>
+  <p
+    class="text-sm sm:text-base text-[var(--color-text)]/70 max-w-2xl mx-auto mb-10"
+  >
+    Empresas, colegios y organizaciones que han participado en nuestros talleres
+    o nos eligieron para sus actividades educativas.
+  </p>
+
+  <div
+    class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 place-items-center"
+  >
+    {
+      logos.map((logo) => (
+        <div class="p-3 bg-[var(--color-card)] rounded-xl shadow-sm flex items-center justify-center w-full h-20">
+          <img
+            src={logo.src}
+            alt={`Logo de ${logo.name}`}
+            class="max-h-12 object-contain grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition duration-300"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      ))
+    }
+  </div>
+</section>

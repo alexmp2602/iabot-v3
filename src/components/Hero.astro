@@ -3,22 +3,43 @@ const title = "Robótica Educativa para el Futuro";
 const description =
   "Explorá nuestros cursos de robótica con LEGO y programación para chicos y chicas. Desarrollamos creatividad, lógica y trabajo en equipo desde los 6 años.";
 const ctaLabel = "Ver cursos disponibles";
-const ctaLink = "/cursos";
+const ctaLink = "#cursos";
 ---
 
 <section
-  class="relative flex flex-col-reverse md:flex-row items-center justify-center gap-10 min-h-[90vh] px-6 md:px-12 lg:px-20 overflow-hidden text-center md:text-left"
+  class="relative flex flex-col-reverse md:flex-row items-center justify-center gap-12 px-6 md:px-12 lg:px-20 min-h-[90vh] overflow-hidden text-center md:text-left"
 >
-  <!-- Fondo SVG decorativo -->
+  <!-- Video de fondo solo desktop -->
+  <video
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="none"
+    aria-hidden="true"
+    class="hidden md:block absolute inset-0 w-full h-full object-cover opacity-30 dark:opacity-20 z-0 pointer-events-none"
+  >
+    <source src="/video-hero.webm" type="video/webm" />
+  </video>
+
+  <!-- Canvas animado para mobile oscuro -->
+  <canvas
+    id="hero-circuit-bg"
+    class="block md:hidden dark:block dark:opacity-20 absolute inset-0 w-full h-full z-0 pointer-events-none"
+  ></canvas>
+
+  <!-- SVG grid para modo claro mobile -->
   <svg
-    class="absolute top-0 left-0 w-full h-full text-white/5 dark:text-white/10 pointer-events-none"
+    role="img"
+    aria-hidden="true"
+    class="block md:hidden dark:hidden absolute inset-0 w-full h-full text-[var(--color-primary)]/10 pointer-events-none"
     xmlns="http://www.w3.org/2000/svg"
     preserveAspectRatio="none"
     viewBox="0 0 100 100"
   >
     <defs>
       <pattern
-        id="lightGrid"
+        id="gridLight"
         width="10"
         height="10"
         patternUnits="userSpaceOnUse"
@@ -27,50 +48,132 @@ const ctaLink = "/cursos";
           d="M10 0L0 0 0 10"
           fill="none"
           stroke="currentColor"
-          stroke-width="0.5"></path>
+          stroke-width="0.4"></path>
       </pattern>
     </defs>
-    <rect width="100%" height="100%" fill="url(#lightGrid)"></rect>
+    <rect width="100%" height="100%" fill="url(#gridLight)"></rect>
   </svg>
 
-  <!-- Gradiente animado -->
+  <!-- Gradiente animado en ambos modos -->
   <div
-    class="absolute inset-0 bg-gradient-to-br from-[rgba(50,205,219,0.15)] via-[rgba(120,235,44,0.12)] to-transparent animate-gradientBlur z-0"
+    aria-hidden="true"
+    class="absolute inset-0 bg-gradient-to-br from-[rgba(50,205,219,0.1)] via-[rgba(120,235,44,0.1)] to-transparent animate-gradientBlur z-0 md:hidden"
   >
   </div>
 
   <!-- Contenido -->
   <div class="relative z-10 max-w-xl animate-fade-in-up">
-    <h1 class="text-4xl md:text-5xl font-bold mb-6 font-title text-balance">
-      {title}
-    </h1>
+    <!-- Badge -->
     <p
-      class="text-lg md:text-xl text-neutral-700 dark:text-neutral-300 mb-8 leading-relaxed"
+      class="mb-4 text-sm font-semibold uppercase tracking-wide text-[var(--color-primary)] dark:text-[var(--color-secondary)]"
+    >
+      +500 alumnos desde 2021
+    </p>
+
+    <!-- Título -->
+    <h1
+      class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 font-title text-[var(--color-text)] leading-tight text-balance"
+    >
+      Robótica <span class="relative inline-block">
+        Educativa
+        <span
+          class="absolute bottom-0 left-0 h-1 w-full bg-[var(--color-primary)] dark:bg-[var(--color-secondary)] rounded-full animate-slide-in"
+        ></span>
+      </span> para el Futuro
+    </h1>
+
+    <!-- Descripción -->
+    <p
+      class="text-lg sm:text-xl text-[var(--color-text)] opacity-80 mb-8 font-body leading-relaxed"
     >
       {description}
     </p>
+
+    <!-- Botón CTA -->
     <a
       href={ctaLink}
-      class="inline-block bg-primary hover:bg-primary/90 text-white font-semibold py-3 px-6 rounded-xl shadow-lg transition-colors duration-300"
+      class="inline-block btn btn-primary text-lg px-8 py-4 rounded-full shadow-md hover:scale-105 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-black transition-transform duration-300"
     >
       {ctaLabel}
     </a>
   </div>
-
-  <!-- Imagen -->
-  <div
-    class="relative z-10 w-full max-w-md md:max-w-lg animate-fade-in-up"
-    style="animation-delay: 0.2s;"
-  >
-    <img
-      src="/assets/img/robot-hero.webp"
-      alt="Robot educativo"
-      class="w-full h-auto rounded-2xl object-contain"
-      loading="lazy"
-    />
-  </div>
 </section>
 
+<!-- Canvas animación para modo oscuro mobile -->
+<script is:inline>
+  const canvas = document.getElementById("hero-circuit-bg");
+  if (
+    typeof window !== "undefined" &&
+    canvas &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+  ) {
+    const ctx = canvas.getContext("2d");
+    let width, height;
+    const dots = [];
+
+    function resizeCanvas() {
+      width = canvas.width = canvas.offsetWidth;
+      height = canvas.height = canvas.offsetHeight;
+    }
+
+    function createDots() {
+      dots.length = 0;
+      for (let i = 0; i < 70; i++) {
+        dots.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.3,
+          vy: (Math.random() - 0.5) * 0.3,
+        });
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      ctx.strokeStyle = "rgba(255,255,255,0.06)";
+      ctx.lineWidth = 1;
+
+      for (let i = 0; i < dots.length; i++) {
+        const d = dots[i];
+        d.x += d.vx;
+        d.y += d.vy;
+
+        if (d.x < 0 || d.x > width) d.vx *= -1;
+        if (d.y < 0 || d.y > height) d.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(d.x, d.y, 1.5, 0, 2 * Math.PI);
+        ctx.fill();
+
+        for (let j = i + 1; j < dots.length; j++) {
+          const d2 = dots[j];
+          const dx = d.x - d2.x;
+          const dy = d.y - d2.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 80) {
+            ctx.beginPath();
+            ctx.moveTo(d.x, d.y);
+            ctx.lineTo(d2.x, d2.y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    window.addEventListener("resize", () => {
+      resizeCanvas();
+      createDots();
+    });
+
+    resizeCanvas();
+    createDots();
+    animate();
+  }
+</script>
+
+<!-- Animaciones CSS -->
 <style>
   @keyframes fade-in-up {
     from {
@@ -99,5 +202,21 @@ const ctaLink = "/cursos";
 
   .animate-gradientBlur {
     animation: gradientBlur 16s ease-in-out infinite;
+  }
+
+  @keyframes slide-in {
+    from {
+      transform: scaleX(0);
+      opacity: 0;
+    }
+    to {
+      transform: scaleX(1);
+      opacity: 1;
+    }
+  }
+
+  .animate-slide-in {
+    animation: slide-in 1s ease-out forwards;
+    transform-origin: left;
   }
 </style>

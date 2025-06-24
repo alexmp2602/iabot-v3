@@ -1,7 +1,6 @@
 ---
 import ProjectCard from "./ProjectCard.astro";
 
-// Proyectos destacados
 const projects = [
   {
     title: "El Acróbata",
@@ -9,6 +8,7 @@ const projects = [
     description:
       "Un robot que realiza movimientos de equilibrio como si estuviera en un circo.",
     image: "/img/proyectos/acrobata.jpg",
+    featured: false,
   },
   {
     title: "Recolector Robótico",
@@ -16,6 +16,7 @@ const projects = [
     description:
       "Detecta objetos con sensores y simula una cosechadora automática.",
     image: "/img/proyectos/recolector.jpg",
+    featured: true,
   },
   {
     title: "Robofit",
@@ -23,6 +24,7 @@ const projects = [
     description:
       "Un entrenador robótico que guía rutinas de ejercicios con movimientos programados.",
     image: "/img/proyectos/robofit.jpg",
+    featured: false,
   },
 ];
 ---
@@ -30,14 +32,14 @@ const projects = [
 <section id="proyectos" class="section text-center">
   <h2 class="section-title">Proyectos destacados</h2>
   <p
-    class="text-lg text-neutral-700 dark:text-neutral-300 mb-10 max-w-2xl mx-auto"
+    class="text-lg text-[var(--color-text)] opacity-90 mb-10 max-w-2xl mx-auto font-body leading-relaxed"
   >
     Estos son algunos de los robots que crean los estudiantes en nuestras
     clases. Cada uno aplica conocimientos de programación, diseño y resolución
     de problemas reales.
   </p>
 
-  <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
-    {projects.map((project) => <ProjectCard {...project} />)}
+  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+    {projects.map((project, i) => <ProjectCard {...project} index={i} />)}
   </div>
 </section>

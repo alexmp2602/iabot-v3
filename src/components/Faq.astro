@@ -1,99 +1,130 @@
-<div class="faq-container max-w-2xl mx-auto">
-  <!-- Aquí se cargan las preguntas -->
-</div>
+<section
+  id="faq"
+  class="bg-[var(--color-background)] text-[var(--color-text)] py-16 px-6"
+>
+  <h2 class="text-3xl sm:text-4xl font-bold font-title text-center mb-4">
+    Preguntas Frecuentes
+  </h2>
+  <p class="text-center opacity-80 max-w-xl mx-auto mb-8 font-body">
+    No te quedes con dudas. Respondemos lo más importante 👇
+  </p>
 
-<div class="text-center mt-4">
-  <button
-    id="toggleBtn"
-    class="text-sm font-medium text-primary hover:underline transition"
+  <div
+    class="max-w-3xl mx-auto space-y-6"
+    id="faq-container"
+    itemscope
+    itemtype="https://schema.org/FAQPage"
   >
-    Ver más preguntas
-  </button>
-</div>
+    <!-- JS injecta las preguntas -->
+  </div>
+</section>
 
-<script type="module" is:inline>
+<script is:inline type="module">
   const faqs = [
     {
+      category: "Inscripción",
+      question: "¿Cómo me inscribo?",
+      answer:
+        "Podés hacerlo desde la sección de contacto o inscripciones. También vía WhatsApp.",
+    },
+    {
+      category: "Cursos",
       question: "¿Qué edad deben tener los chicos para empezar?",
       answer:
         "Pueden comenzar desde los 6 años. Adaptamos los cursos según su edad y experiencia previa.",
     },
     {
+      category: "Materiales",
       question: "¿Necesitan traer su propio material?",
       answer:
         "No. Todos los materiales (kits LEGO, tablets, etc.) están incluidos durante las clases.",
     },
     {
+      category: "Cursos",
       question: "¿Se necesita experiencia previa en programación?",
       answer:
         "No hace falta. Empezamos desde cero y acompañamos su progreso paso a paso.",
     },
     {
+      category: "Metodología",
       question: "¿Las clases son grupales o individuales?",
       answer:
         "Las clases son grupales, promoviendo el trabajo en equipo, pero con seguimiento individual.",
     },
-    {
-      question: "¿Cómo me inscribo?",
-      answer:
-        "Podés hacerlo desde la sección de contacto o inscripciones. También vía WhatsApp.",
-    },
   ];
 
-  const faqContainer = document.querySelector(".faq-container");
-  const toggleBtn = document.getElementById("toggleBtn");
-  let expanded = false;
+  const faqContainer = document.getElementById("faq-container");
+  let openItem = null;
 
   function renderFaqs() {
     faqContainer.innerHTML = "";
-    const list = expanded ? faqs : faqs.slice(0, 3);
-    for (const faq of list) {
-      const details = document.createElement("details");
-      details.className =
-        "group mb-4 rounded-lg border border-neutral-200 dark:border-neutral-700 overflow-hidden transition-colors duration-200";
 
-      const summary = document.createElement("summary");
-      summary.className =
-        "cursor-pointer select-none py-3 px-4 flex justify-between items-center bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors";
+    const grouped = faqs.reduce((acc, item) => {
+      acc[item.category] = acc[item.category] || [];
+      acc[item.category].push(item);
+      return acc;
+    }, {});
 
-      const span = document.createElement("span");
-      span.textContent = faq.question;
-      span.className = "text-primary font-medium";
+    for (const category in grouped) {
+      const catHeading = document.createElement("h3");
+      catHeading.className =
+        "text-xl font-bold text-left mt-6 mb-2 text-primary dark:text-secondary";
+      catHeading.textContent = category;
+      faqContainer.appendChild(catHeading);
 
-      const icon = document.createElementNS(
-        "http://www.w3.org/2000/svg",
-        "svg"
-      );
-      icon.setAttribute(
-        "class",
-        "w-5 h-5 text-primary transition-transform duration-200"
-      );
-      icon.setAttribute("fill", "none");
-      icon.setAttribute("stroke", "currentColor");
-      icon.setAttribute("stroke-width", "2");
-      icon.setAttribute("viewBox", "0 0 24 24");
-      icon.innerHTML = `<path d="M6 9l6 6 6-6" />`;
+      grouped[category].forEach(({ question, answer }, index) => {
+        const wrapper = document.createElement("div");
+        wrapper.setAttribute("itemscope", "");
+        wrapper.setAttribute("itemprop", "mainEntity");
+        wrapper.setAttribute("itemtype", "https://schema.org/Question");
 
-      summary.appendChild(span);
-      summary.appendChild(icon);
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className =
+          "w-full text-left px-6 py-4 rounded-lg bg-[var(--color-card)] border border-neutral-200 dark:border-neutral-700 text-sm sm:text-base font-medium hover:bg-neutral-100/80 dark:hover:bg-neutral-800/50 flex justify-between items-center transition";
+        btn.setAttribute("aria-expanded", "false");
+        btn.setAttribute("aria-controls", `faq-answer-${index}`);
+        btn.innerHTML = `
+          <span itemprop="name">${question}</span>
+          <svg class="w-5 h-5 ml-3 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6" />
+          </svg>
+        `;
 
-      const answer = document.createElement("div");
-      answer.className =
-        "px-4 pb-4 text-sm text-neutral-700 dark:text-neutral-300";
-      answer.textContent = faq.answer;
+        const answerDiv = document.createElement("div");
+        answerDiv.className =
+          "max-h-0 overflow-hidden transition-all duration-500 px-6 text-sm sm:text-base opacity-80";
+        answerDiv.id = `faq-answer-${index}`;
+        answerDiv.setAttribute("itemprop", "acceptedAnswer");
+        answerDiv.setAttribute("itemscope", "");
+        answerDiv.setAttribute("itemtype", "https://schema.org/Answer");
+        answerDiv.innerHTML = `<p itemprop="text" class="py-3">${answer}</p>`;
 
-      details.appendChild(summary);
-      details.appendChild(answer);
-      faqContainer.appendChild(details);
+        btn.addEventListener("click", () => {
+          if (openItem && openItem !== btn) {
+            openItem.setAttribute("aria-expanded", "false");
+            openItem.nextElementSibling.style.maxHeight = null;
+            openItem.querySelector("svg").style.transform = "rotate(0deg)";
+          }
+
+          const isOpen = btn.getAttribute("aria-expanded") === "true";
+          btn.setAttribute("aria-expanded", (!isOpen).toString());
+          answerDiv.style.maxHeight = isOpen
+            ? null
+            : answerDiv.scrollHeight + "px";
+          btn.querySelector("svg").style.transform = isOpen
+            ? "rotate(0deg)"
+            : "rotate(180deg)";
+
+          openItem = isOpen ? null : btn;
+        });
+
+        wrapper.appendChild(btn);
+        wrapper.appendChild(answerDiv);
+        faqContainer.appendChild(wrapper);
+      });
     }
-
-    toggleBtn.textContent = expanded ? "Ver menos" : "Ver más preguntas";
   }
-
-  toggleBtn.addEventListener("click", () => {
-    expanded = !expanded;
-    renderFaqs();
-  });
 
   renderFaqs();
 </script>

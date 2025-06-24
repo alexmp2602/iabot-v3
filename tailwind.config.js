@@ -1,20 +1,16 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./src/**/*.{astro,html,js,jsx,ts,tsx,vue,svelte,mdx}", // Asegura que escanee todo lo necesario
+  content: ["./src/**/*.{astro,html,js,jsx,ts,tsx,vue,svelte,mdx}"],
+  darkMode: "class",
+  safelist: [
+    "dark:text-neutral-100",
+    "dark:text-neutral-200",
+    "dark:text-neutral-300",
+    "text-neutral-800",
+    "text-neutral-900",
   ],
-  darkMode: "class", // ⚠️ Usa 'class' para tener control (html.classList.add('dark'))
   theme: {
-    extend: {
-      fontFamily: {
-        title: ['"Bruno Ace"', "cursive"],
-        body: ['"Inter"', "sans-serif"], // reemplazo de Avenir
-      },
-      colors: {
-        primary: "#32CDDB",
-        secondary: "#78EB2C",
-      },
-    },
+    extend: {},
   },
   plugins: [],
 };

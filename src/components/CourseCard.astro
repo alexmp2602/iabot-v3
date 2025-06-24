@@ -3,22 +3,35 @@ const { icon: Icon, title, age, description, link } = Astro.props;
 ---
 
 <article
-  class="bg-white dark:bg-neutral-900 rounded-xl shadow-md hover:shadow-lg transition p-6 text-left flex flex-col gap-4"
+  class="card flex flex-col gap-4 p-6 text-left hover:shadow-xl focus-within:ring-2 focus-within:ring-[var(--color-primary)] focus-within:ring-offset-2 transition-transform duration-300 hover:-translate-y-1"
+  tabindex="0"
 >
   <!-- Ícono con fondo circular -->
   <div
-    class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition duration-300"
+    class="w-12 h-12 flex items-center justify-center rounded-full bg-[var(--color-primary)]/10 text-[var(--color-primary)]"
   >
     <Icon class="w-6 h-6" />
   </div>
 
-  <h3 class="text-xl font-semibold text-black dark:text-white">{title}</h3>
-  <p class="text-sm text-primary font-medium">{age}</p>
-  <p class="text-sm text-neutral-600 dark:text-neutral-400">{description}</p>
+  <h3 class="text-xl font-semibold font-title text-[var(--color-text)]">
+    {title}
+  </h3>
+
+  <p
+    class="text-sm font-medium text-[var(--color-primary)] dark:text-[var(--color-secondary)]"
+  >
+    {age}
+  </p>
+
+  <p
+    class="text-sm text-[var(--color-text)] opacity-90 font-body leading-relaxed"
+  >
+    {description}
+  </p>
 
   <a
     href={link}
-    class="mt-auto text-sm text-primary hover:text-secondary transition font-semibold"
+    class="mt-auto inline-block text-sm font-semibold text-[var(--color-primary)] dark:text-[var(--color-secondary)] hover:underline focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-[var(--color-primary)]"
   >
     Ver más →
   </a>

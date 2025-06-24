@@ -3,24 +3,95 @@ const {
   title = "¿Querés sumarte a la nueva generación?",
   description = "Inscribite hoy y comenzá tu camino en la robótica educativa con LEGO y programación creativa.",
   ctaLabel = "Inscribirme ahora",
-  ctaLink = "/inscripcion",
+  ctaLink = "https://docs.google.com/forms/d/e/1FAIpQLSdOqv7K6jisyiLCJLVaXudGCL6BHCZAoo2DCNjW-XlSP99MwQ/viewform",
 } = Astro.props;
 ---
 
 <section
   id="cta"
-  class="section text-center bg-[--color-primary] dark:bg-[--color-secondary] text-black dark:text-black"
+  class="section text-center relative overflow-hidden bg-primary/90 dark:bg-secondary/90 text-[var(--color-text)] transition-colors duration-500 rounded-xl shadow-inner mx-auto max-w-5xl my-12 px-6 py-16"
 >
-  <h2
-    class="text-3xl md:text-4xl font-bold mb-6 font-title"
-    style="color: var(--color-text);"
+  <!-- Fondo animado -->
+  <svg
+    class="absolute top-0 left-0 w-full h-full opacity-10 dark:opacity-5 pointer-events-none animate-pulse"
+    viewBox="0 0 200 200"
+    xmlns="http://www.w3.org/2000/svg"
   >
-    {title}
+    <circle cx="100" cy="100" r="80" fill="currentColor"></circle>
+  </svg>
+
+  <!-- Contenido principal -->
+  <h2
+    class="text-3xl sm:text-4xl font-title font-bold mb-4 leading-snug tracking-tight"
+  >
+    {title} 🚀
   </h2>
-  <p class="text-lg md:text-xl mb-8" style="color: var(--color-text);">
+
+  <p
+    class="text-base sm:text-lg text-[var(--color-text)] opacity-90 max-w-2xl mx-auto mb-6 font-body leading-relaxed"
+  >
     {description}
   </p>
-  <a href={ctaLink} class="btn text-sm sm:text-base font-bold">
+
+  <p class="text-sm text-[var(--color-text)] opacity-80 italic mb-6">
+    ¡Más de 500 alumnos ya se sumaron desde 2021!
+  </p>
+
+  <a
+    href={ctaLink}
+    target="_blank"
+    rel="noopener"
+    class="inline-flex items-center gap-2 bg-black dark:bg-white text-white dark:text-black px-8 py-4 text-base font-semibold rounded-full shadow-md hover:scale-105 hover:shadow-lg focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-black transition-transform duration-300"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="w-5 h-5"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M12 4v16m8-8H4"></path>
+    </svg>
     {ctaLabel}
   </a>
 </section>
+
+<style>
+  @keyframes pulse {
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 0.1;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 0.2;
+    }
+  }
+
+  .animate-pulse {
+    animation: pulse 12s ease-in-out infinite;
+  }
+</style>
+
+<style>
+  @keyframes pulse {
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 0.1;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 0.2;
+    }
+  }
+
+  .animate-pulse {
+    animation: pulse 12s ease-in-out infinite;
+  }
+</style>
