@@ -8,13 +8,21 @@ import IconMoon from "./icons/IconMoon.astro";
   type="button"
   aria-label="Cambiar tema"
   aria-pressed="false"
-  class="p-2 rounded-full border border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-900 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--color-primary)] text-[var(--color-text)]"
+  class="flex items-center justify-center gap-2 px-4 py-2 rounded-full border border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-900 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--color-primary)] text-[var(--color-text)]"
 >
-  <div id="sun-icon" class="hidden">
-    <IconSun class="w-8 h-8 text-yellow-400" />
+  <div
+    id="sun-icon"
+    class="transition-opacity duration-300 opacity-0"
+    aria-hidden="true"
+  >
+    <IconSun class="w-6 h-6 text-yellow-400" />
   </div>
-  <div id="moon-icon" class="hidden">
-    <IconMoon />
+  <div
+    id="moon-icon"
+    class="transition-opacity duration-300 opacity-0"
+    aria-hidden="true"
+  >
+    <IconMoon class="w-6 h-6 text-neutral-400" />
   </div>
   <noscript>
     <IconSun />
@@ -25,13 +33,16 @@ import IconMoon from "./icons/IconMoon.astro";
   document.addEventListener("DOMContentLoaded", () => {
     const root = document.documentElement;
     const btn = document.getElementById("toggle-theme-btn");
-    const sun = document.getElementById("sun-icon");
-    const moon = document.getElementById("moon-icon");
+    const sunIcon = document.getElementById("sun-icon");
+    const moonIcon = document.getElementById("moon-icon");
     const logo = document.getElementById("logo-img");
 
     const setUI = (isDark) => {
-      sun.classList.toggle("hidden", isDark);
-      moon.classList.toggle("hidden", !isDark);
+      sunIcon.style.opacity = isDark ? "0" : "1";
+      sunIcon.setAttribute("aria-hidden", isDark);
+      moonIcon.style.opacity = isDark ? "1" : "0";
+      moonIcon.setAttribute("aria-hidden", !isDark);
+
       root.classList.toggle("dark", isDark);
       root.setAttribute("data-theme", isDark ? "dark" : "light");
       localStorage.setItem("theme", isDark ? "dark" : "light");
@@ -44,18 +55,24 @@ import IconMoon from "./icons/IconMoon.astro";
       }
     };
 
-    // Lógica al iniciar
-    const stored = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches;
-    const initial = stored === "dark" || (!stored && prefersDark);
-    setUI(initial);
+    const getInitialTheme = () => {
+      const stored = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+      return stored === "dark" || (!stored && prefersDark);
+    };
 
-    // Al hacer clic
-    btn?.addEventListener("click", () => {
-      const isNowDark = !root.classList.contains("dark");
-      setUI(isNowDark);
-    });
+    const init = () => {
+      const isDark = getInitialTheme();
+      setUI(isDark);
+
+      btn?.addEventListener("click", () => {
+        const isNowDark = !root.classList.contains("dark");
+        setUI(isNowDark);
+      });
+    };
+
+    requestAnimationFrame(init);
   });
 </script>

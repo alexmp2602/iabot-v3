@@ -13,20 +13,37 @@ const testimonials = [
 ];
 ---
 
-<section id="testimonios" class="section text-center">
-  <h2 class="section-title">Testimonios</h2>
-  <p class="text-lg mb-12 max-w-2xl mx-auto font-body">
+<section
+  id="testimonios"
+  class="section text-center animate-fade-in"
+  role="region"
+  aria-labelledby="testimonios-title"
+>
+  <h2 id="testimonios-title" class="section-title mb-4">Testimonios</h2>
+
+  <p
+    class="text-lg text-[var(--color-text)] opacity-90 mb-12 max-w-2xl mx-auto font-body leading-relaxed text-balance"
+  >
     Padres y docentes nos comparten su experiencia en IABOT.
   </p>
 
-  <div class="grid gap-8 sm:grid-cols-1 md:grid-cols-2 max-w-6xl mx-auto">
+  <ul class="grid gap-8 sm:grid-cols-1 md:grid-cols-2 max-w-6xl mx-auto">
     {
       testimonials.map(({ quote, name }) => (
-        <blockquote class="card p-6 md:p-8 text-left text-sm sm:text-base leading-relaxed">
-          <p class="italic mb-4">"{quote}"</p>
-          <footer class="text-right text-sm font-medium">— {name}</footer>
-        </blockquote>
+        <li class="focus-within:outline-none">
+          <figure
+            tabindex="0"
+            class="card p-6 md:p-8 text-left backdrop-blur-sm rounded-xl shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] focus-visible:ring-offset-2"
+          >
+            <blockquote class="relative text-sm sm:text-base leading-relaxed text-[var(--color-text)] font-body italic pl-6 before:content-['“'] before:text-4xl before:absolute before:left-0 before:top-0 before:text-[var(--color-primary)]">
+              {quote}
+            </blockquote>
+            <figcaption class="mt-4 text-right text-sm font-semibold text-[var(--color-primary)] dark:text-[var(--color-secondary)]">
+              — {name}
+            </figcaption>
+          </figure>
+        </li>
       ))
     }
-  </div>
+  </ul>
 </section>

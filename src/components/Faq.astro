@@ -65,35 +65,41 @@
       return acc;
     }, {});
 
+    let globalIndex = 0;
+
     for (const category in grouped) {
       const catHeading = document.createElement("h3");
       catHeading.className =
-        "text-xl font-bold text-left mt-6 mb-2 text-primary dark:text-secondary";
+        "text-xl font-semibold mt-8 mb-4 text-[var(--color-primary)] dark:text-[var(--color-secondary)] border-l-4 pl-3 border-[var(--color-primary)] dark:border-[var(--color-secondary)]";
       catHeading.textContent = category;
       faqContainer.appendChild(catHeading);
 
-      grouped[category].forEach(({ question, answer }, index) => {
+      grouped[category].forEach(({ question, answer }) => {
+        const index = globalIndex++;
+
         const wrapper = document.createElement("div");
         wrapper.setAttribute("itemscope", "");
         wrapper.setAttribute("itemprop", "mainEntity");
         wrapper.setAttribute("itemtype", "https://schema.org/Question");
+        wrapper.className =
+          "rounded-lg shadow-sm bg-[var(--glass-bg)] border border-[var(--glass-border)] overflow-hidden transition-all";
 
         const btn = document.createElement("button");
         btn.type = "button";
         btn.className =
-          "w-full text-left px-6 py-4 rounded-lg bg-[var(--color-card)] border border-neutral-200 dark:border-neutral-700 text-sm sm:text-base font-medium hover:bg-neutral-100/80 dark:hover:bg-neutral-800/50 flex justify-between items-center transition";
+          "w-full text-left px-6 py-4 flex justify-between items-center font-semibold text-[var(--color-text)] hover:bg-[var(--color-primary)]/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--color-primary)] transition";
         btn.setAttribute("aria-expanded", "false");
         btn.setAttribute("aria-controls", `faq-answer-${index}`);
         btn.innerHTML = `
-          <span itemprop="name">${question}</span>
-          <svg class="w-5 h-5 ml-3 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <span itemprop="name" class="pr-3">${question}</span>
+          <svg class="w-5 h-5 ml-3 shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6" />
           </svg>
         `;
 
         const answerDiv = document.createElement("div");
         answerDiv.className =
-          "max-h-0 overflow-hidden transition-all duration-500 px-6 text-sm sm:text-base opacity-80";
+          "max-h-0 overflow-hidden px-6 transition-all duration-500 text-sm sm:text-base opacity-80";
         answerDiv.id = `faq-answer-${index}`;
         answerDiv.setAttribute("itemprop", "acceptedAnswer");
         answerDiv.setAttribute("itemscope", "");

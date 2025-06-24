@@ -5,10 +5,15 @@ import ThemeToggle from "../components/ThemeToggle.astro";
 <header
   class="sticky top-0 z-50 w-full border-b border-[var(--glass-border)] bg-[var(--glass-bg)] text-[var(--color-text)] backdrop-blur-md transition-colors duration-300"
   x-data="{ open: false }"
+  x-init="$watch('open', val => document.body.style.overflow = val ? 'hidden' : '')"
 >
   <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
     <!-- Logo -->
-    <a href="/" class="flex items-center" aria-label="Volver al inicio">
+    <a
+      href="/"
+      class="flex items-center focus:outline-none"
+      aria-label="Volver al inicio"
+    >
       <img
         id="logo-img"
         src="/assets/img/logo/edits/iabot-webp-06.webp"
@@ -27,38 +32,38 @@ import ThemeToggle from "../components/ThemeToggle.astro";
       class="hidden md:flex items-center gap-6 text-sm font-medium"
       aria-label="Navegación principal"
     >
-      <a href="#cursos" class="nav-link" title="Ir a la sección de Cursos"
-        >Cursos</a
+      <a href="#cursos" class="nav-link" title="Ir a Cursos">Cursos</a>
+      <a href="#proyectos" class="nav-link" title="Ir a Proyectos">Proyectos</a>
+      <a href="#docentes" class="nav-link" title="Capacitación Docente"
+        >Docentes</a
       >
-      <a href="#proyectos" class="nav-link" title="Ir a la sección de Proyectos"
-        >Proyectos</a
+      <a href="#empresas" class="nav-link" title="Family Day Empresas"
+        >Empresas</a
       >
-      <a href="#cta" class="nav-link" title="Ir a la sección de Inscripción"
-        >Inscripción</a
-      >
-      <a href="#footer" class="nav-link" title="Ir a la sección de Contacto"
-        >Contacto</a
-      >
+      <a href="#virtual" class="nav-link" title="Curso Virtual">Virtual</a>
+      <a href="#footer" class="nav-link" title="Ir a Contacto">Contacto</a>
     </nav>
 
     <!-- Controles -->
     <div class="flex items-center gap-4">
       <ThemeToggle />
+
+      <!-- Botón hamburguesa móvil -->
       <button
         @click="open = !open"
-        class="md:hidden relative w-6 h-6 flex flex-col justify-between items-center"
-        aria-label="Abrir menú"
+        class="md:hidden relative w-8 h-8 flex flex-col justify-between items-center focus:outline-none"
+        aria-label="Abrir menú móvil"
         aria-controls="mobile-menu"
         :aria-expanded="open.toString()"
       >
         <span
-          class="block w-6 h-0.5 bg-current transform transition duration-300"
+          class="block w-6 h-0.5 bg-current transform transition duration-300 ease-in-out"
           :class="open ? 'rotate-45 translate-y-2' : ''"></span>
         <span
-          class="block w-6 h-0.5 bg-current transition duration-300"
+          class="block w-6 h-0.5 bg-current transition duration-300 ease-in-out"
           :class="open ? 'opacity-0' : ''"></span>
         <span
-          class="block w-6 h-0.5 bg-current transform transition duration-300"
+          class="block w-6 h-0.5 bg-current transform transition duration-300 ease-in-out"
           :class="open ? '-rotate-45 -translate-y-2' : ''"></span>
       </button>
     </div>
@@ -75,7 +80,8 @@ import ThemeToggle from "../components/ThemeToggle.astro";
     x-transition:leave-start="opacity-100 translate-y-0"
     x-transition:leave-end="opacity-0 -translate-y-4"
     @click.outside="open = false"
-    class="md:hidden px-4 pb-4 space-y-3 bg-[var(--glass-bg)] text-[var(--color-text)] border-t border-[var(--glass-border)]"
+    class="md:hidden px-6 pb-6 pt-4 space-y-4 bg-[var(--glass-bg)] text-[var(--color-text)] border-t border-[var(--glass-border)] backdrop-blur-md rounded-b-lg shadow-xl"
+    aria-label="Menú de navegación móvil"
   >
     <a href="#cursos" @click="open = false" class="block text-base nav-link"
       >Cursos</a
@@ -83,8 +89,14 @@ import ThemeToggle from "../components/ThemeToggle.astro";
     <a href="#proyectos" @click="open = false" class="block text-base nav-link"
       >Proyectos</a
     >
-    <a href="#cta" @click="open = false" class="block text-base nav-link"
-      >Inscripción</a
+    <a href="#docentes" @click="open = false" class="block text-base nav-link"
+      >Docentes</a
+    >
+    <a href="#empresas" @click="open = false" class="block text-base nav-link"
+      >Empresas</a
+    >
+    <a href="#virtual" @click="open = false" class="block text-base nav-link"
+      >Virtual</a
     >
     <a href="#footer" @click="open = false" class="block text-base nav-link"
       >Contacto</a

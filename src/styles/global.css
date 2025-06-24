@@ -16,6 +16,7 @@
 
   --color-bg: #ffffff;
   --color-text: #000000;
+  --color-text-hero: #ffffff;
 
   --glass-bg: rgba(255, 255, 255, 0.6);
   --glass-border: rgba(255, 255, 255, 0.1);
@@ -53,6 +54,7 @@
 :root.dark {
   --color-bg: #121212;
   --color-text: #f0f0f0;
+  --color-text-hero: #ffffff;
 
   --glass-bg: rgba(28, 28, 28, 0.6);
   --glass-border: rgba(255, 255, 255, 0.1);

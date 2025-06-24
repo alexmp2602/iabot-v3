@@ -1,0 +1,64 @@
+---
+const programs = [
+  {
+    icon: "📚",
+    title: "Capacitación Docente",
+    description:
+      "Formación y asesoramiento práctico para docentes de todos los niveles educativos.",
+  },
+  {
+    icon: "👨‍👩‍👧‍👦",
+    title: "Family Day para Empresas",
+    description:
+      "Una jornada diferente para que empleados y sus familias vivan la robótica como una experiencia lúdica y colaborativa.",
+  },
+  {
+    icon: "💻",
+    title: "Intro a la Programación y Robótica (Virtual)",
+    description:
+      "Curso online para chicos de 9 a 13 años. Programación creativa con Scratch desde cero. ¡No necesitás experiencia previa!",
+  },
+];
+---
+
+<section
+  id="special-programs"
+  class="py-20 px-6 bg-[var(--color-background)] text-[var(--color-text)]"
+>
+  <div class="max-w-6xl mx-auto text-center">
+    <h2
+      class="text-4xl sm:text-5xl font-title font-bold mb-6 leading-tight tracking-tight"
+    >
+      Propuestas Especiales ✨
+    </h2>
+    <p
+      class="text-base sm:text-lg text-[var(--color-subtext)] max-w-3xl mx-auto mb-14 font-body"
+    >
+      Experiencias únicas pensadas para instituciones, empresas y docentes que
+      buscan algo más.
+    </p>
+
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        programs.map(({ icon, title, description }) => (
+          <div class="rounded-3xl border border-[var(--color-border)] backdrop-blur-md bg-[var(--color-card)/80] p-8 shadow-xl transition hover:scale-[1.02] hover:shadow-2xl duration-300">
+            <div class="text-5xl mb-4">{icon}</div>
+            <h3 class="text-xl font-semibold text-[var(--color-primary)] mb-2">
+              {title}
+            </h3>
+            <p class="text-sm sm:text-base text-[var(--color-text)] opacity-85 leading-relaxed">
+              {description}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+
+    <a
+      href="#contacto"
+      class="mt-16 inline-block px-8 py-4 rounded-full font-bold text-[var(--color-text)] bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-[var(--color-primary)] transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105"
+    >
+      Consultanos sin compromiso
+    </a>
+  </div>
+</section>

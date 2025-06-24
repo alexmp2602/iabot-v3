@@ -7,9 +7,11 @@ const ctaLink = "#cursos";
 ---
 
 <section
-  class="relative flex flex-col-reverse md:flex-row items-center justify-center gap-12 px-6 md:px-12 lg:px-20 min-h-[90vh] overflow-hidden text-center md:text-left"
+  role="region"
+  aria-labelledby="hero-title"
+  class="relative flex flex-col-reverse md:flex-row items-center justify-center gap-12 px-6 md:px-12 lg:px-20 min-h-[90vh] overflow-hidden text-center md:text-left bg-[#121212] text-white"
 >
-  <!-- Video de fondo solo desktop -->
+  <!-- Video de fondo desktop -->
   <video
     autoplay
     muted
@@ -17,44 +19,18 @@ const ctaLink = "#cursos";
     playsinline
     preload="none"
     aria-hidden="true"
-    class="hidden md:block absolute inset-0 w-full h-full object-cover opacity-30 dark:opacity-20 z-0 pointer-events-none"
+    class="hidden md:block absolute inset-0 w-full h-full object-cover z-0 pointer-events-none opacity-20 brightness-75"
   >
     <source src="/video-hero.webm" type="video/webm" />
   </video>
 
-  <!-- Canvas animado para mobile oscuro -->
+  <!-- Canvas mobile (animación fondo) -->
   <canvas
     id="hero-circuit-bg"
-    class="block md:hidden dark:block dark:opacity-20 absolute inset-0 w-full h-full z-0 pointer-events-none"
+    class="block md:hidden absolute inset-0 w-full h-full z-0 pointer-events-none opacity-20"
   ></canvas>
 
-  <!-- SVG grid para modo claro mobile -->
-  <svg
-    role="img"
-    aria-hidden="true"
-    class="block md:hidden dark:hidden absolute inset-0 w-full h-full text-[var(--color-primary)]/10 pointer-events-none"
-    xmlns="http://www.w3.org/2000/svg"
-    preserveAspectRatio="none"
-    viewBox="0 0 100 100"
-  >
-    <defs>
-      <pattern
-        id="gridLight"
-        width="10"
-        height="10"
-        patternUnits="userSpaceOnUse"
-      >
-        <path
-          d="M10 0L0 0 0 10"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="0.4"></path>
-      </pattern>
-    </defs>
-    <rect width="100%" height="100%" fill="url(#gridLight)"></rect>
-  </svg>
-
-  <!-- Gradiente animado en ambos modos -->
+  <!-- Gradiente animado -->
   <div
     aria-hidden="true"
     class="absolute inset-0 bg-gradient-to-br from-[rgba(50,205,219,0.1)] via-[rgba(120,235,44,0.1)] to-transparent animate-gradientBlur z-0 md:hidden"
@@ -63,117 +39,116 @@ const ctaLink = "#cursos";
 
   <!-- Contenido -->
   <div class="relative z-10 max-w-xl animate-fade-in-up">
-    <!-- Badge -->
     <p
-      class="mb-4 text-sm font-semibold uppercase tracking-wide text-[var(--color-primary)] dark:text-[var(--color-secondary)]"
+      class="mb-4 text-sm font-semibold uppercase tracking-wide text-[var(--color-secondary)]"
     >
       +500 alumnos desde 2021
     </p>
 
-    <!-- Título -->
     <h1
-      class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 font-title text-[var(--color-text)] leading-tight text-balance"
+      id="hero-title"
+      class="text-[var(--color-text-hero)] text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 font-title leading-tight text-balance"
     >
       Robótica <span class="relative inline-block">
         Educativa
         <span
-          class="absolute bottom-0 left-0 h-1 w-full bg-[var(--color-primary)] dark:bg-[var(--color-secondary)] rounded-full animate-slide-in"
+          class="absolute bottom-0 left-0 h-1 w-full bg-[var(--color-secondary)] rounded-full animate-slide-in"
         ></span>
       </span> para el Futuro
     </h1>
 
-    <!-- Descripción -->
-    <p
-      class="text-lg sm:text-xl text-[var(--color-text)] opacity-80 mb-8 font-body leading-relaxed"
-    >
-      {description}
+    <p class="text-lg sm:text-xl opacity-80 mb-8 font-body leading-relaxed">
+      Explorá nuestros cursos de robótica con LEGO y programación para chicos y
+      chicas. Desarrollamos creatividad, lógica y trabajo en equipo desde los 6
+      años.
     </p>
 
-    <!-- Botón CTA -->
     <a
-      href={ctaLink}
-      class="inline-block btn btn-primary text-lg px-8 py-4 rounded-full shadow-md hover:scale-105 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-black transition-transform duration-300"
+      href="#cursos"
+      class="inline-block btn btn-primary text-lg px-8 py-4 rounded-full shadow-md hover:scale-105 hover:shadow-lg focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-[var(--color-primary)] transition-transform duration-300"
     >
-      {ctaLabel}
+      Ver cursos disponibles
     </a>
   </div>
 </section>
 
-<!-- Canvas animación para modo oscuro mobile -->
+<!-- Animación canvas para mobile oscuro -->
 <script is:inline>
   const canvas = document.getElementById("hero-circuit-bg");
+
   if (
     typeof window !== "undefined" &&
     canvas &&
     window.matchMedia("(prefers-color-scheme: dark)").matches
   ) {
-    const ctx = canvas.getContext("2d");
-    let width, height;
-    const dots = [];
+    requestIdleCallback(() => {
+      const ctx = canvas.getContext("2d");
+      let width, height;
+      const dots = [];
 
-    function resizeCanvas() {
-      width = canvas.width = canvas.offsetWidth;
-      height = canvas.height = canvas.offsetHeight;
-    }
-
-    function createDots() {
-      dots.length = 0;
-      for (let i = 0; i < 70; i++) {
-        dots.push({
-          x: Math.random() * width,
-          y: Math.random() * height,
-          vx: (Math.random() - 0.5) * 0.3,
-          vy: (Math.random() - 0.5) * 0.3,
-        });
+      function resizeCanvas() {
+        width = canvas.width = canvas.offsetWidth;
+        height = canvas.height = canvas.offsetHeight;
       }
-    }
 
-    function animate() {
-      ctx.clearRect(0, 0, width, height);
-      ctx.strokeStyle = "rgba(255,255,255,0.06)";
-      ctx.lineWidth = 1;
-
-      for (let i = 0; i < dots.length; i++) {
-        const d = dots[i];
-        d.x += d.vx;
-        d.y += d.vy;
-
-        if (d.x < 0 || d.x > width) d.vx *= -1;
-        if (d.y < 0 || d.y > height) d.vy *= -1;
-
-        ctx.beginPath();
-        ctx.arc(d.x, d.y, 1.5, 0, 2 * Math.PI);
-        ctx.fill();
-
-        for (let j = i + 1; j < dots.length; j++) {
-          const d2 = dots[j];
-          const dx = d.x - d2.x;
-          const dy = d.y - d2.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 80) {
-            ctx.beginPath();
-            ctx.moveTo(d.x, d.y);
-            ctx.lineTo(d2.x, d2.y);
-            ctx.stroke();
-          }
+      function createDots() {
+        dots.length = 0;
+        for (let i = 0; i < 70; i++) {
+          dots.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            vx: (Math.random() - 0.5) * 0.3,
+            vy: (Math.random() - 0.5) * 0.3,
+          });
         }
       }
 
-      requestAnimationFrame(animate);
-    }
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+        ctx.strokeStyle = "rgba(255,255,255,0.06)";
+        ctx.lineWidth = 1;
 
-    window.addEventListener("resize", () => {
+        for (let i = 0; i < dots.length; i++) {
+          const d = dots[i];
+          d.x += d.vx;
+          d.y += d.vy;
+
+          if (d.x < 0 || d.x > width) d.vx *= -1;
+          if (d.y < 0 || d.y > height) d.vy *= -1;
+
+          ctx.beginPath();
+          ctx.arc(d.x, d.y, 1.5, 0, 2 * Math.PI);
+          ctx.fill();
+
+          for (let j = i + 1; j < dots.length; j++) {
+            const d2 = dots[j];
+            const dx = d.x - d2.x;
+            const dy = d.y - d2.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 80) {
+              ctx.beginPath();
+              ctx.moveTo(d.x, d.y);
+              ctx.lineTo(d2.x, d2.y);
+              ctx.stroke();
+            }
+          }
+        }
+
+        requestAnimationFrame(animate);
+      }
+
+      window.addEventListener("resize", () => {
+        resizeCanvas();
+        createDots();
+      });
+
       resizeCanvas();
       createDots();
+      animate();
     });
-
-    resizeCanvas();
-    createDots();
-    animate();
   }
 </script>
 
-<!-- Animaciones CSS -->
 <style>
   @keyframes fade-in-up {
     from {
@@ -185,7 +160,6 @@ const ctaLink = "#cursos";
       transform: translateY(0);
     }
   }
-
   .animate-fade-in-up {
     animation: fade-in-up 0.8s ease-out both;
   }
@@ -199,7 +173,6 @@ const ctaLink = "#cursos";
       transform: scale(1.03) translate(5px, -5px);
     }
   }
-
   .animate-gradientBlur {
     animation: gradientBlur 16s ease-in-out infinite;
   }
@@ -214,7 +187,6 @@ const ctaLink = "#cursos";
       opacity: 1;
     }
   }
-
   .animate-slide-in {
     animation: slide-in 1s ease-out forwards;
     transform-origin: left;

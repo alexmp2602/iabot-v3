@@ -6,12 +6,12 @@ const { title, kit, description, image, featured = false } = Astro.props;
   tabindex="0"
   role="group"
   aria-label={`Proyecto: ${title}`}
-  class={`card flex flex-col gap-4 p-6 text-left hover:shadow-xl focus-within:ring-2 focus-within:ring-[var(--color-primary)] focus-within:ring-offset-2 transition-transform duration-300 hover:-translate-y-1
-    ${featured ? "ring-2 ring-[var(--color-primary)]/20" : ""}
+  class={`relative card flex flex-col gap-4 p-6 text-left transition-transform duration-300 hover:-translate-y-1 focus-within:ring-2 focus-within:ring-[var(--color-primary)] focus-within:ring-offset-2
+    ${featured ? "ring-2 ring-[var(--color-primary)]/30 bg-[var(--glass-bg)]" : ""}
   `}
 >
   <!-- Imagen -->
-  <div class="overflow-hidden rounded-lg">
+  <div class="overflow-hidden rounded-lg shadow-sm">
     <img
       src={image}
       alt={`Proyecto ${title} con ${kit}`}
@@ -19,7 +19,7 @@ const { title, kit, description, image, featured = false } = Astro.props;
       height="300"
       loading="lazy"
       decoding="async"
-      class="w-full h-48 sm:h-52 md:h-48 object-cover object-center transition-transform duration-500 hover:scale-105 group-focus-within:scale-105"
+      class="w-full h-48 sm:h-52 md:h-48 object-cover object-center transition-all duration-500 ease-out hover:scale-105 hover:brightness-110 group-focus-within:scale-105"
     />
   </div>
 
@@ -45,7 +45,7 @@ const { title, kit, description, image, featured = false } = Astro.props;
 
   {
     featured && (
-      <div class="absolute top-3 right-3 bg-[var(--color-primary)] text-black text-xs px-2 py-1 rounded-full font-semibold shadow-sm">
+      <div class="absolute top-3 right-3 bg-[var(--color-primary)] text-black text-xs px-2 py-1 rounded-full font-bold shadow-md tracking-wide">
         DESTACADO
       </div>
     )

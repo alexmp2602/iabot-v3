@@ -28,8 +28,14 @@ const beneficios = [
 ];
 ---
 
-<section id="benefits" class="section text-center animate-fade-in px-6">
+<section
+  id="benefits"
+  class="section text-center px-6 animate-fade-in"
+  role="region"
+  aria-labelledby="benefits-title"
+>
   <h2
+    id="benefits-title"
     class="section-title mb-4 text-3xl sm:text-4xl font-bold text-[var(--color-title)] font-title"
   >
     ¿Por qué elegir IABOT?
@@ -42,28 +48,30 @@ const beneficios = [
     generación de pensadores y solucionadores de problemas.
   </p>
 
-  <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
+  <ul class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
     {
       beneficios.map(({ icon: Icon, title, text }) => (
-        <article
-          class="group card flex flex-col items-center gap-4 px-6 py-8 text-center rounded-xl bg-white/80 dark:bg-white/5 backdrop-blur-sm shadow-md hover:shadow-xl transition-transform duration-300 hover:-translate-y-1 focus-within:ring-2 focus-within:ring-[var(--color-primary)] focus-within:ring-offset-2"
-          tabindex="0"
-          role="button"
-          aria-label={title}
-        >
-          <div class="w-12 h-12 text-[var(--color-primary)] dark:text-[var(--color-secondary)] transition-colors duration-300">
-            <Icon />
-          </div>
+        <li class="focus-within:outline-none">
+          <article
+            class="group card flex flex-col items-center gap-4 px-6 py-8 text-center rounded-xl bg-white/80 dark:bg-white/5 backdrop-blur-sm shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 focus-within:ring-2 focus-within:ring-[var(--color-primary)] focus-within:ring-offset-2"
+            tabindex="0"
+            role="button"
+            aria-label={title}
+          >
+            <div class="w-12 h-12 text-[var(--color-primary)] dark:text-[var(--color-secondary)] transition-colors duration-300 group-hover:scale-110">
+              <Icon />
+            </div>
 
-          <h3 class="text-xl font-semibold font-title text-[var(--color-title)]">
-            {title}
-          </h3>
+            <h3 class="text-xl font-semibold font-title text-[var(--color-title)]">
+              {title}
+            </h3>
 
-          <p class="text-sm leading-relaxed text-[var(--color-text)] opacity-80 font-body">
-            {text}
-          </p>
-        </article>
+            <p class="text-sm leading-relaxed text-[var(--color-text)] opacity-80 font-body">
+              {text}
+            </p>
+          </article>
+        </li>
       ))
     }
-  </div>
+  </ul>
 </section>

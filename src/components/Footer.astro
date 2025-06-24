@@ -5,10 +5,11 @@ import IconInstagram from "./icons/IconBrandInstagram.astro";
 
 <footer
   id="footer"
-  class="bg-[var(--color-footer-bg)] text-[var(--color-text)] py-12 transition-colors duration-500"
+  role="contentinfo"
+  class="bg-[var(--color-footer-bg)] text-[var(--color-text)] py-12 px-6 transition-colors duration-500"
 >
   <div
-    class="max-w-7xl mx-auto px-4 grid gap-10 md:grid-cols-2 text-sm leading-relaxed"
+    class="max-w-7xl mx-auto grid gap-10 md:grid-cols-3 text-sm leading-relaxed"
   >
     <!-- Marca / Descripción -->
     <div>
@@ -21,37 +22,38 @@ import IconInstagram from "./icons/IconBrandInstagram.astro";
       </p>
     </div>
 
+    <!-- Sedes -->
+    <div>
+      <h3 class="font-semibold mb-3">Sedes</h3>
+      <ul class="text-[var(--color-subtext)] space-y-1">
+        <li>📍 Mercedes, Buenos Aires</li>
+        <li>📍 Luján, Buenos Aires</li>
+        <li>📍 San Andrés de Giles</li>
+        <li class="italic opacity-70">🛠️ Próximamente: San Antonio de Areco</li>
+      </ul>
+    </div>
+
     <!-- Contacto + Redes -->
     <div>
       <h3 class="font-semibold mb-3">Contacto</h3>
-      <p class="text-[var(--color-subtext)]">Mercedes, Buenos Aires</p>
-      <p>
-        <a
-          href="mailto:info@iabot.com.ar"
-          class="text-[var(--color-accent)] hover:underline"
-        >
-          info@iabot.com.ar
-        </a>
-      </p>
+      <p class="text-[var(--color-subtext)]">info@iabot.com.ar</p>
 
       <div class="flex gap-5 mt-4">
         <a
           href="https://wa.me/+5492324468366"
           target="_blank"
-          rel="noopener"
-          aria-label="WhatsApp"
-          title="WhatsApp"
-          class="text-[var(--color-text)] hover:text-[#25D366] transition"
+          rel="noopener noreferrer"
+          aria-label="WhatsApp de IABOT"
+          class="text-[var(--color-text)] hover:text-[#25D366] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] transition duration-300"
         >
           <IconWhatsapp />
         </a>
         <a
           href="https://www.instagram.com/iabot.robotica/"
           target="_blank"
-          rel="noopener"
-          aria-label="Instagram"
-          title="Instagram"
-          class="text-[var(--color-text)] hover:text-[#E1306C] transition"
+          rel="noopener noreferrer"
+          aria-label="Instagram de IABOT"
+          class="text-[var(--color-text)] hover:text-[#E1306C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E1306C] transition duration-300"
         >
           <IconInstagram />
         </a>

@@ -3,11 +3,11 @@ import ProjectCard from "./ProjectCard.astro";
 
 const projects = [
   {
-    title: "El Acróbata",
+    title: "Milo",
     kit: "LEGO WeDo 2.0",
     description:
-      "Un robot que realiza movimientos de equilibrio como si estuviera en un circo.",
-    image: "/img/proyectos/acrobata.jpg",
+      "Un robot que ayuda a los niños a aprender de manera divertida.",
+    image: "/assets/img/projects/lego-wedo.webp",
     featured: false,
   },
   {
@@ -15,31 +15,43 @@ const projects = [
     kit: "LEGO Spike Essential",
     description:
       "Detecta objetos con sensores y simula una cosechadora automática.",
-    image: "/img/proyectos/recolector.jpg",
+    image: "/assets/img/projects/lego-spike-essential.webp",
     featured: true,
   },
   {
-    title: "Robofit",
+    title: "Rana",
     kit: "LEGO Spike Prime",
     description:
-      "Un entrenador robótico que guía rutinas de ejercicios con movimientos programados.",
-    image: "/img/proyectos/robofit.jpg",
+      "Un robot anfibio que salta y navega por terrenos difíciles.",
+    image: "/assets/img/projects/lego-spike-prime.webp",
     featured: false,
   },
 ];
 ---
 
-<section id="proyectos" class="section text-center">
-  <h2 class="section-title">Proyectos destacados</h2>
+<section
+  id="proyectos"
+  class="section text-center animate-fade-in"
+  role="region"
+  aria-labelledby="proyectos-title"
+>
+  <h2 id="proyectos-title" class="section-title mb-4">Proyectos destacados</h2>
+
   <p
-    class="text-lg text-[var(--color-text)] opacity-90 mb-10 max-w-2xl mx-auto font-body leading-relaxed"
+    class="text-lg sm:text-xl text-[var(--color-text)] opacity-90 mb-10 max-w-2xl mx-auto font-body leading-relaxed text-balance"
   >
     Estos son algunos de los robots que crean los estudiantes en nuestras
     clases. Cada uno aplica conocimientos de programación, diseño y resolución
     de problemas reales.
   </p>
 
-  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
-    {projects.map((project, i) => <ProjectCard {...project} index={i} />)}
-  </div>
+  <ul class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+    {
+      projects.map((project, i) => (
+        <li class="focus-within:outline-none">
+          <ProjectCard {...project} index={i} />
+        </li>
+      ))
+    }
+  </ul>
 </section>
