@@ -1,19 +1,57 @@
-<section id="sedes" class="section text-center">
-  <h2 class="section-title mb-4">Nuestras Sedes</h2>
-  <p class="text-lg text-[var(--color-text)] opacity-80 mb-6 max-w-xl mx-auto">
-    Podés encontrarnos en distintas localidades del oeste bonaerense.
+<section id="sedes" class="section scroll-mt-14 text-center">
+  <h2 class="section-title mb-4 text-3xl md:text-4xl font-bold">
+    Nuestras Sedes
+  </h2>
+  <p
+    class="text-lg text-[var(--color-text)] opacity-80 mb-8 max-w-2xl mx-auto leading-relaxed"
+  >
+    Estamos presentes en distintas localidades del oeste bonaerense.
   </p>
 
-  <ul
-    class="grid gap-6 grid-cols-2 max-w-4xl mx-auto text-sm text-[var(--color-text)]/90"
-  >
-    <li class="p-4 rounded-lg bg-[var(--glass-bg)] shadow-sm">📍 Mercedes</li>
-    <li class="p-4 rounded-lg bg-[var(--glass-bg)] shadow-sm">📍 Luján</li>
-    <li class="p-4 rounded-lg bg-[var(--glass-bg)] shadow-sm">
-      📍 San Andrés de Giles
-    </li>
-    <li class="p-4 rounded-lg bg-[var(--glass-bg)] shadow-sm italic opacity-70">
-      🛠️ Próximamente: San Antonio de Areco
-    </li>
-  </ul>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-5xl mx-auto px-4">
+    <!-- Mercedes -->
+    <a
+      href="/sedes/mercedes"
+      class="group bg-[var(--color-mercedes)] p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 focus-visible:outline focus-visible:outline-[var(--color-mercedes)]"
+    >
+      <div class="flex items-center justify-center mb-4 text-4xl">🟢</div>
+      <h3 class="text-xl font-semibold mb-1">Mercedes</h3>
+      <p class="text-sm text-[var(--color-text)] opacity-80">
+        Sede central desde 2021
+      </p>
+    </a>
+
+    <!-- Luján -->
+    <a
+      href="/sedes/lujan"
+      class="group bg-[var(--color-lujan)] p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 focus-visible:outline focus-visible:outline-[var(--color-lujan)]"
+    >
+      <div class="flex items-center justify-center mb-4 text-4xl">🟣</div>
+      <h3 class="text-xl font-semibold mb-1">Luján</h3>
+      <p class="text-sm text-[var(--color-text)] opacity-80">
+        Creciendo desde 2025
+      </p>
+    </a>
+
+    <!-- Giles -->
+    <a
+      href="/sedes/san-andres-de-giles"
+      class="group bg-[var(--color-giles)] p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 focus-visible:outline focus-visible:outline-[var(--color-giles)]"
+    >
+      <div class="flex items-center justify-center mb-4 text-4xl">🔵</div>
+      <h3 class="text-xl font-semibold mb-1">San Andrés de Giles</h3>
+      <p class="text-sm text-[var(--color-text)] opacity-80">
+        Educando desde 2024
+      </p>
+    </a>
+
+    <!-- Próximamente -->
+    <div
+      class="p-6 rounded-2xl shadow-inner bg-[var(--glass-bg)] text-[var(--color-text)]/60 italic flex flex-col justify-center items-center"
+    >
+      <div class="text-3xl mb-3">🛠️</div>
+      <h3 class="text-xl font-semibold mb-1">Próximamente</h3>
+      <p class="text-sm text-[var(--color-text)]">San Antonio de Areco</p>
+    </div>
+  </div>
 </section>

@@ -6,6 +6,7 @@ import IconInstagram from "./icons/IconBrandInstagram.astro";
 <footer
   id="footer"
   role="contentinfo"
+  aria-labelledby="footer-title"
   class="bg-[var(--color-footer-bg)] text-[var(--color-text)] py-12 px-6 transition-colors duration-500"
 >
   <div
@@ -13,30 +14,44 @@ import IconInstagram from "./icons/IconBrandInstagram.astro";
   >
     <!-- Marca / Descripción -->
     <div>
-      <h2 class="text-xl font-bold mb-3 font-title text-[var(--color-accent)]">
+      <h2
+        id="footer-title"
+        class="text-xl font-bold mb-3 font-title text-[var(--color-accent)]"
+      >
         IABOT
       </h2>
       <p class="text-[var(--color-subtext)]">
         Robótica educativa para niños y adolescentes. Enseñamos programación,
         creatividad y trabajo en equipo con LEGO y tecnología.
       </p>
+      <p class="mt-3 text-[var(--color-subtext)]">
+        Presencial en Mercedes, Luján y San Andrés de Giles.
+      </p>
     </div>
 
-    <!-- Sedes -->
+    <!-- Navegación -->
     <div>
-      <h3 class="font-semibold mb-3">Sedes</h3>
-      <ul class="text-[var(--color-subtext)] space-y-1">
-        <li>📍 Mercedes, Buenos Aires</li>
-        <li>📍 Luján, Buenos Aires</li>
-        <li>📍 San Andrés de Giles</li>
-        <li class="italic opacity-70">🛠️ Próximamente: San Antonio de Areco</li>
+      <h3 class="font-semibold mb-3">Navegación</h3>
+      <ul class="space-y-1 text-[var(--color-subtext)]">
+        <li><a href="/#cursos" class="hover:underline">Cursos</a></li>
+        <li><a href="/#proyectos" class="hover:underline">Proyectos</a></li>
+        <li>
+          <a href="/#special-programs" class="hover:underline">Capacitación</a>
+        </li>
+        <li><a href="/#sedes" class="hover:underline">Sedes</a></li>
+        <li><a href="/#footer" class="hover:underline">Contacto</a></li>
       </ul>
     </div>
 
     <!-- Contacto + Redes -->
     <div>
       <h3 class="font-semibold mb-3">Contacto</h3>
-      <p class="text-[var(--color-subtext)]">info@iabot.com.ar</p>
+      <a
+        href="mailto:info@iabot.com.ar"
+        class="text-[var(--color-subtext)] hover:underline"
+      >
+        info@iabot.com.ar
+      </a>
 
       <div class="flex gap-5 mt-4">
         <a

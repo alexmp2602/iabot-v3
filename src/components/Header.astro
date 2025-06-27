@@ -32,16 +32,20 @@ import ThemeToggle from "../components/ThemeToggle.astro";
       class="hidden md:flex items-center gap-6 text-sm font-medium"
       aria-label="Navegación principal"
     >
-      <a href="#cursos" class="nav-link" title="Ir a Cursos">Cursos</a>
-      <a href="#proyectos" class="nav-link" title="Ir a Proyectos">Proyectos</a>
-      <a href="#docentes" class="nav-link" title="Capacitación Docente"
+      <a href="/#cursos" class="nav-link" title="Ir a Cursos">Cursos</a>
+      <a href="/#proyectos" class="nav-link" title="Ir a Proyectos">Proyectos</a
+      >
+      <a href="/#special-programs" class="nav-link" title="Capacitación Docente"
         >Docentes</a
       >
-      <a href="#empresas" class="nav-link" title="Family Day Empresas"
+      <a href="/#special-programs" class="nav-link" title="Family Day Empresas"
         >Empresas</a
       >
-      <a href="#virtual" class="nav-link" title="Curso Virtual">Virtual</a>
-      <a href="#footer" class="nav-link" title="Ir a Contacto">Contacto</a>
+      <a href="/#special-programs" class="nav-link" title="Curso Virtual"
+        >Virtual</a
+      >
+      <a href="/#sedes" class="nav-link" title="Ir a Sedes">Sedes</a>
+      <a href="/#footer" class="nav-link" title="Ir a Contacto">Contacto</a>
     </nav>
 
     <!-- Controles -->
@@ -51,20 +55,23 @@ import ThemeToggle from "../components/ThemeToggle.astro";
       <!-- Botón hamburguesa móvil -->
       <button
         @click="open = !open"
-        class="md:hidden relative w-8 h-8 flex flex-col justify-between items-center focus:outline-none"
+        class="md:hidden relative w-10 h-10 flex items-center justify-center focus:outline-none group"
         aria-label="Abrir menú móvil"
         aria-controls="mobile-menu"
         :aria-expanded="open.toString()"
       >
         <span
-          class="block w-6 h-0.5 bg-current transform transition duration-300 ease-in-out"
-          :class="open ? 'rotate-45 translate-y-2' : ''"></span>
+          class="absolute w-6 h-0.5 bg-[var(--color-text)] rounded transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]
+    group-hover:scale-105"
+          :class="open ? 'rotate-45 translate-y-0' : '-translate-y-2'"></span>
         <span
-          class="block w-6 h-0.5 bg-current transition duration-300 ease-in-out"
-          :class="open ? 'opacity-0' : ''"></span>
+          class="absolute w-6 h-0.5 bg-[var(--color-text)] rounded transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]
+    group-hover:scale-105"
+          :class="open ? 'opacity-0' : 'translate-y-0'"></span>
         <span
-          class="block w-6 h-0.5 bg-current transform transition duration-300 ease-in-out"
-          :class="open ? '-rotate-45 -translate-y-2' : ''"></span>
+          class="absolute w-6 h-0.5 bg-[var(--color-text)] rounded transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]
+    group-hover:scale-105"
+          :class="open ? '-rotate-45 translate-y-0' : 'translate-y-2'"></span>
       </button>
     </div>
   </div>
@@ -83,22 +90,31 @@ import ThemeToggle from "../components/ThemeToggle.astro";
     class="md:hidden px-6 pb-6 pt-4 space-y-4 bg-[var(--glass-bg)] text-[var(--color-text)] border-t border-[var(--glass-border)] backdrop-blur-md rounded-b-lg shadow-xl"
     aria-label="Menú de navegación móvil"
   >
-    <a href="#cursos" @click="open = false" class="block text-base nav-link"
+    <a href="/#cursos" @click="open = false" class="block text-base nav-link"
       >Cursos</a
     >
-    <a href="#proyectos" @click="open = false" class="block text-base nav-link"
+    <a href="/#proyectos" @click="open = false" class="block text-base nav-link"
       >Proyectos</a
     >
-    <a href="#docentes" @click="open = false" class="block text-base nav-link"
-      >Docentes</a
+    <a
+      href="/#special-programs"
+      @click="open = false"
+      class="block text-base nav-link">Docentes</a
     >
-    <a href="#empresas" @click="open = false" class="block text-base nav-link"
-      >Empresas</a
+    <a
+      href="/#special-programs"
+      @click="open = false"
+      class="block text-base nav-link">Empresas</a
     >
-    <a href="#virtual" @click="open = false" class="block text-base nav-link"
-      >Virtual</a
+    <a
+      href="/#special-programs"
+      @click="open = false"
+      class="block text-base nav-link">Virtual</a
     >
-    <a href="#footer" @click="open = false" class="block text-base nav-link"
+    <a href="/#sedes" @click="open = false" class="block text-base nav-link"
+      >Sedes</a
+    >
+    <a href="/#footer" @click="open = false" class="block text-base nav-link"
       >Contacto</a
     >
   </nav>

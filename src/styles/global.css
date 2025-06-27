@@ -8,13 +8,17 @@
 /* DESIGN TOKENS - LIGHT MODE */
 :root {
   /* Colors */
+  --color-mercedes: #b6e3b7;
+  --color-giles: #b3d9f7;
+  --color-lujan: #cdb5f5;
   --color-primary: #32cddb;
+  --color-primary-hover: #0099cc;
   --color-secondary: #78eb2c;
   --color-accent: #ffd53d;
   --color-black: #000000;
   --color-white: #ffffff;
 
-  --color-bg: #ffffff;
+  --color-bg: #f2f2f2;
   --color-text: #000000;
   --color-text-hero: #ffffff;
 
@@ -48,16 +52,24 @@
 
   /* Misc */
   --z-overlay: 9999;
+  --btn-bg: #ffffff;
+  --btn-text: #111111;
 }
 
 /* DARK MODE TOKENS */
 :root.dark {
+  --color-mercedes: #397d3d;
+  --color-lujan: #6c4a9f;
+  --color-giles: #377dab;
   --color-bg: #121212;
   --color-text: #f0f0f0;
   --color-text-hero: #ffffff;
 
   --glass-bg: rgba(28, 28, 28, 0.6);
   --glass-border: rgba(255, 255, 255, 0.1);
+
+  --btn-bg: #111111;
+  --btn-text: #ffffff;
 }
 
 /* RESET & BASE STYLES */
@@ -99,12 +111,19 @@ h6 {
   text-wrap: balance;
 }
 
+.font-title-hero {
+  font-family: var(--font-title);
+  line-height: 1.2;
+  color: var(--color-text-hero);
+  margin-bottom: 1rem;
+  text-wrap: balance;
+}
+
 p {
   text-wrap: balance;
 }
 
 a {
-  color: var(--color-primary);
   text-decoration: none;
   transition: var(--transition);
 }
@@ -123,6 +142,10 @@ a:focus,
 }
 
 /* BOTONES */
+a[href="#contacto"] {
+  color: #000000 !important;
+}
+
 .btn {
   display: inline-block;
   padding: 0.75rem 1.5rem;
