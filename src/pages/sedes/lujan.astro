@@ -1,17 +1,53 @@
 ---
 import Layout from "../../layouts/BaseLayout.astro";
 import "../../styles/global.css";
+
+const title = "Sede Luján | IABOT Robótica Educativa";
+const description =
+  "Descubrí nuestra sede en Luján. Clases de robótica con LEGO, programación creativa y capacitación docente para todas las edades.";
+const ctaLink =
+  "https://docs.google.com/forms/d/e/1FAIpQLSdOqv7K6jisyiLCJLVaXudGCL6BHCZAoo2DCNjW-XlSP99MwQ/viewform";
 ---
 
-<Layout title="Sede Luján | IABOT">
-  <section class="py-20 px-6 text-center bg-[#e4d7f5] text-[var(--color-text)]">
-    <h1 class="text-4xl sm:text-5xl font-title font-bold mb-4">Sede Luján</h1>
-    <p class="text-lg max-w-2xl mx-auto mb-6">
+<Layout title={title} description={description}>
+  <section
+    class="py-20 px-6 text-center bg-[var(--color-lujan)] text-[var(--color-text)]"
+  >
+    <h1
+      class="text-4xl sm:text-5xl font-title font-bold mb-4 animate-fade-in-up"
+    >
+      Sede Luján
+    </h1>
+    <p class="text-lg max-w-2xl mx-auto mb-8 animate-fade-in-up">
       Nuestra sede más reciente. Seguimos creciendo para acercar la robótica
-      educativa a más chicos y docentes del oeste bonaerense.
+      educativa, la programación y la creatividad a más chicos y docentes del
+      oeste bonaerense.
     </p>
+
+    <!-- Qué ofrecemos -->
+    <ul
+      class="list-disc list-inside max-w-md mx-auto text-left mb-8 animate-fade-in-up"
+    >
+      <li>Cursos de robótica con LEGO WeDo y Spike</li>
+      <li>Programación con Scratch y Python</li>
+      <li>Proyectos prácticos y resolución de problemas</li>
+      <li>Capacitación docente en tecnología educativa</li>
+      <li>Eventos y talleres especiales en escuelas</li>
+    </ul>
+
+    <!-- CTA -->
+    <a
+      href={ctaLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-block px-8 py-4 rounded-full font-semibold text-white bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105 animate-fade-in-up"
+    >
+      Consultar o Inscribirme
+    </a>
+
+    <!-- Mapa -->
     <div
-      class="w-full max-w-4xl mx-auto h-[300px] sm:h-[400px] lg:h-[450px] rounded-xl overflow-hidden shadow-md"
+      class="w-full max-w-4xl mx-auto h-[300px] sm:h-[400px] lg:h-[450px] rounded-xl overflow-hidden shadow-md mt-12 animate-fade-in-up"
     >
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3285.197329433796!2d-59.0924988!3d-34.5738732!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bc8770a8ffa103%3A0x848384ea63f90201!2sBartolom%C3%A9%20Mitre%20%26%20Olavarr%C3%ADa%2C%20B6700%20Luj%C3%A1n%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1750992212113!5m2!1ses-419!2sar"
@@ -19,6 +55,7 @@ import "../../styles/global.css";
         allowfullscreen=""
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
+        aria-label="Mapa de ubicación de la sede Luján de IABOT"
         title="Ubicación de IABOT Luján"></iframe>
     </div>
   </section>

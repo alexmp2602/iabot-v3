@@ -1,70 +1,39 @@
 ---
+import SpecialProgramCard from "../components/SpecialProgramCard.astro";
+
 const programs = [
   {
     icon: "📚",
     title: "Capacitación Docente",
     description:
       "Formación y asesoramiento práctico para docentes de todos los niveles educativos.",
+    link: "/capacitacion-docente/",
   },
   {
     icon: "👨‍👩‍👧‍👦",
     title: "Family Day para Empresas",
     description:
       "Una jornada diferente para que empleados y sus familias vivan la robótica como una experiencia lúdica y colaborativa.",
+    link: "/family-day-empresas/",
   },
   {
     icon: "💻",
     title: "Intro a la Programación y Robótica (Virtual)",
     description:
       "Curso online para chicos de 9 a 13 años. Programación creativa con Scratch desde cero. ¡No necesitás experiencia previa!",
+    upcoming: true,
   },
 ];
 ---
 
-<section
-  id="special-programs"
-  class="section scroll-mt-14 py-20 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[var(--color-background)] text-[var(--color-text)]"
->
-  <div class="max-w-7xl mx-auto text-center">
-    <h2
-      class="text-3xl sm:text-5xl font-bold font-title mb-4 sm:mb-6 leading-tight"
-    >
-      Propuestas Especiales ✨
-    </h2>
-    <p
-      class="text-base sm:text-lg text-[var(--color-subtext)] max-w-2xl mx-auto mb-12 sm:mb-16"
-    >
-      Experiencias únicas para instituciones, empresas y docentes que buscan
-      algo diferente.
-    </p>
+<section id="special-programs" class="section scroll-mt-14 text-center">
+  <h2 class="section-title">Propuestas Especiales ✨</h2>
+  <p class="text-lg mb-12 max-w-2xl mx-auto font-body opacity-80">
+    Experiencias únicas para instituciones, empresas y docentes que buscan algo
+    diferente.
+  </p>
 
-    <div
-      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10"
-    >
-      {
-        programs.map(({ icon, title, description }) => (
-          <article class="rounded-2xl p-6 sm:p-8 bg-[var(--glass-bg)]/70 border border-[var(--color-border)] backdrop-blur-lg shadow-md hover:shadow-xl hover:scale-[1.02] transition duration-300">
-            <div class="flex justify-center sm:justify-start mb-4">
-              <div class="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center text-2xl sm:text-3xl rounded-full bg-[var(--color-primary)]/15 text-[var(--color-primary)]">
-                {icon}
-              </div>
-            </div>
-            <h3 class="text-lg sm:text-xl font-semibold text-[var(--color-primary)] mb-2">
-              {title}
-            </h3>
-            <p class="text-sm sm:text-base text-[var(--color-text)]/90 leading-relaxed">
-              {description}
-            </p>
-          </article>
-        ))
-      }
-    </div>
-
-    <a
-      href="#footer"
-      class="mt-12 inline-block px-6 sm:px-8 py-3 sm:py-4 text-base text-[var(--color-text)] dark:text-black sm:text-lg rounded-full font-semibold bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] transition-all duration-300 shadow-md hover:shadow-xl hover:scale-105 focus-visible:outline focus-visible:outline-[var(--color-primary)]"
-    >
-      Consultanos sin compromiso
-    </a>
+  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+    {programs.map((program) => <SpecialProgramCard {...program} />)}
   </div>
 </section>

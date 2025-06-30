@@ -1,0 +1,128 @@
+---
+import "../../styles/global.css";
+import Layout from "../../layouts/BaseLayout.astro";
+import IconPuzzle from "../../components/icons/IconPuzzle.astro";
+
+const title = "Inventores - Robótica con LEGO WeDo 2.0";
+const description =
+  "Curso de robótica con LEGO WeDo 2.0 para niños de 6 a 9 años. Aprendé jugando mientras desarrollás creatividad, lógica y trabajo en equipo.";
+const ctaLink =
+  "https://docs.google.com/forms/d/e/1FAIpQLSdOqv7K6jisyiLCJLVaXudGCL6BHCZAoo2DCNjW-XlSP99MwQ/viewform";
+---
+
+<Layout title={title} description={description}>
+  <!-- Hero -->
+  <section
+    class="py-16 px-6 text-center bg-[var(--color-bg)] text-[var(--color-text)]"
+  >
+    <div class="max-w-3xl mx-auto">
+      <div class="flex justify-center mb-4 text-6xl">
+        <IconPuzzle class="w-16 h-16 text-[var(--color-primary)]" />
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-title font-bold mb-4">{title}</h1>
+      <p class="text-lg max-w-xl mx-auto mb-6">{description}</p>
+      <a
+        href={ctaLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block px-8 py-4 rounded-full font-semibold text-white bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105"
+      >
+        Inscribirme
+      </a>
+    </div>
+  </section>
+
+  <!-- Contenidos del curso -->
+  <section class="py-16 px-6 max-w-4xl mx-auto text-[var(--color-text)]">
+    <h2 class="text-2xl font-bold mb-4 text-center">
+      ¿Qué aprenden en este curso?
+    </h2>
+    <ul
+      class="list-disc list-inside space-y-2 text-base leading-relaxed max-w-2xl mx-auto"
+    >
+      <li>Construcción de modelos simples con LEGO WeDo 2.0.</li>
+      <li>Introducción a conceptos de ingeniería y mecanismos.</li>
+      <li>Programación visual de acciones y movimientos básicos.</li>
+      <li>Resolución de pequeños desafíos en equipo.</li>
+      <li>Fomento de la creatividad y la lógica de manera lúdica.</li>
+    </ul>
+  </section>
+
+  <!-- Galería de proyectos (opcional, puede reemplazarse con un slider) -->
+  <section class="py-16 px-6 bg-[var(--glass-bg)] backdrop-blur-sm">
+    <h2 class="text-2xl font-bold mb-8 text-center">Proyectos que crean</h2>
+    <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 max-w-5xl mx-auto">
+      <img
+        src="/assets/img/proyectos/inventores/milo.webp"
+        alt="Milo"
+        class="rounded-lg shadow-md hover:scale-105 transition-transform duration-300"
+        loading="lazy"
+      />
+      <img
+        src="/assets/img/proyectos/inventores/robot-2.webp"
+        alt="Robot 2"
+        class="rounded-lg shadow-md hover:scale-105 transition-transform duration-300"
+        loading="lazy"
+      />
+      <img
+        src="/assets/img/proyectos/inventores/robot-3.webp"
+        alt="Robot 3"
+        class="rounded-lg shadow-md hover:scale-105 transition-transform duration-300"
+        loading="lazy"
+      />
+    </div>
+  </section>
+
+  <!-- FAQ específica -->
+  <section class="py-16 px-6 max-w-3xl mx-auto">
+    <h2 class="text-2xl font-bold mb-6 text-center">Preguntas frecuentes</h2>
+    <div class="space-y-4">
+      <details
+        class="p-4 rounded-lg border border-[var(--color-border)] bg-[var(--glass-bg)] transition duration-300"
+      >
+        <summary class="cursor-pointer font-semibold"
+          >¿Hace falta experiencia previa?</summary
+        >
+        <p class="mt-2 text-sm leading-relaxed">
+          No, no es necesario. Este curso está diseñado para iniciar a los
+          chicos en la robótica de manera divertida y accesible.
+        </p>
+      </details>
+      <details
+        class="p-4 rounded-lg border border-[var(--color-border)] bg-[var(--glass-bg)] transition duration-300"
+      >
+        <summary class="cursor-pointer font-semibold"
+          >¿Qué materiales necesitan llevar?</summary
+        >
+        <p class="mt-2 text-sm leading-relaxed">
+          Ninguno. Nosotros proveemos todos los kits LEGO WeDo 2.0 y tablets
+          necesarias durante las clases.
+        </p>
+      </details>
+      <details
+        class="p-4 rounded-lg border border-[var(--color-border)] bg-[var(--glass-bg)] transition duration-300"
+      >
+        <summary class="cursor-pointer font-semibold"
+          >¿Cuál es la duración del curso?</summary
+        >
+        <p class="mt-2 text-sm leading-relaxed">
+          La duración es flexible según el nivel, generalmente de 4 a 6 meses
+          con clases semanales.
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- CTA final -->
+  <section class="py-16 px-6 text-center">
+    <h2 class="text-2xl font-bold mb-4">¿Listo para aprender jugando?</h2>
+    <a
+      href={ctaLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-block px-8 py-4 rounded-full font-semibold text-white bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105"
+    >
+      Inscribirme ahora
+    </a>
+  </section>
+</Layout>

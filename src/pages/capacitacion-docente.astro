@@ -1,0 +1,82 @@
+---
+import Layout from "../layouts/BaseLayout.astro";
+import "../styles/global.css";
+
+const title = "Capacitación Docente en Robótica | IABOT";
+const description =
+  "Formate en robótica educativa y programación con IABOT. Capacitaciones presenciales y virtuales para docentes de todos los niveles.";
+const ctaLink = "https://wa.me/+5492324468366";
+---
+
+<Layout title={title} description={description}>
+  <section
+    class="section scroll-mt-14 py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 text-center bg-[var(--color-bg)] text-[var(--color-text)]"
+  >
+    <!-- Imagen Hero -->
+    <div
+      class="max-w-5xl mx-auto mb-10 rounded-2xl overflow-hidden shadow-lg animate-fade-in-up"
+    >
+      <img
+        src="/assets/img/capacitaciones/capacitacion_docente.webp"
+        alt="Docentes participando en capacitación de robótica IABOT"
+        class="w-full aspect-video object-cover"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+
+    <h1
+      class="text-3xl sm:text-4xl lg:text-5xl font-title font-bold mb-4 animate-fade-in-up"
+    >
+      Capacitación Docente en Robótica
+    </h1>
+    <p
+      class="text-base sm:text-lg max-w-2xl mx-auto mb-10 animate-fade-in-up opacity-90"
+    >
+      Formamos docentes para integrar robótica, programación y creatividad en
+      sus clases utilizando LEGO Education y herramientas digitales, sin
+      necesidad de experiencia previa.
+    </p>
+
+    <!-- Beneficios -->
+    <div
+      class="grid gap-6 sm:gap-8 lg:gap-10 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto mb-12 animate-fade-in-up"
+    >
+      {
+        [
+          {
+            title: "Modalidad Flexible",
+            desc: "Capacitaciones presenciales en tu escuela o virtuales, adaptadas a tus horarios y necesidades.",
+          },
+          {
+            title: "Recursos LEGO y Scratch",
+            desc: "Aprendé a usar LEGO Education, Scratch y herramientas digitales para potenciar tus clases.",
+          },
+          {
+            title: "Certificación IABOT",
+            desc: "Recibí un certificado de participación al finalizar, fortaleciendo tu perfil como docente.",
+          },
+        ].map(({ title, desc }) => (
+          <article class="rounded-2xl p-6 sm:p-8 bg-[var(--glass-bg)]/80 border border-[var(--color-border)] backdrop-blur-md shadow hover:shadow-xl hover:scale-[1.02] transition duration-300">
+            <h3 class="text-lg sm:text-xl font-semibold mb-2 text-[var(--color-primary)]">
+              {title}
+            </h3>
+            <p class="text-sm sm:text-base text-[var(--color-text)]/90 leading-relaxed">
+              {desc}
+            </p>
+          </article>
+        ))
+      }
+    </div>
+
+    <!-- CTA -->
+    <a
+      href={ctaLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-block px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-full font-semibold text-white bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 animate-fade-in-up"
+    >
+      Consultar o Inscribirme
+    </a>
+  </section>
+</Layout>
