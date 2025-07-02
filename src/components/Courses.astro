@@ -4,12 +4,13 @@ import IconPuzzle from "./icons/IconPuzzle.astro";
 import IconTools from "./icons/IconTools.astro";
 import IconRocket from "./icons/IconRocket.astro";
 import IconBrain from "./icons/IconBrain.astro";
+import IconCube from "./icons/IconPrinter.astro";
 
 const courses = [
   {
     icon: IconPuzzle,
     title: "Inventores",
-    age: "6 a 9 años",
+    age: "5 a 9 años",
     description:
       "Exploración creativa con LEGO WeDo 2.0. Modelos simples, historias animadas y mecanismos básicos.",
     link: "/cursos/inventores",
@@ -38,6 +39,14 @@ const courses = [
       "Proyectos personalizados con LEGO EV3 y Python. Introducción a inteligencia artificial y visión computacional.",
     link: "/cursos/maestros",
   },
+  {
+    icon: IconCube,
+    title: "Impresión 3D",
+    age: "9 a 13 años",
+    description:
+      "Creación de modelos e impresión 3D para niños y adolescentes. Disponible en sede Giles.",
+    link: "/cursos/impresion-3d",
+  },
 ];
 ---
 
@@ -52,11 +61,12 @@ const courses = [
   <p
     class="text-lg sm:text-xl text-[var(--color-text)] opacity-80 mb-12 max-w-2xl mx-auto font-body leading-relaxed text-balance"
   >
-    Desde los primeros pasos en robótica hasta programación avanzada con Python.
-    Nuestro recorrido acompaña el crecimiento de cada estudiante.
+    Desde los primeros pasos en robótica hasta programación avanzada con Python,
+    sumando creatividad con impresión 3D. Nuestro recorrido acompaña el
+    crecimiento de cada estudiante.
   </p>
 
-  <ul class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
+  <ul class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
     {
       courses.map((course) => (
         <li class="focus-within:outline-none">

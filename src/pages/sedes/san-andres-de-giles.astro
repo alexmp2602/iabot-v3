@@ -1,13 +1,12 @@
 ---
 import "../../styles/global.css";
 import Layout from "../../layouts/BaseLayout.astro";
-import IconPrinter from "../../components/icons/IconPrinter.astro";
 
 const title = "Sede San Andrés de Giles | IABOT Robótica Educativa";
 const description =
   "Descubrí nuestra sede en San Andrés de Giles. Robótica con LEGO, programación creativa, impresión 3D y grupos reducidos para aprendizaje personalizado.";
 const ctaLink =
-  "https://docs.google.com/forms/d/e/1FAIpQLSdOqv7K6jisyiLCJLVaXudGCL6BHCZAoo2DCNjW-XlSP99MwQ/viewform";
+  "https://wa.me/+5492324468366";
 ---
 
 <Layout title={title} description={description}>
@@ -20,9 +19,9 @@ const ctaLink =
       Sede San Andrés de Giles
     </h1>
     <p class="text-lg max-w-2xl mx-auto mb-8 animate-fade-in-up">
-      En Giles trabajamos con grupos reducidos para potenciar el aprendizaje
-      personalizado en robótica, programación e impresión 3D. ¡Sumate a la
-      experiencia IABOT!
+      Iniciamos nuestras actividades en marzo de 2025, ofreciendo un espacio
+      dedicado a la robótica, programación e impresión 3D con grupos reducidos y
+      atención personalizada para niños y niñas.
     </p>
 
     <!-- Qué ofrecemos -->
@@ -37,33 +36,6 @@ const ctaLink =
       <li>Capacitación docente a demanda</li>
     </ul>
 
-    <!-- Bloque destacado de Impresión 3D -->
-    <div
-      class="bg-[var(--glass-bg)]/80 backdrop-blur rounded-2xl shadow-lg p-6 sm:p-8 max-w-2xl mx-auto mb-10 animate-fade-in-up"
-    >
-      <div class="flex justify-center mb-4 text-6xl">
-        <IconPrinter class="w-16 h-16 text-[var(--color-primary)]" />
-      </div>
-      <h2 class="text-2xl sm:text-3xl font-title font-bold mb-2">
-        Curso de Impresión 3D
-      </h2>
-      <p
-        class="text-base sm:text-lg max-w-xl mx-auto text-[var(--color-text)]/90 mb-4"
-      >
-        Descubrí el mundo del diseño y la impresión 3D de forma divertida y
-        creativa. En este curso exclusivo para nuestra sede de Giles, los chicos
-        de 9 a 13 años aprenderán a modelar e imprimir sus propios proyectos.
-      </p>
-      <a
-        href={ctaLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-block mt-4 px-6 py-3 rounded-full font-semibold text-white bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105"
-      >
-        Consultar o Inscribirme
-      </a>
-    </div>
-
     <!-- CTA general -->
     <a
       href={ctaLink}
@@ -71,7 +43,7 @@ const ctaLink =
       rel="noopener noreferrer"
       class="inline-block px-8 py-4 rounded-full font-semibold text-white bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105 animate-fade-in-up"
     >
-      Consultar por otras actividades
+      Consultar o Inscribirme
     </a>
 
     <!-- Mapa -->

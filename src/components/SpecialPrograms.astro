@@ -16,24 +16,16 @@ const programs = [
       "Una jornada diferente para que empleados y sus familias vivan la robótica como una experiencia lúdica y colaborativa.",
     link: "/family-day-empresas/",
   },
-  {
-    icon: "💻",
-    title: "Intro a la Programación y Robótica (Virtual)",
-    description:
-      "Curso online para chicos de 9 a 13 años. Programación creativa con Scratch desde cero. ¡No necesitás experiencia previa!",
-    upcoming: true,
-  },
 ];
 ---
 
 <section id="special-programs" class="section scroll-mt-14 text-center">
   <h2 class="section-title">Propuestas Especiales ✨</h2>
   <p class="text-lg mb-12 max-w-2xl mx-auto font-body opacity-80">
-    Experiencias únicas para instituciones, empresas y docentes que buscan algo
-    diferente.
+    Soluciones educativas diferenciadas para instituciones, empresas y docentes.
   </p>
 
-  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+  <div class="grid gap-6 sm:grid-cols-2 max-w-6xl mx-auto">
     {programs.map((program) => <SpecialProgramCard {...program} />)}
   </div>
 </section>
