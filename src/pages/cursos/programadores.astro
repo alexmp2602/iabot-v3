@@ -5,27 +5,32 @@ import IconRocket from "../../components/icons/IconRocket.astro";
 
 const title = "Programadores - Robótica con LEGO Spike Prime";
 const description =
-  "Curso de robótica con LEGO Spike Prime para chicos de 11 a 13 años. Creación de robots complejos, programación avanzada y trabajo en equipo.";
-const ctaLink =
-  "https://wa.me/+5492324468366";
+  "Explorá la robótica con LEGO Spike Prime para chicos de 11 a 13 años. Creá robots complejos, programá con lógica avanzada y trabajá en equipo mientras aprendés jugando.";
+const ctaLink = "https://wa.me/+5492324468366";
 ---
 
 <Layout title={title} description={description}>
   <!-- Hero -->
   <section
-    class="py-16 px-6 text-center bg-[var(--color-bg)] text-[var(--color-text)]"
+    class="py-20 px-6 text-center bg-gradient-to-b from-[var(--color-bg)] to-[var(--color-bg-secondary)] text-[var(--color-text)]"
   >
     <div class="max-w-3xl mx-auto">
-      <div class="flex justify-center mb-4 text-6xl">
-        <IconRocket class="w-16 h-16 text-[var(--color-primary)]" />
+      <div class="flex justify-center mb-6">
+        <IconRocket
+          class="w-20 h-20 text-[var(--color-primary)] drop-shadow-lg"
+        />
       </div>
-      <h1 class="text-4xl sm:text-5xl font-title font-bold mb-4">{title}</h1>
-      <p class="text-lg max-w-xl mx-auto mb-6">{description}</p>
+      <h1
+        class="text-4xl sm:text-5xl font-title font-extrabold mb-4 leading-tight"
+      >
+        {title}
+      </h1>
+      <p class="text-lg max-w-xl mx-auto mb-8">{description}</p>
       <a
         href={ctaLink}
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-block px-8 py-4 rounded-full font-semibold text-white bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105"
+        class="inline-block px-10 py-4 rounded-full font-bold text-white bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] transition duration-300 shadow-lg hover:shadow-xl hover:scale-105"
       >
         Inscribirme
       </a>
@@ -33,79 +38,87 @@ const ctaLink =
   </section>
 
   <!-- Contenidos del curso -->
-  <section class="py-16 px-6 max-w-4xl mx-auto text-[var(--color-text)]">
-    <h2 class="text-2xl font-bold mb-4 text-center">
+  <section class="py-20 px-6 max-w-4xl mx-auto text-[var(--color-text)]">
+    <h2 class="text-3xl font-bold mb-6 text-center font-title">
       ¿Qué aprenden en este curso?
     </h2>
     <ul
-      class="list-disc list-inside space-y-2 text-base leading-relaxed max-w-2xl mx-auto"
+      class="list-disc list-inside space-y-3 text-lg leading-relaxed max-w-2xl mx-auto"
     >
       <li>Construcción de robots con múltiples motores y sensores.</li>
       <li>Programación avanzada con bucles, condicionales y variables.</li>
-      <li>Resolución de desafíos de ingeniería y lógica.</li>
-      <li>Trabajo en equipo en proyectos de mayor complejidad.</li>
-      <li>Preparación para competencias y pensamiento computacional.</li>
+      <li>Resolución de desafíos de ingeniería, lógica y diseño.</li>
+      <li>Trabajo en equipo en proyectos complejos y colaborativos.</li>
+      <li>
+        Preparación para competencias y desarrollo de pensamiento computacional.
+      </li>
     </ul>
   </section>
 
   <!-- Galería de proyectos -->
-  <section class="py-16 px-6 bg-[var(--glass-bg)] backdrop-blur-sm">
-    <h2 class="text-2xl font-bold mb-8 text-center">Proyectos que crean</h2>
-    <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 max-w-5xl mx-auto">
+  <section class="py-20 px-6 bg-[var(--glass-bg)] backdrop-blur-md">
+    <h2
+      class="text-3xl sm:text-4xl font-bold mb-8 text-center text-[var(--color-title)] font-title"
+    >
+      Proyectos que crean
+    </h2>
+    <div class="grid gap-8 grid-cols-1 md:grid-cols-3 max-w-5xl mx-auto">
       <img
-        src="/assets/img/proyectos/programadores/rana.webp"
-        alt="Rana robótica con Spike Prime"
-        class="rounded-lg shadow-md hover:scale-105 transition-transform duration-300"
+        src="/assets/img/proyectos/programadores/trineo_de_santa.webp"
+        alt="Trineo de Santa con Spike Prime"
+        class="rounded-xl shadow-lg hover:scale-105 hover:shadow-2xl transition-transform duration-300"
         loading="lazy"
       />
       <img
-        src="/assets/img/proyectos/programadores/robot-2.webp"
-        alt="Robot 2 con Spike Prime"
-        class="rounded-lg shadow-md hover:scale-105 transition-transform duration-300"
+        src="/assets/img/proyectos/programadores/el_seguidor.webp"
+        alt="El Seguidor con Spike Prime"
+        class="rounded-xl shadow-lg hover:scale-105 hover:shadow-2xl transition-transform duration-300"
         loading="lazy"
       />
       <img
-        src="/assets/img/proyectos/programadores/robot-3.webp"
-        alt="Robot 3 con Spike Prime"
-        class="rounded-lg shadow-md hover:scale-105 transition-transform duration-300"
+        src="/assets/img/proyectos/programadores/carrito_de_reparto.webp"
+        alt="Carrito de Reparto con Spike Prime"
+        class="rounded-xl shadow-lg hover:scale-105 hover:shadow-2xl transition-transform duration-300"
         loading="lazy"
       />
     </div>
   </section>
 
-  <!-- FAQ específica -->
-  <section class="py-16 px-6 max-w-3xl mx-auto">
-    <h2 class="text-2xl font-bold mb-6 text-center">Preguntas frecuentes</h2>
-    <div class="space-y-4">
+  <!-- FAQ -->
+  <section class="py-20 px-6 max-w-3xl mx-auto">
+    <h2 class="text-3xl font-bold mb-8 text-center font-title">
+      Preguntas frecuentes
+    </h2>
+    <div class="space-y-5">
       <details
-        class="p-4 rounded-lg border border-[var(--color-border)] bg-[var(--glass-bg)] transition duration-300"
+        class="p-5 rounded-xl border border-[var(--color-border)] bg-[var(--glass-bg)] backdrop-blur transition duration-300"
       >
         <summary class="cursor-pointer font-semibold"
           >¿Necesitan conocimientos previos?</summary
         >
-        <p class="mt-2 text-sm leading-relaxed">
+        <p class="mt-2 text-base leading-relaxed">
           Se recomienda tener conocimientos básicos de robótica o programación,
-          pero no es excluyente. Se acompaña a cada estudiante según su nivel.
+          pero no es excluyente. Acompañamos a cada estudiante según su nivel.
         </p>
       </details>
       <details
-        class="p-4 rounded-lg border border-[var(--color-border)] bg-[var(--glass-bg)] transition duration-300"
+        class="p-5 rounded-xl border border-[var(--color-border)] bg-[var(--glass-bg)] backdrop-blur transition duration-300"
       >
         <summary class="cursor-pointer font-semibold"
           >¿Qué materiales se utilizan?</summary
         >
-        <p class="mt-2 text-sm leading-relaxed">
-          LEGO Spike Prime, sensores de color, fuerza, giroscopio y motores.
-          Todo el material es provisto por IABOT durante las clases.
+        <p class="mt-2 text-base leading-relaxed">
+          Utilizamos LEGO Spike Prime con sensores de color, fuerza, giroscopio
+          y motores, todo provisto por IABOT durante las clases.
         </p>
       </details>
       <details
-        class="p-4 rounded-lg border border-[var(--color-border)] bg-[var(--glass-bg)] transition duration-300"
+        class="p-5 rounded-xl border border-[var(--color-border)] bg-[var(--glass-bg)] backdrop-blur transition duration-300"
       >
         <summary class="cursor-pointer font-semibold"
           >¿Cuál es la duración del curso?</summary
         >
-        <p class="mt-2 text-sm leading-relaxed">
+        <p class="mt-2 text-base leading-relaxed">
           Generalmente de 4 a 6 meses, con clases semanales de 1 hora y media.
         </p>
       </details>
@@ -113,13 +126,15 @@ const ctaLink =
   </section>
 
   <!-- CTA final -->
-  <section class="py-16 px-6 text-center">
-    <h2 class="text-2xl font-bold mb-4">¿Listo para dar el siguiente paso?</h2>
+  <section class="py-20 px-6 text-center">
+    <h2 class="text-3xl font-bold mb-6 font-title">
+      ¿Listo para dar el siguiente paso?
+    </h2>
     <a
       href={ctaLink}
       target="_blank"
       rel="noopener noreferrer"
-      class="inline-block px-8 py-4 rounded-full font-semibold text-white bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105"
+      class="inline-block px-10 py-4 rounded-full font-bold text-white bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] transition duration-300 shadow-lg hover:shadow-xl hover:scale-105"
     >
       Inscribirme ahora
     </a>

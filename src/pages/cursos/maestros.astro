@@ -5,27 +5,32 @@ import IconBrain from "../../components/icons/IconBrain.astro";
 
 const title = "Maestros - Robótica con LEGO EV3 y Python";
 const description =
-  "Curso de robótica avanzada con LEGO EV3 y Python para chicos de 13 a 14 años. Proyectos personalizados, programación real e introducción a inteligencia artificial.";
-const ctaLink =
-  "https://wa.me/+5492324468366";
+  "Explorá la robótica avanzada con LEGO EV3 y Python para chicos de 13 a 14 años. Creá proyectos personalizados, aprendé programación real e introducite en inteligencia artificial jugando.";
+const ctaLink = "https://wa.me/+5492324468366";
 ---
 
 <Layout title={title} description={description}>
   <!-- Hero -->
   <section
-    class="py-16 px-6 text-center bg-[var(--color-bg)] text-[var(--color-text)]"
+    class="py-20 px-6 text-center bg-gradient-to-b from-[var(--color-bg)] to-[var(--color-bg-secondary)] text-[var(--color-text)]"
   >
     <div class="max-w-3xl mx-auto">
-      <div class="flex justify-center mb-4 text-6xl">
-        <IconBrain class="w-16 h-16 text-[var(--color-primary)]" />
+      <div class="flex justify-center mb-6">
+        <IconBrain
+          class="w-20 h-20 text-[var(--color-primary)] drop-shadow-lg"
+        />
       </div>
-      <h1 class="text-4xl sm:text-5xl font-title font-bold mb-4">{title}</h1>
-      <p class="text-lg max-w-xl mx-auto mb-6">{description}</p>
+      <h1
+        class="text-4xl sm:text-5xl font-title font-extrabold mb-4 leading-tight"
+      >
+        {title}
+      </h1>
+      <p class="text-lg max-w-xl mx-auto mb-8">{description}</p>
       <a
         href={ctaLink}
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-block px-8 py-4 rounded-full font-semibold text-white bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105"
+        class="inline-block px-10 py-4 rounded-full font-bold text-white bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] transition duration-300 shadow-lg hover:shadow-xl hover:scale-105"
       >
         Inscribirme
       </a>
@@ -33,14 +38,14 @@ const ctaLink =
   </section>
 
   <!-- Contenidos del curso -->
-  <section class="py-16 px-6 max-w-4xl mx-auto text-[var(--color-text)]">
-    <h2 class="text-2xl font-bold mb-4 text-center">
+  <section class="py-20 px-6 max-w-4xl mx-auto text-[var(--color-text)]">
+    <h2 class="text-3xl font-bold mb-6 text-center font-title">
       ¿Qué aprenden en este curso?
     </h2>
     <ul
-      class="list-disc list-inside space-y-2 text-base leading-relaxed max-w-2xl mx-auto"
+      class="list-disc list-inside space-y-3 text-lg leading-relaxed max-w-2xl mx-auto"
     >
-      <li>Programación en Python aplicada a robótica.</li>
+      <li>Programación en Python aplicada a robótica y automatización.</li>
       <li>Uso avanzado de sensores, motores y estructuras con LEGO EV3.</li>
       <li>Introducción a inteligencia artificial y visión computacional.</li>
       <li>
@@ -53,77 +58,86 @@ const ctaLink =
   </section>
 
   <!-- Galería de proyectos -->
-  <section class="py-16 px-6 bg-[var(--glass-bg)] backdrop-blur-sm">
-    <h2 class="text-2xl font-bold mb-8 text-center">Proyectos que crean</h2>
-    <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 max-w-5xl mx-auto">
+  <section class="py-20 px-6 bg-[var(--glass-bg)] backdrop-blur-md">
+    <h2
+      class="text-3xl sm:text-4xl font-bold mb-8 text-center text-[var(--color-title)] font-title"
+    >
+      Proyectos que crean
+    </h2>
+    <div class="grid gap-8 grid-cols-1 md:grid-cols-3 max-w-5xl mx-auto">
       <img
         src="/assets/img/proyectos/maestros/ev3.webp"
-        alt="Robot 1"
-        class="rounded-lg shadow-md hover:scale-105 transition-transform duration-300"
+        alt="Robot con LEGO EV3"
+        class="rounded-xl shadow-lg hover:scale-105 hover:shadow-2xl transition-transform duration-300"
         loading="lazy"
       />
       <img
         src="/assets/img/proyectos/maestros/ev3_1.webp"
-        alt="Robot 2"
-        class="rounded-lg shadow-md hover:scale-105 transition-transform duration-300"
+        alt="Robot EV3 Programado en Python"
+        class="rounded-xl shadow-lg hover:scale-105 hover:shadow-2xl transition-transform duration-300"
         loading="lazy"
       />
       <img
-        src="/assets/img/proyectos/maestros/robot-3.webp"
-        alt="Robot 3"
-        class="rounded-lg shadow-md hover:scale-105 transition-transform duration-300"
+        src="/assets/img/proyectos/maestros/ev3_2.webp"
+        alt="Proyecto avanzado con EV3"
+        class="rounded-xl shadow-lg hover:scale-105 hover:shadow-2xl transition-transform duration-300"
         loading="lazy"
       />
     </div>
   </section>
 
-  <!-- FAQ específica -->
-  <section class="py-16 px-6 max-w-3xl mx-auto">
-    <h2 class="text-2xl font-bold mb-6 text-center">Preguntas frecuentes</h2>
-    <div class="space-y-4">
+  <!-- FAQ -->
+  <section class="py-20 px-6 max-w-3xl mx-auto">
+    <h2 class="text-3xl font-bold mb-8 text-center font-title">
+      Preguntas frecuentes
+    </h2>
+    <div class="space-y-5">
       <details
-        class="p-4 rounded-lg border border-[var(--color-border)] bg-[var(--glass-bg)] transition duration-300"
+        class="p-5 rounded-xl border border-[var(--color-border)] bg-[var(--glass-bg)] backdrop-blur transition duration-300"
       >
         <summary class="cursor-pointer font-semibold"
           >¿Hace falta saber Python antes?</summary
         >
-        <p class="mt-2 text-sm leading-relaxed">
-          No, se enseña Python desde cero de forma práctica y aplicada a la
-          robótica.
+        <p class="mt-2 text-base leading-relaxed">
+          No, enseñamos Python desde cero con ejercicios prácticos aplicados a
+          la robótica, para que todos puedan aprender.
         </p>
       </details>
       <details
-        class="p-4 rounded-lg border border-[var(--color-border)] bg-[var(--glass-bg)] transition duration-300"
+        class="p-5 rounded-xl border border-[var(--color-border)] bg-[var(--glass-bg)] backdrop-blur transition duration-300"
       >
         <summary class="cursor-pointer font-semibold"
           >¿Qué materiales se usan?</summary
         >
-        <p class="mt-2 text-sm leading-relaxed">
-          LEGO EV3 con sensores y motores, junto con notebooks configuradas para
-          Python.
+        <p class="mt-2 text-base leading-relaxed">
+          Utilizamos LEGO EV3 con sensores, motores y notebooks configuradas
+          para programar en Python, todo provisto por IABOT durante las clases.
         </p>
       </details>
       <details
-        class="p-4 rounded-lg border border-[var(--color-border)] bg-[var(--glass-bg)] transition duration-300"
+        class="p-5 rounded-xl border border-[var(--color-border)] bg-[var(--glass-bg)] backdrop-blur transition duration-300"
       >
         <summary class="cursor-pointer font-semibold"
           >¿Cuál es la duración del curso?</summary
         >
-        <p class="mt-2 text-sm leading-relaxed">
-          Entre 4 a 6 meses, con clases semanales de 1 hora y media.
+        <p class="mt-2 text-base leading-relaxed">
+          El curso suele durar entre 4 y 6 meses, con clases semanales de 1 hora
+          y media.
         </p>
       </details>
     </div>
   </section>
 
   <!-- CTA final -->
-  <section class="py-16 px-6 text-center">
-    <h2 class="text-2xl font-bold mb-4">¿Listo para programar tu futuro?</h2>
+  <section class="py-20 px-6 text-center">
+    <h2 class="text-3xl font-bold mb-6 font-title">
+      ¿Listo para programar tu futuro?
+    </h2>
     <a
       href={ctaLink}
       target="_blank"
       rel="noopener noreferrer"
-      class="inline-block px-8 py-4 rounded-full font-semibold text-white bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105"
+      class="inline-block px-10 py-4 rounded-full font-bold text-white bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] transition duration-300 shadow-lg hover:shadow-xl hover:scale-105"
     >
       Inscribirme ahora
     </a>
