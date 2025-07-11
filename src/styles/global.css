@@ -8,9 +8,10 @@
 /* DESIGN TOKENS - LIGHT MODE */
 :root {
   /* Colors */
-  --color-mercedes: #b6e3b7;
-  --color-giles: #b3d9f7;
-  --color-lujan: #cdb5f5;
+  --color-mercedes: #d9ead3;
+  --color-giles: #ddebf7;
+  --color-lujan: #e4d7f5;
+  --color-areco: #fff2cc;
   --color-primary: #32cddb;
   --color-primary-hover: #0099cc;
   --color-secondary: #78eb2c;
@@ -21,6 +22,7 @@
   --color-bg: #f2f2f2;
   --color-text: #000000;
   --color-text-hero: #ffffff;
+  --color-text-areco: #000000;
 
   --glass-bg: rgba(255, 255, 255, 0.6);
   --glass-border: rgba(255, 255, 255, 0.1);
@@ -61,6 +63,7 @@
   --color-mercedes: #397d3d;
   --color-lujan: #6c4a9f;
   --color-giles: #377dab;
+  --color-areco: #b37d00;
   --color-bg: #121212;
   --color-text: #f0f0f0;
   --color-text-hero: #ffffff;
