@@ -11,26 +11,38 @@ const ctaLink = "#cursos";
   aria-labelledby="hero-title"
   class="relative flex flex-col-reverse md:flex-row items-center justify-center gap-12 px-6 md:px-12 lg:px-20 min-h-[90vh] overflow-hidden text-center md:text-left bg-[#121212] text-white"
 >
-  <!-- Video de fondo desktop -->
+  <!-- Video bg (desktop) -->
   <video
     autoplay
     muted
     loop
     playsinline
     preload="none"
+    poster="/assets/img/hero-poster.webp"
     aria-hidden="true"
     class="hidden md:block absolute inset-0 w-full h-full object-cover z-0 pointer-events-none opacity-20 brightness-75"
   >
     <source src="/assets/video-hero.webm" type="video/webm" />
+    <source src="/assets/video-hero.mp4" type="video/mp4" />
   </video>
 
-  <!-- Canvas mobile (animación fondo) -->
+  <noscript>
+    <img
+      src="/assets/img/hero-poster.webp"
+      alt=""
+      class="hidden md:block absolute inset-0 w-full h-full object-cover z-0 opacity-20"
+      loading="eager"
+      decoding="async"
+    />
+  </noscript>
+
+  <!-- Canvas bg (mobile) -->
   <canvas
     id="hero-circuit-bg"
     class="block md:hidden absolute inset-0 w-full h-full z-0 pointer-events-none opacity-20"
   ></canvas>
 
-  <!-- Gradiente animado -->
+  <!-- Gradiente (mobile) -->
   <div
     aria-hidden="true"
     class="absolute inset-0 bg-gradient-to-br from-[rgba(50,205,219,0.1)] via-[rgba(120,235,44,0.1)] to-transparent animate-gradientBlur z-0 md:hidden"
@@ -47,7 +59,7 @@ const ctaLink = "#cursos";
 
     <h1
       id="hero-title"
-      class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 font-title-hero leading-tight text-balance"
+      class="text-4xl sm:text-5xl lg:text-6xl font-display font-bold mb-6 leading-tight text-balance"
     >
       Robótica <span class="relative inline-block">
         Educativa
@@ -57,65 +69,65 @@ const ctaLink = "#cursos";
       </span> para el Futuro
     </h1>
 
-    <p class="text-lg sm:text-xl opacity-80 mb-8 font-body leading-relaxed">
-      Explorá nuestros cursos de robótica con LEGO y programación para chicos y
-      chicas. Desarrollamos creatividad, lógica y trabajo en equipo desde los 5
-      años.
+    <p class="text-lg sm:text-xl opacity-80 mb-8 font-sans leading-relaxed">
+      {description}
     </p>
 
     <a
-      href="#cursos"
+      href={ctaLink}
       role="button"
-      aria-label="Ver cursos disponibles"
-      class="inline-block
-    text-base sm:text-lg font-semibold font-body
-    px-6 sm:px-8 py-3 sm:py-4
-    rounded-full
-    bg-[var(--color-primary)] text-[var(--color-black)]
-    hover:bg-[var(--color-primary-hover)] hover:text-black
-    shadow-md hover:shadow-lg
-    transition-all duration-300 ease-in-out
-    focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--color-primary)]
-    hover:scale-105"
+      aria-label={ctaLabel}
+      class="inline-block text-base sm:text-lg font-semibold font-sans px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-[var(--color-primary)] text-[var(--color-black)] hover:bg-[var(--color-primary-hover)] hover:text-black shadow-md hover:shadow-lg transition-all duration-300 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--color-primary)] hover:scale-105"
     >
-      Ver cursos disponibles
+      {ctaLabel}
     </a>
   </div>
 </section>
 
-<!-- Animación canvas para mobile oscuro -->
 <script is:inline>
+  const prefersReduced = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+  const isDark = document.documentElement.classList.contains("dark");
   const canvas = document.getElementById("hero-circuit-bg");
 
-  if (
-    typeof window !== "undefined" &&
-    canvas &&
-    window.matchMedia("(prefers-color-scheme: dark)").matches
-  ) {
-    requestIdleCallback(() => {
+  if (!prefersReduced && isDark && canvas) {
+    const start = () => {
       const ctx = canvas.getContext("2d");
-      let width, height;
+      let width, height, rafId;
       const dots = [];
+      const N = 70;
+      const SPEED = 0.3;
+      const LINK_DIST = 80;
 
-      function resizeCanvas() {
+      const resize = () => {
         width = canvas.width = canvas.offsetWidth;
         height = canvas.height = canvas.offsetHeight;
-      }
+      };
 
-      function createDots() {
+      const seed = () => {
         dots.length = 0;
-        for (let i = 0; i < 70; i++) {
+        for (let i = 0; i < N; i++) {
           dots.push({
             x: Math.random() * width,
             y: Math.random() * height,
-            vx: (Math.random() - 0.5) * 0.3,
-            vy: (Math.random() - 0.5) * 0.3,
+            vx: (Math.random() - 0.5) * SPEED,
+            vy: (Math.random() - 0.5) * SPEED,
           });
         }
-      }
+      };
 
-      function animate() {
+      let last = 0;
+      const animate = (t) => {
+        // ~30fps para bajar uso de CPU
+        if (t - last < 33) {
+          rafId = requestAnimationFrame(animate);
+          return;
+        }
+        last = t;
+
         ctx.clearRect(0, 0, width, height);
+        ctx.fillStyle = "rgba(255,255,255,0.7)";
         ctx.strokeStyle = "rgba(255,255,255,0.06)";
         ctx.lineWidth = 1;
 
@@ -123,7 +135,6 @@ const ctaLink = "#cursos";
           const d = dots[i];
           d.x += d.vx;
           d.y += d.vy;
-
           if (d.x < 0 || d.x > width) d.vx *= -1;
           if (d.y < 0 || d.y > height) d.vy *= -1;
 
@@ -135,8 +146,8 @@ const ctaLink = "#cursos";
             const d2 = dots[j];
             const dx = d.x - d2.x;
             const dy = d.y - d2.y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < 80) {
+            const dist = Math.hypot(dx, dy);
+            if (dist < LINK_DIST) {
               ctx.beginPath();
               ctx.moveTo(d.x, d.y);
               ctx.lineTo(d2.x, d2.y);
@@ -144,19 +155,36 @@ const ctaLink = "#cursos";
             }
           }
         }
+        rafId = requestAnimationFrame(animate);
+      };
 
-        requestAnimationFrame(animate);
-      }
+      const onResize = () => {
+        resize();
+        seed();
+      };
 
-      window.addEventListener("resize", () => {
-        resizeCanvas();
-        createDots();
+      resize();
+      seed();
+      rafId = requestAnimationFrame(animate);
+      window.addEventListener("resize", onResize);
+      // Limpieza si navegan
+      window.addEventListener("astro:before-swap", () => {
+        cancelAnimationFrame(rafId);
+        window.removeEventListener("resize", onResize);
       });
+    };
 
-      resizeCanvas();
-      createDots();
-      animate();
-    });
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          io.disconnect();
+          (window.requestIdleCallback || setTimeout)(start, 1);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    io.observe(canvas);
   }
 </script>
 

@@ -1,6 +1,8 @@
-/* GOOGLE FONTS */
-@import url("https://fonts.googleapis.com/css2?family=Bruno+Ace&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+/* FUENTES */
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/700.css";
+@import "@fontsource/bruno-ace/400.css";
 
 /* TAILWIND BASE */
 @import "tailwindcss";

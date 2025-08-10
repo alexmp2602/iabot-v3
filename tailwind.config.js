@@ -10,7 +10,12 @@ export default {
     "text-neutral-900",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+        display: ['"Bruno Ace"', "cursive"],
+      },
+    },
   },
   plugins: [],
 };

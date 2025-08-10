@@ -9,14 +9,14 @@ const {
 ---
 
 <!doctype html>
-<html lang="es-AR" class="scroll-smooth {getInitialTheme()}" data-theme="light">
+<html lang="es-AR" class="scroll-smooth" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <meta name="color-scheme" content="light dark" />
     <title>{title}</title>
 
-    <!-- SEO Meta Tags -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
@@ -27,7 +27,6 @@ const {
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content="/assets/img/logo/JPG/iabot.jpg" />
 
-    <!-- Color Themes -->
     <meta
       name="theme-color"
       content="#32CDDB"
@@ -39,8 +38,8 @@ const {
       media="(prefers-color-scheme: dark)"
     />
 
-    <!-- Favicon y PWA -->
     <link rel="icon" href="/favicon.ico" />
+    <link rel="manifest" href="/site.webmanifest" />
     <link
       rel="preload"
       as="image"
@@ -48,37 +47,31 @@ const {
       type="image/png"
       fetchpriority="high"
     />
-    <link rel="manifest" href="/site.webmanifest" />
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Inter&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Theme Detection (Modo Oscuro/Claro) -->
-    <script>
-      try {
+    <script is:inline>
+      (() => {
         const stored = localStorage.getItem("theme");
-        const prefersDark = window.matchMedia(
+        const systemPrefersDark = window.matchMedia(
           "(prefers-color-scheme: dark)"
         ).matches;
-        const isDark = stored === "dark" || (!stored && prefersDark);
+        const systemTheme = systemPrefersDark ? "dark" : "light";
+        const theme =
+          stored === "dark" || stored === "light" ? stored : systemTheme;
         const root = document.documentElement;
-        root.classList.add(isDark ? "dark" : "light");
-        root.setAttribute("data-theme", isDark ? "dark" : "light");
-      } catch (e) {
-        console.warn("Theme detection error", e);
-      }
+        root.classList.add(theme);
+        root.classList.remove(theme === "dark" ? "light" : "dark");
+        root.setAttribute("data-theme", theme);
+      })();
     </script>
 
-    <!-- Alpine.js (si se usa en el proyecto) -->
-    <script type="module" defer>
-      import Alpine from "alpinejs";
-      window.Alpine = Alpine;
-      Alpine.start();
+    <script type="module" defer is:inline>
+      document.addEventListener("DOMContentLoaded", async () => {
+        if (document.querySelector("[x-data]")) {
+          const { default: Alpine } = await import("alpinejs");
+          window.Alpine = Alpine;
+          Alpine.start();
+        }
+      });
     </script>
   </head>
 
@@ -86,11 +79,9 @@ const {
     class="min-h-screen flex flex-col w-full overflow-x-hidden bg-[var(--color-bg)] text-[var(--color-text)] font-sans antialiased transition-colors duration-300 selection:bg-[var(--color-primary)] selection:text-white"
   >
     <Header />
-
     <main role="main" id="main-content" tabindex="-1" class="flex-1 w-full">
       <slot />
     </main>
-
     <Footer />
   </body>
 </html>
