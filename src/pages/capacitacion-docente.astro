@@ -1,6 +1,5 @@
 ---
 import Layout from "../layouts/BaseLayout.astro";
-import "../styles/global.css";
 
 const title = "Capacitación Docente en Robótica | IABOT";
 const description =
@@ -16,12 +15,10 @@ const ctaLink = "https://wa.me/+5492324468366";
     <div
       class="max-w-5xl mx-auto mb-10 rounded-2xl overflow-hidden shadow-lg animate-fade-in-up"
     >
-      <img
-        src="/assets/img/capacitaciones/capacitacion_docente.webp"
-        alt="Docentes participando en capacitación de robótica IABOT"
-        class="w-full aspect-video object-cover"
-        loading="lazy"
-        decoding="async"
+      <link
+        rel="preload"
+        as="image"
+        href="/assets/img/capacitaciones/capacitacion_docente.webp"
       />
     </div>
 

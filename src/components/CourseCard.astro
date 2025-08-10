@@ -7,39 +7,43 @@ const { icon: Icon, title, age, description, link } = Astro.props;
   role="link"
   tabindex="0"
   aria-label={`Ir al curso ${title}`}
-  class="group card flex flex-col gap-4 p-6 text-left rounded-xl backdrop-blur-sm shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] focus-visible:ring-offset-2"
+  class="group card flex flex-col gap-4 p-6 text-left rounded-xl backdrop-blur-sm shadow-md
+         transition-all duration-300 hover:shadow-xl hover:-translate-y-1
+         focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]
+         focus-visible:ring-offset-2"
 >
-  <!-- Ícono circular -->
   <div
-    class="w-12 h-12 flex items-center justify-center rounded-full bg-[var(--color-primary)]/10 text-[var(--color-primary)] transition-transform duration-300 group-hover:scale-110"
+    class="w-12 h-12 flex items-center justify-center rounded-full
+              bg-[var(--color-primary)]/10 text-[var(--color-primary-ink)]
+              transition-transform duration-300 group-hover:scale-110"
   >
     <Icon class="w-6 h-6" />
   </div>
 
-  <!-- Título -->
   <h3
     class="text-xl font-semibold font-title text-[var(--color-text)] leading-snug"
   >
     {title}
   </h3>
 
-  <!-- Edad como badge -->
   <span
-    class="inline-block text-xs font-medium uppercase tracking-wide text-[var(--color-primary)] dark:text-[var(--color-secondary)] bg-[var(--color-primary)]/10 px-2 py-1 rounded-full w-fit"
+    class="inline-block text-xs font-medium uppercase tracking-wide
+         text-[var(--color-primary-ink)] dark:text-[var(--color-primary-ink)]
+         bg-[var(--color-primary)]/10 px-2 py-1 rounded-full w-fit"
   >
     {age}
   </span>
 
-  <!-- Descripción -->
   <p
     class="text-sm text-[var(--color-text)] opacity-90 font-body leading-relaxed"
   >
     {description}
   </p>
 
-  <!-- CTA -->
   <span
-    class="mt-auto inline-block text-sm font-semibold text-[var(--color-primary)] dark:text-[var(--color-secondary)] group-hover:underline"
+    class="mt-auto inline-block text-sm font-semibold
+         text-[var(--color-primary-ink)]
+         underline-offset-2 hover:underline"
   >
     Ver más →
   </span>
