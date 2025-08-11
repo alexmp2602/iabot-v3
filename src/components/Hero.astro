@@ -41,16 +41,18 @@ const ctaLink = "#cursos";
   </div>
 
   <!-- Contenido -->
-  <div class="relative z-10 max-w-xl animate-fade-in-up">
+  <div class="relative z-10 max-w-xl">
     <p
-      class="mb-4 text-sm font-semibold uppercase tracking-wide text-[var(--color-secondary)]"
+      class="mb-4 text-sm font-medium uppercase tracking-wide text-[var(--color-secondary)] animate-fade-in-up"
+      style="animation-delay:.05s"
     >
       +500 alumnos desde 2021
     </p>
 
     <h1
       id="hero-title"
-      class="text-4xl sm:text-5xl lg:text-6xl font-display font-bold mb-6 leading-tight text-balance"
+      class="text-4xl sm:text-5xl lg:text-6xl font-display font-bold mb-6 leading-tight text-balance animate-fade-in-up"
+      style="animation-delay:.15s"
     >
       Robótica <span class="relative inline-block">
         Educativa
@@ -60,7 +62,10 @@ const ctaLink = "#cursos";
       </span> para el Futuro
     </h1>
 
-    <p class="text-lg sm:text-xl opacity-80 mb-8 font-sans leading-relaxed">
+    <p
+      class="text-lg sm:text-xl opacity-80 mb-8 font-sans leading-relaxed animate-fade-in-up"
+      style="animation-delay:.25s"
+    >
       {description}
     </p>
 
@@ -68,7 +73,8 @@ const ctaLink = "#cursos";
       href={ctaLink}
       role="button"
       aria-label={ctaLabel}
-      class="inline-block text-base sm:text-lg font-semibold font-sans px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-[var(--color-primary)] text-[var(--color-black)] hover:bg-[var(--color-primary-hover)] hover:text-black shadow-md hover:shadow-lg transition-all duration-300 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--color-primary)] hover:scale-105"
+      class="inline-block text-base sm:text-lg font-medium font-sans px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-[var(--color-primary)] text-[var(--color-black)] hover:bg-[var(--color-primary-hover)] hover:text-black shadow-md hover:shadow-lg transition-all duration-300 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--color-primary)] hover:scale-105 animate-fade-in-up"
+      style="animation-delay:.35s"
     >
       {ctaLabel}
     </a>

@@ -7,7 +7,7 @@
 @import "@fontsource/inter/700.css";
 @import "@fontsource/bruno-ace/400.css";
 
-/* Fallback para Bruno Ace con métricas aproximadas para reducir CLS */
+/* Fallback con métricas similares para evitar salto si la webfont llega tarde */
 @font-face {
   font-family: "Bruno Ace Fallback";
   src: local("Arial");
@@ -303,19 +303,22 @@ select:focus {
   }
 }
 
+/* evita reflow por barra de scroll */
 html {
   scrollbar-gutter: stable;
 }
 
+/* hero estable en mobile */
 .hero-stable {
   min-height: 90vh;
 } /* fallback */
 @supports (min-height: 100svh) {
   .hero-stable {
     min-height: 90svh;
-  } /* móvil estable */
+  } /* unidades seguras */
 }
 
+/* aísla el reflow dentro del hero */
 .contain-layout {
   contain: layout paint;
-} /* aísla reflow */
+}
