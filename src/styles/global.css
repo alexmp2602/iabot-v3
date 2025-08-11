@@ -8,7 +8,7 @@
 @import "@fontsource/bruno-ace/400.css";
 
 /* Fallback para Bruno Ace con métricas aproximadas para reducir CLS */
-@font-face{
+@font-face {
   font-family: "Bruno Ace Fallback";
   src: local("Arial");
   size-adjust: 82%;
@@ -16,7 +16,6 @@
   descent-override: 30%;
   line-gap-override: 0%;
 }
-
 
 /* DESIGN TOKENS - LIGHT MODE */
 :root {
@@ -303,3 +302,20 @@ select:focus {
     transition: all 0.7s ease-out;
   }
 }
+
+html {
+  scrollbar-gutter: stable;
+}
+
+.hero-stable {
+  min-height: 90vh;
+} /* fallback */
+@supports (min-height: 100svh) {
+  .hero-stable {
+    min-height: 90svh;
+  } /* móvil estable */
+}
+
+.contain-layout {
+  contain: layout paint;
+} /* aísla reflow */

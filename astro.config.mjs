@@ -6,6 +6,7 @@ import compress from "astro-compress";
 
 export default defineConfig({
   vite: { plugins: [tailwind()] },
+  output: "static",  
   build: {
     inlineStylesheets: 'always',
   },
