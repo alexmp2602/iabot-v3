@@ -3,7 +3,6 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/global.css";
 
-/* PRELOAD fuentes críticas (rutas reales de @fontsource) */
 import bruno400 from "@fontsource/bruno-ace/files/bruno-ace-latin-400-normal.woff2?url";
 import inter400 from "@fontsource/inter/files/inter-latin-400-normal.woff2?url";
 import inter500 from "@fontsource/inter/files/inter-latin-500-normal.woff2?url";
@@ -80,6 +79,11 @@ const {
     />
 
     <script is:inline>
+      const vv = window.visualViewport ? visualViewport.height : innerHeight;
+      document.documentElement.style.setProperty("--vh", vv * 0.01 + "px");
+    </script>
+
+    <script is:inline>
       (() => {
         const stored = localStorage.getItem("theme");
         const prefersDark = matchMedia("(prefers-color-scheme: dark)").matches;
@@ -126,7 +130,6 @@ const {
       window.addEventListener("scroll", () => {}, { passive: true });
     </script>
 
-    <!-- slot para preloads/meta por página -->
     <slot name="head" />
   </head>
 

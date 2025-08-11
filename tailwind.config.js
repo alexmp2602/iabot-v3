@@ -2,6 +2,9 @@
 export default {
   content: ["./src/**/*.{astro,html,js,jsx,ts,tsx,vue,svelte,mdx}"],
   darkMode: "class",
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
   safelist: [
     "dark:text-neutral-100",
     "dark:text-neutral-200",

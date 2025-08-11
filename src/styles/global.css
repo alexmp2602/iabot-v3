@@ -19,7 +19,6 @@
 
 /* DESIGN TOKENS - LIGHT MODE */
 :root {
-  /* Colors */
   --color-mercedes: #d9ead3;
   --color-giles: #ddebf7;
   --color-lujan: #e4d7f5;
@@ -41,8 +40,8 @@
   --glass-border: rgba(255, 255, 255, 0.1);
 
   /* Fonts */
-  --font-title: "Bruno Ace", cursive;
-  --font-body: "Inter", sans-serif;
+  --font-title: "Bruno Ace", "Bruno Ace Fallback", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
 
   /* Sizing & Spacing */
   --spacing-xs: 0.5rem;
@@ -65,7 +64,6 @@
 
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-  /* Misc */
   --z-overlay: 9999;
   --btn-bg: #ffffff;
   --btn-text: #111111;
@@ -115,7 +113,6 @@ main {
 }
 
 /* TIPOGRAFÍA GLOBAL */
-
 h1,
 h2,
 h3,
@@ -181,7 +178,6 @@ a[href="#contacto"] {
   color: var(--color-black);
   box-shadow: var(--shadow);
 }
-
 .btn-primary:hover {
   background-color: var(--color-secondary);
   transform: scale(1.03);
@@ -193,7 +189,6 @@ a[href="#contacto"] {
   background: transparent;
   color: var(--color-primary);
 }
-
 .btn-outline:hover {
   background: var(--color-primary);
   color: var(--color-black);
@@ -205,7 +200,6 @@ a[href="#contacto"] {
   width: 100%;
   max-width: 100%;
 }
-
 .section-title {
   font-size: var(--font-size-2xl);
   text-align: center;
@@ -223,7 +217,6 @@ a[href="#contacto"] {
   transition: var(--transition);
   overflow: hidden;
 }
-
 .card:hover {
   transform: translateY(-6px) scale(1.01);
   box-shadow: var(--shadow-hover);
@@ -231,18 +224,14 @@ a[href="#contacto"] {
 
 /* NAV LINKS */
 .nav-link {
-  color: #3f3f46; /* neutral-700 */
-  transition: var(--transition);
+  color: #3f3f46;
 }
-
 .nav-link:hover {
   color: var(--color-primary);
 }
-
 .dark .nav-link {
-  color: #d4d4d8; /* neutral-300 */
+  color: #d4d4d8;
 }
-
 .dark .nav-link:hover {
   color: var(--color-secondary);
 }
@@ -260,7 +249,6 @@ select {
   color: var(--color-text);
   transition: var(--transition);
 }
-
 input:focus,
 textarea:focus,
 select:focus {
@@ -273,7 +261,6 @@ select:focus {
 .animate-fade-in {
   animation: fade-in 0.6s ease-out both;
 }
-
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -282,6 +269,15 @@ select:focus {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* UTILITIES */
+@layer utilities {
+  .animate-fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: all 0.7s ease-out;
   }
 }
 
@@ -294,31 +290,33 @@ select:focus {
   }
 }
 
-/* ANIMACIONES ADICIONALES */
-@layer utilities {
-  .animate-fade-up {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: all 0.7s ease-out;
-  }
-}
-
 /* evita reflow por barra de scroll */
 html {
   scrollbar-gutter: stable;
 }
 
-/* hero estable en mobile */
+/* deja estable el alto del héroe en mobile */
 .hero-stable {
   min-height: 90vh;
 } /* fallback */
 @supports (min-height: 100svh) {
   .hero-stable {
     min-height: 90svh;
-  } /* unidades seguras */
+  } /* sin saltos por barra del navegador */
 }
 
-/* aísla el reflow dentro del hero */
+/* aísla reflows de contenedores grandes (grids/listas/hero) */
 .contain-layout {
   contain: layout paint;
+}
+
+/* diferí render de secciones por debajo del fold */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 900px;
+}
+
+/* Alpine: evita FOUC del menú móvil */
+[x-cloak] {
+  display: none !important;
 }

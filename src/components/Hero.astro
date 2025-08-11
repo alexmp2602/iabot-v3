@@ -13,7 +13,6 @@ const ctaLink = "#cursos";
          gap-12 px-6 md:px-12 lg:px-20 hero-stable overflow-hidden
          text-center md:text-left bg-[#121212] text-white contain-layout"
 >
-  <!-- Video bg (desktop) -->
   <video
     autoplay
     muted
@@ -27,20 +26,17 @@ const ctaLink = "#cursos";
     <source src="/assets/video-hero.mp4" type="video/mp4" />
   </video>
 
-  <!-- Canvas bg (mobile) -->
   <canvas
     id="hero-circuit-bg"
     class="block md:hidden absolute inset-0 w-full h-full z-0 pointer-events-none opacity-20"
   ></canvas>
 
-  <!-- Gradiente (mobile) -->
   <div
     aria-hidden="true"
     class="absolute inset-0 bg-gradient-to-br from-[rgba(50,205,219,0.1)] via-[rgba(120,235,44,0.1)] to-transparent animate-gradientBlur z-0 md:hidden"
   >
   </div>
 
-  <!-- Contenido -->
   <div class="relative z-10 max-w-xl">
     <p
       class="mb-4 text-sm font-medium uppercase tracking-wide text-[var(--color-secondary)] animate-fade-in-up"
@@ -51,7 +47,7 @@ const ctaLink = "#cursos";
 
     <h1
       id="hero-title"
-      class="text-4xl sm:text-5xl lg:text-6xl font-display font-bold mb-6 leading-tight text-balance animate-fade-in-up"
+      class="text-4xl sm:text-5xl lg:text-6xl font-sans font-medium mb-6 leading-tight text-balance animate-fade-in-up"
       style="animation-delay:.15s"
     >
       Robótica <span class="relative inline-block">
@@ -71,7 +67,6 @@ const ctaLink = "#cursos";
 
     <a
       href={ctaLink}
-      role="button"
       aria-label={ctaLabel}
       class="inline-block text-base sm:text-lg font-medium font-sans px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-[var(--color-primary)] text-[var(--color-black)] hover:bg-[var(--color-primary-hover)] hover:text-black shadow-md hover:shadow-lg transition-all duration-300 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--color-primary)] hover:scale-105 animate-fade-in-up"
       style="animation-delay:.35s"
@@ -93,9 +88,9 @@ const ctaLink = "#cursos";
       const ctx = canvas.getContext("2d");
       let width, height, rafId;
       const dots = [];
-      const N = 70;
-      const SPEED = 0.3;
-      const LINK_DIST = 80;
+      const N = 70,
+        SPEED = 0.3,
+        LINK_DIST = 80;
 
       const resize = () => {
         width = canvas.width = canvas.offsetWidth;
@@ -116,7 +111,6 @@ const ctaLink = "#cursos";
 
       let last = 0;
       const animate = (t) => {
-        // ~30fps para bajar uso de CPU
         if (t - last < 33) {
           rafId = requestAnimationFrame(animate);
           return;
@@ -141,10 +135,9 @@ const ctaLink = "#cursos";
 
           for (let j = i + 1; j < dots.length; j++) {
             const d2 = dots[j];
-            const dx = d.x - d2.x;
-            const dy = d.y - d2.y;
-            const dist = Math.hypot(dx, dy);
-            if (dist < LINK_DIST) {
+            const dx = d.x - d2.x,
+              dy = d.y - d2.y;
+            if (Math.hypot(dx, dy) < LINK_DIST) {
               ctx.beginPath();
               ctx.moveTo(d.x, d.y);
               ctx.lineTo(d2.x, d2.y);
@@ -164,7 +157,6 @@ const ctaLink = "#cursos";
       seed();
       rafId = requestAnimationFrame(animate);
       window.addEventListener("resize", onResize);
-      // Limpieza si navegan
       window.addEventListener("astro:before-swap", () => {
         cancelAnimationFrame(rafId);
         window.removeEventListener("resize", onResize);
