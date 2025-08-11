@@ -3,6 +3,11 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/global.css";
 
+/* PRELOAD fuentes críticas (rutas reales de @fontsource) */
+import bruno400 from "@fontsource/bruno-ace/files/bruno-ace-latin-400-normal.woff2?url";
+import inter400 from "@fontsource/inter/files/inter-latin-400-normal.woff2?url";
+import inter500 from "@fontsource/inter/files/inter-latin-500-normal.woff2?url";
+
 const {
   title = "IABOT | Robótica Educativa",
   description = "Somos una empresa dedicada a la robótica educativa y al desarrollo de soluciones tecnológicas personalizadas para instituciones y empresas.",
@@ -50,6 +55,28 @@ const {
       href="/assets/img/logo/edits/iabot-PNG.png"
       type="image/png"
       fetchpriority="high"
+    />
+
+    <link
+      rel="preload"
+      as="font"
+      href={bruno400}
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      as="font"
+      href={inter400}
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      as="font"
+      href={inter500}
+      type="font/woff2"
+      crossorigin
     />
 
     <script is:inline>

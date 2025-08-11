@@ -13,7 +13,12 @@ export default {
     extend: {
       fontFamily: {
         sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
-        display: ['"Bruno Ace"', "cursive"],
+        display: [
+          '"Bruno Ace"',
+          '"Bruno Ace Fallback"',
+          "system-ui",
+          "sans-serif",
+        ],
       },
     },
   },
