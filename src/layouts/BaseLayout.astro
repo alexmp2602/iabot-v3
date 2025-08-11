@@ -13,7 +13,10 @@ const {
 <html lang="es-AR" class="scroll-smooth" data-theme="light">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
     <meta name="description" content={description} />
     <meta name="color-scheme" content="light dark" />
     <title>{title}</title>
@@ -66,7 +69,6 @@ const {
       })();
     </script>
 
-    <!-- Alpine sólo si hay atributos x-* presentes -->
     <script is:inline>
       document.addEventListener("DOMContentLoaded", () => {
         const needsAlpine = document.querySelector(
@@ -83,6 +85,22 @@ const {
         }
       });
     </script>
+
+    <script is:inline>
+      let rId;
+      window.addEventListener(
+        "resize",
+        () => {
+          cancelAnimationFrame(rId);
+          rId = requestAnimationFrame(() => {});
+        },
+        { passive: true }
+      );
+      window.addEventListener("scroll", () => {}, { passive: true });
+    </script>
+
+    <!-- slot para preloads/meta por página -->
+    <slot name="head" />
   </head>
 
   <body

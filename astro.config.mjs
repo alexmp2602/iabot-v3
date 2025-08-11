@@ -1,12 +1,16 @@
 // @ts-check
 import { defineConfig } from "astro/config";
-import tailwindcss from "@tailwindcss/vite";
-import alpinejs from "@astrojs/alpinejs";
-// https://astro.build/config
-export default defineConfig({
-  vite: {
-    plugins: [tailwindcss()],
-  },
+import tailwind from "@tailwindcss/vite";
+import critters from "astro-critters";
+import compress from "astro-compress";
 
-  integrations: [alpinejs()],
+export default defineConfig({
+  vite: { plugins: [tailwind()] },
+  build: {
+    inlineStylesheets: 'always',
+  },
+  integrations: [
+    critters(),
+    compress({ HTML: true, CSS: true, JavaScript: true, SVG: true }),
+  ],
 });

@@ -20,6 +20,8 @@
   "devDependencies": {
     "@fontsource/bruno-ace": "^5.2.6",
     "@fontsource/inter": "^5.2.6",
+    "astro-compress": "^2.3.8",
+    "astro-critters": "^2.2.1",
     "sharp": "^0.34.3"
   }
 }
