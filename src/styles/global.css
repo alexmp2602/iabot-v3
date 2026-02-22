@@ -67,6 +67,9 @@
   --z-overlay: 9999;
   --btn-bg: #ffffff;
   --btn-text: #111111;
+
+  /* Hace que los controles nativos (select, etc.) respeten light */
+  color-scheme: light;
 }
 
 /* DARK MODE TOKENS */
@@ -86,6 +89,9 @@
 
   --btn-bg: #111111;
   --btn-text: #ffffff;
+
+  /* Hace que los controles nativos respeten dark */
+  color-scheme: dark;
 }
 
 /* RESET & BASE STYLES */
@@ -98,7 +104,9 @@ body {
   line-height: 1.6;
   background-color: var(--color-bg);
   color: var(--color-text);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
   scroll-behavior: smooth;
 }
 
@@ -249,12 +257,46 @@ select {
   color: var(--color-text);
   transition: var(--transition);
 }
+
 input:focus,
 textarea:focus,
 select:focus {
   outline: none;
   border-color: var(--color-primary);
   box-shadow: 0 0 0 2px var(--color-primary);
+}
+
+/* FIX: opciones del <select> (dropdown) */
+select option {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* Select: flecha custom (solo flecha + appearance; NO tocamos el fondo) */
+.select-arrow {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  /* espacio para la flecha */
+  padding-right: 2.5rem;
+
+  background-repeat: no-repeat;
+  background-position: right 0.85rem center;
+  background-size: 1.1rem;
+
+  /* flecha oscura por defecto (light) */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M6 8l4 4 4-4' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+/* flecha clara en dark */
+:root.dark .select-arrow {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M6 8l4 4 4-4' stroke='%23fff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+/* Edge/IE legacy */
+.select-arrow::-ms-expand {
+  display: none;
 }
 
 /* ANIMACIONES */

@@ -1,6 +1,6 @@
 ---
 const ACTION =
-  import.meta.env.PUBLIC_CONTACT_ENDPOINT || "https://formspree.io/f/mldlaakb";
+  import.meta.env.PUBLIC_CONTACT_ENDPOINT || "https://formspree.io/f/xwvnrrqw";
 const title = "Contacto";
 const description =
   "Escribinos y te respondemos a la brevedad. También podés hablar por WhatsApp si preferís.";
@@ -92,8 +92,13 @@ const description =
           <select
             id="topic"
             name="topic"
-            class="w-full rounded-md border border-[var(--glass-border)] bg-[var(--glass-bg)] px-3 py-2"
+            required
+            aria-required="true"
+            class="select-arrow w-full rounded-md border border-[var(--glass-border)] bg-[var(--glass-bg)] px-3 py-2 pr-10 text-[var(--color-text)]"
           >
+            <option value="" selected disabled hidden>
+              Seleccioná una opción…
+            </option>
             <option value="cursos">Cursos</option>
             <option value="docentes">Capacitación docente</option>
             <option value="empresas">Empresas / Family Day</option>
@@ -181,7 +186,7 @@ const description =
 
         if (res.ok) {
           form.reset();
-          status.textContent = "¡Gracias! Te contactamos a la brevedad.";
+          status.textContent = "Gracias! Te contactamos a la brevedad.";
           // GTM
           window.dataLayer = window.dataLayer || [];
           window.dataLayer.push({
