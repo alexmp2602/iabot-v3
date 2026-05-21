@@ -1,0 +1,49 @@
+---
+import Layout from "../../layouts/BaseLayout.astro";
+import "../../styles/global.css";
+
+const title = "Sede 9 de Julio | IABOT Robótica Educativa";
+const description =
+  "Descubrí nuestra sede en 9 de Julio. Robótica educativa con LEGO, programación creativa y cursos para chicos y docentes en la zona.";
+const ctaLink = "https://wa.me/+5492324468366";
+---
+
+<Layout title={title} description={description}>
+  <section class="py-20 px-6 text-center bg-(--color-9-de-julio) text-black">
+    <h1
+      class="text-4xl sm:text-5xl font-title font-bold text-black mb-4 animate-fade-in-up"
+    >
+      Sede 9 de Julio
+    </h1>
+    <p class="text-lg max-w-2xl mx-auto mb-8 animate-fade-in-up">
+      ¡Abrimos en 9 de Julio! Sumate a nuestras clases de robótica y
+      programación con kits innovadores, programación creativa con Scratch y
+      construcción de robots usando bloques tipo LEGO, en un espacio de
+      aprendizaje creativo y colaborativo con atención personalizada, grupos
+      reducidos y proyectos colaborativos en nuestras clases 100% prácticas.
+    </p>
+    <a
+      href={ctaLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-block px-8 py-4 rounded-full
+    font-semibold text-white bg-(--color-primary) hover:bg-(--color-primary-hover)
+    transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105 animate-fade-in-up"
+    >
+      Consultar o Inscribirme
+    </a>
+  </section>
+
+  <div
+    class="w-full max-w-4xl mx-auto h-[300px] sm:h-[400px] lg:h-[450px] rounded-xl overflow-hidden shadow-md mt-12 animate-fade-in-up"
+  >
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3250.1962944121824!2d-60.89096490000001!3d-35.4499345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bf0dbdc2529621%3A0xdeaacdfd7b708749!2sLevalle%20772%2C%20B6500%209%20de%20Julio%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1779391956796!5m2!1ses-419!2sar"
+      class="w-full h-full border-0"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      aria-label="Mapa de ubicación de la sede 9 de Julio de IABOT"
+      title="Ubicación de IABOT 9 de Julio"></iframe>
+  </div>
+</Layout>

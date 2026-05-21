@@ -23,7 +23,6 @@ const ctaLink = "#cursos";
     class="hidden md:block absolute inset-0 w-full h-full object-cover z-0 pointer-events-none opacity-20 brightness-75"
   >
     <source src="/assets/video-hero.webm" type="video/webm" />
-    <source src="/assets/video-hero.mp4" type="video/mp4" />
   </video>
 
   <canvas
@@ -33,13 +32,13 @@ const ctaLink = "#cursos";
 
   <div
     aria-hidden="true"
-    class="absolute inset-0 bg-gradient-to-br from-[rgba(50,205,219,0.1)] via-[rgba(120,235,44,0.1)] to-transparent animate-gradientBlur z-0 md:hidden"
+    class="absolute inset-0 bg-linear-to-br from-[rgba(50,205,219,0.1)] via-[rgba(120,235,44,0.1)] to-transparent animate-gradientBlur z-0 md:hidden"
   >
   </div>
 
   <div class="relative z-10 max-w-xl">
     <p
-      class="mb-4 text-sm font-medium uppercase tracking-wide text-[var(--color-secondary)] animate-fade-in-up"
+      class="mb-4 text-sm font-medium uppercase tracking-wide text-(--color-secondary) animate-fade-in-up"
       style="animation-delay:.05s"
     >
       +500 alumnos desde 2021
@@ -47,13 +46,13 @@ const ctaLink = "#cursos";
 
     <h1
       id="hero-title"
-      class="text-4xl sm:text-5xl lg:text-6xl font-sans font-medium mb-6 leading-tight text-balance animate-fade-in-up !text-white"
+      class="text-4xl sm:text-5xl lg:text-6xl font-sans font-medium mb-6 leading-tight text-balance animate-fade-in-up text-white!"
       style="animation-delay:.15s"
     >
       Robótica <span class="relative inline-block">
         Educativa
         <span
-          class="absolute bottom-0 left-0 h-1 w-full bg-[var(--color-secondary)] rounded-full animate-slide-in"
+          class="absolute bottom-0 left-0 h-1 w-full bg-(--color-secondary) rounded-full animate-slide-in"
         ></span>
       </span> para el Futuro
     </h1>
@@ -68,7 +67,7 @@ const ctaLink = "#cursos";
     <a
       href={ctaLink}
       aria-label={ctaLabel}
-      class="inline-block text-base sm:text-lg font-medium font-sans px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-[var(--color-primary)] text-[var(--color-black)] hover:bg-[var(--color-primary-hover)] hover:text-black shadow-md hover:shadow-lg transition-all duration-300 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--color-primary)] hover:scale-105 animate-fade-in-up"
+      class="inline-block text-base sm:text-lg font-medium font-sans px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-(--color-primary) text-black hover:bg-(--color-primary-hover) hover:text-black shadow-md hover:shadow-lg transition-all duration-300 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-(--color-primary) hover:scale-105 animate-fade-in-up"
       style="animation-delay:.35s"
     >
       {ctaLabel}
