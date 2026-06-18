@@ -24,12 +24,13 @@ for (const file of files) {
   for (const o of OUTS) {
     const output = path.join(o.dir, `${base}${o.suffix}.${o.fmt}`);
     const img = sharp(input).resize({
+      width: o.size * 3,
       height: o.size,
+      fit: "inside",
       withoutEnlargement: true,
     });
-    await (o.fmt === "webp"
-      ? img.webp({ quality: 90 })
-      : img.avif({ quality: 50 })
+    await (
+      o.fmt === "webp" ? img.webp({ quality: 90 }) : img.avif({ quality: 50 })
     ).toFile(output);
     console.log("✔", output);
   }

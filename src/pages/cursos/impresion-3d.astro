@@ -1,59 +1,244 @@
 ---
-import Layout from "../../layouts/BaseLayout.astro";
 import "../../styles/global.css";
+import Layout from "../../layouts/BaseLayout.astro";
+import IconCube from "../../components/icons/IconPrinter.astro";
 
-const title = "Curso de Impresión 3D | IABOT Robótica Educativa";
+const title = "Impresión 3D";
 const description =
-  "Curso de Impresión 3D para niños y adolescentes en San Andrés de Giles. Diseña, crea y materializa tus ideas con tecnología de impresión 3D de manera divertida.";
+  "Curso de Impresión 3D para niños y adolescentes en San Andrés de Giles. Diseñá, creá y materializá tus ideas mientras aprendés diseño 3D, pensamiento espacial y uso básico de impresoras 3D.";
+
 const ctaLink = "https://wa.me/+5492324468366";
 ---
 
 <Layout title={title} description={description}>
+  <!-- Hero -->
   <section
-    class="py-20 px-6 text-center bg-[var(--color-giles)] text-[var(--color-text)]"
+    class="py-20 px-6 text-center bg-gradient-to-b from-[var(--color-bg)] to-[var(--color-bg-secondary)] text-[var(--color-text)]"
   >
-    <h1
-      class="text-4xl sm:text-5xl font-title font-bold mb-4 animate-fade-in-up"
-    >
-      Curso de Impresión 3D
-    </h1>
+    <div class="max-w-3xl mx-auto">
+      <div class="flex justify-center mb-6">
+        <IconCube
+          class="w-20 h-20 text-[var(--color-primary)] drop-shadow-lg"
+        />
+      </div>
 
-    <p class="text-lg max-w-2xl mx-auto mb-8 animate-fade-in-up">
-      ¡Diseñá y creá tus propios modelos en 3D! Aprendé diseño básico con
-      software amigable, prepará archivos para impresión y usá impresoras 3D en
-      proyectos prácticos que fomentan creatividad y pensamiento lógico. <strong
-        >Disponible en sede San Andrés de Giles.</strong
+      <h1
+        class="text-4xl sm:text-5xl font-title font-extrabold mb-4 leading-tight"
       >
-    </p>
+        Curso de {title}
+      </h1>
 
-    <!-- Qué aprenderás -->
+      <p class="text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
+        ¡Diseñá y creá tus propios modelos en 3D! Aprendé diseño básico con
+        software amigable, prepará archivos para impresión y trabajá en
+        proyectos prácticos que fomentan creatividad, pensamiento espacial y
+        resolución de problemas.
+      </p>
+
+      <p
+        class="inline-block text-sm uppercase tracking-wide font-semibold text-[var(--color-primary)] bg-[var(--color-primary)]/10 px-4 py-2 rounded-full mb-8"
+      >
+        Disponible en sede San Andrés de Giles · 9 a 13 años
+      </p>
+
+      <div>
+        <a
+          href={ctaLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block px-10 py-4 rounded-full font-bold text-white bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] transition duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+        >
+          Inscribirme
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contenidos -->
+  <section class="py-20 px-6 max-w-4xl mx-auto text-[var(--color-text)]">
+    <h2 class="text-3xl font-bold mb-6 text-center font-title">
+      ¿Qué aprenden en este curso?
+    </h2>
+
     <ul
-      class="list-disc list-inside max-w-lg mx-auto text-left mb-8 animate-fade-in-up space-y-2"
+      class="list-disc list-inside space-y-3 text-lg leading-relaxed max-w-2xl mx-auto"
     >
-      <li>Potenciar la creatividad mediante Tinkercad para diseño 3D.</li>
-      <li>Desarrollar el pensamiento espacial y lógico.</li>
-      <li>Dominar el manejo básico y práctico de impresoras 3D.</li>
+      <li>Diseño de modelos 3D con herramientas simples y visuales.</li>
+      <li>Uso de Tinkercad para crear piezas, objetos y prototipos.</li>
+      <li>Preparación básica de archivos para impresión 3D.</li>
+      <li>Comprensión del proceso de fabricación digital.</li>
+      <li>Creatividad, pensamiento espacial y resolución de problemas.</li>
     </ul>
+  </section>
 
-    <!-- CTA -->
+  <!-- Proyecto principal -->
+  <section class="py-20 px-6 bg-[var(--glass-bg)] backdrop-blur-md">
+    <div
+      class="max-w-5xl mx-auto grid gap-10 lg:grid-cols-[0.9fr_1.1fr] items-center"
+    >
+      <div>
+        <h2
+          class="text-3xl sm:text-4xl font-bold mb-4 text-[var(--color-title)] font-title"
+        >
+          Diseñan sus propios modelos
+        </h2>
+
+        <p class="text-lg leading-relaxed text-[var(--color-text)] opacity-90">
+          Los chicos trabajan con Tinkercad, una herramienta visual e intuitiva
+          que les permite transformar ideas en modelos 3D. A partir de formas
+          simples, aprenden a construir objetos, probar diseños y preparar sus
+          proyectos para impresión.
+        </p>
+      </div>
+
+      <img
+        src="/assets/img/proyectos/impresion-3d/tinkercad.webp"
+        alt="Modelo 3D diseñado en Tinkercad"
+        class="rounded-2xl shadow-xl w-full object-cover border border-[var(--color-border)]"
+        loading="lazy"
+      />
+    </div>
+  </section>
+
+  <!-- Proceso -->
+  <section class="py-20 px-6 max-w-5xl mx-auto text-[var(--color-text)]">
+    <h2 class="text-3xl sm:text-4xl font-bold mb-10 text-center font-title">
+      Del diseño a la pieza final
+    </h2>
+
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <article
+        class="p-6 rounded-2xl border border-[var(--color-border)] bg-[var(--glass-bg)] backdrop-blur"
+      >
+        <span class="text-sm font-bold text-[var(--color-primary)]">01</span>
+        <h3 class="text-xl font-bold mt-2 mb-2 font-title">Imaginar</h3>
+        <p class="text-sm leading-relaxed opacity-90">
+          Piensan una idea, objeto o pieza que quieran crear.
+        </p>
+      </article>
+
+      <article
+        class="p-6 rounded-2xl border border-[var(--color-border)] bg-[var(--glass-bg)] backdrop-blur"
+      >
+        <span class="text-sm font-bold text-[var(--color-primary)]">02</span>
+        <h3 class="text-xl font-bold mt-2 mb-2 font-title">Diseñar</h3>
+        <p class="text-sm leading-relaxed opacity-90">
+          Construyen el modelo usando formas, medidas y herramientas digitales.
+        </p>
+      </article>
+
+      <article
+        class="p-6 rounded-2xl border border-[var(--color-border)] bg-[var(--glass-bg)] backdrop-blur"
+      >
+        <span class="text-sm font-bold text-[var(--color-primary)]">03</span>
+        <h3 class="text-xl font-bold mt-2 mb-2 font-title">Preparar</h3>
+        <p class="text-sm leading-relaxed opacity-90">
+          Revisan el archivo y aprenden cómo se prepara para impresión 3D.
+        </p>
+      </article>
+
+      <article
+        class="p-6 rounded-2xl border border-[var(--color-border)] bg-[var(--glass-bg)] backdrop-blur"
+      >
+        <span class="text-sm font-bold text-[var(--color-primary)]">04</span>
+        <h3 class="text-xl font-bold mt-2 mb-2 font-title">Mejorar</h3>
+        <p class="text-sm leading-relaxed opacity-90">
+          Analizan el resultado, detectan mejoras y ajustan sus diseños.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Colaboración -->
+  <section class="py-20 px-6 bg-[var(--glass-bg)] backdrop-blur-md">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2
+        class="text-3xl sm:text-4xl font-bold mb-4 text-[var(--color-title)] font-title"
+      >
+        En colaboración con Internet Services S.A.
+      </h2>
+
+      <p
+        class="text-lg leading-relaxed max-w-2xl mx-auto mb-10 text-[var(--color-text)] opacity-90"
+      >
+        Este curso acerca a los estudiantes a herramientas tecnológicas reales,
+        combinando aprendizaje creativo, diseño digital y experiencias
+        vinculadas al mundo de la innovación.
+      </p>
+
+      <div
+        class="mx-auto max-w-md rounded-2xl border border-[var(--color-border)] bg-white p-8 shadow-xl"
+      >
+        <img
+          src="/assets/img/proyectos/impresion-3d/internet-services.webp"
+          alt="Internet Services S.A."
+          class="w-full object-contain"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20 px-6 max-w-3xl mx-auto">
+    <h2 class="text-3xl font-bold mb-8 text-center font-title">
+      Preguntas frecuentes
+    </h2>
+
+    <div class="space-y-5">
+      <details
+        class="p-5 rounded-xl border border-[var(--color-border)] bg-[var(--glass-bg)] backdrop-blur transition duration-300"
+      >
+        <summary class="cursor-pointer font-semibold">
+          ¿Hace falta saber diseño 3D antes?
+        </summary>
+
+        <p class="mt-2 text-base leading-relaxed">
+          No. El curso está pensado para aprender desde cero usando herramientas
+          simples, visuales y adaptadas para chicos.
+        </p>
+      </details>
+
+      <details
+        class="p-5 rounded-xl border border-[var(--color-border)] bg-[var(--glass-bg)] backdrop-blur transition duration-300"
+      >
+        <summary class="cursor-pointer font-semibold">
+          ¿Qué programa se utiliza?
+        </summary>
+
+        <p class="mt-2 text-base leading-relaxed">
+          Principalmente utilizamos Tinkercad, una plataforma online sencilla e
+          ideal para iniciarse en el diseño 3D.
+        </p>
+      </details>
+
+      <details
+        class="p-5 rounded-xl border border-[var(--color-border)] bg-[var(--glass-bg)] backdrop-blur transition duration-300"
+      >
+        <summary class="cursor-pointer font-semibold">
+          ¿Dónde se dicta el curso?
+        </summary>
+
+        <p class="mt-2 text-base leading-relaxed">
+          Este curso se encuentra disponible en la sede de San Andrés de Giles.
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- CTA Final -->
+  <section class="py-20 px-6 text-center">
+    <h2 class="text-3xl font-bold mb-6 font-title">
+      ¡Convertí tus ideas en objetos reales!
+    </h2>
+
     <a
       href={ctaLink}
       target="_blank"
       rel="noopener noreferrer"
-      class="inline-block px-8 py-4 rounded-full font-semibold text-white bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105 animate-fade-in-up"
+      class="inline-block px-10 py-4 rounded-full font-bold text-white bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] transition duration-300 shadow-lg hover:shadow-xl hover:scale-105"
     >
-      Consultar o Inscribirme
+      Inscribirme ahora
     </a>
-
-    <!-- Imagen de referencia -->
-    <!--
-    <div class="max-w-2xl mx-auto mt-12 animate-fade-in-up">
-      <img
-        src="/ruta-a-imagen-impresion-3d.jpg"
-        alt="Impresión 3D en IABOT"
-        class="rounded-xl shadow-md w-full object-cover"
-      />
-    </div>
-    -->
   </section>
 </Layout>

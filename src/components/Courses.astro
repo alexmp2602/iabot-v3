@@ -5,6 +5,7 @@ import IconTools from "./icons/IconTools.astro";
 import IconRocket from "./icons/IconRocket.astro";
 import IconBrain from "./icons/IconBrain.astro";
 import IconCube from "./icons/IconPrinter.astro";
+import IconRobotFace from "./icons/IconRobotFace.astro";
 
 const courses = [
   {
@@ -47,6 +48,14 @@ const courses = [
       "Creación de modelos e impresión 3D para niños y adolescentes. Disponible en sede Giles.",
     link: "/cursos/impresion-3d",
   },
+  {
+    icon: IconRobotFace,
+    title: "Videojuegos con ROBLOX STUDIO",
+    age: "8 a 13 años",
+    description:
+      "Explorá el mundo del desarrollo de videojuegos con Roblox Studio de forma virtual y divertida. Creá tus propios mapas y juegos mientras desarrollás creatividad, lógica y pensamiento computacional.",
+    link: "/cursos/roblox-studio",
+  },
 ];
 ---
 
@@ -59,11 +68,11 @@ const courses = [
   <h2 id="cursos-title" class="section-title">Nuestros Cursos</h2>
 
   <p
-    class="text-lg sm:text-xl text-[var(--color-text)] opacity-80 mb-12 max-w-2xl mx-auto font-body leading-relaxed text-balance"
+    class="text-lg sm:text-xl text-(--color-text) opacity-80 mb-12 max-w-2xl mx-auto font-body leading-relaxed text-balance"
   >
-    Desde los primeros pasos en robótica hasta programación avanzada con Python,
-    sumando creatividad con impresión 3D. Nuestro recorrido acompaña el
-    crecimiento de cada estudiante.
+    Desde los primeros pasos en robótica hasta programación, videojuegos e
+    impresión 3D. Nuestro recorrido acompaña el crecimiento de cada estudiante
+    con propuestas creativas, tecnológicas y divertidas.
   </p>
 
   <ul class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
