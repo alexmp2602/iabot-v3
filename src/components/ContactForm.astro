@@ -1,6 +1,7 @@
 ---
 const ACTION =
   import.meta.env.PUBLIC_CONTACT_ENDPOINT || "https://formspree.io/f/xwvnrrqw";
+
 const title = "Contacto";
 const description =
   "Escribinos y te respondemos a la brevedad. También podés hablar por WhatsApp si preferís.";
@@ -19,6 +20,7 @@ const description =
     >
       {title}
     </h2>
+
     <p class="text-[var(--color-text)]/80 mb-8">
       {description}
     </p>
@@ -32,12 +34,12 @@ const description =
       aria-describedby="contact-status"
       autocomplete="on"
     >
-      <!-- honeypot -->
+      <!-- Honeypot -->
       <div class="sr-only" aria-hidden="true">
-        <label for="website">Dejá este campo vacío</label>
+        <label for="_gotcha">Dejá este campo vacío</label>
         <input
-          id="website"
-          name="website"
+          id="_gotcha"
+          name="_gotcha"
           type="text"
           tabindex="-1"
           autocomplete="off"
@@ -46,10 +48,13 @@ const description =
 
       <div class="grid sm:grid-cols-2 gap-4">
         <div>
-          <label for="name" class="block text-sm mb-1">Nombre y apellido</label>
+          <label for="name" class="block text-sm mb-1">
+            Nombre y apellido
+          </label>
+
           <input
             id="name"
-            name="name"
+            name="Nombre"
             type="text"
             required
             maxlength="100"
@@ -57,8 +62,12 @@ const description =
             class="w-full rounded-md border border-[var(--glass-border)] bg-[var(--glass-bg)] px-3 py-2"
           />
         </div>
+
         <div>
-          <label for="email" class="block text-sm mb-1">Email</label>
+          <label for="email" class="block text-sm mb-1">
+            Email
+          </label>
+
           <input
             id="email"
             name="email"
@@ -74,12 +83,13 @@ const description =
 
       <div class="grid sm:grid-cols-2 gap-4">
         <div>
-          <label for="phone" class="block text-sm mb-1"
-            >Teléfono (opcional)</label
-          >
+          <label for="phone" class="block text-sm mb-1">
+            Teléfono (opcional)
+          </label>
+
           <input
             id="phone"
-            name="phone"
+            name="Teléfono"
             type="tel"
             maxlength="30"
             autocomplete="tel"
@@ -87,31 +97,43 @@ const description =
             class="w-full rounded-md border border-[var(--glass-border)] bg-[var(--glass-bg)] px-3 py-2"
           />
         </div>
+
         <div>
-          <label for="topic" class="block text-sm mb-1">Interés</label>
+          <label for="topic" class="block text-sm mb-1">
+            Interés
+          </label>
+
           <select
             id="topic"
-            name="topic"
+            name="Interés"
             required
-            aria-required="true"
             class="select-arrow w-full rounded-md border border-[var(--glass-border)] bg-[var(--glass-bg)] px-3 py-2 pr-10 text-[var(--color-text)]"
           >
             <option value="" selected disabled hidden>
               Seleccioná una opción…
             </option>
-            <option value="cursos">Cursos</option>
-            <option value="docentes">Capacitación docente</option>
-            <option value="empresas">Empresas / Family Day</option>
-            <option value="general">Consulta general</option>
+            <option value="Cursos">Cursos</option>
+            <option value="Capacitación docente">
+              Capacitación docente
+            </option>
+            <option value="Empresas / Family Day">
+              Empresas / Family Day
+            </option>
+            <option value="Consulta general">
+              Consulta general
+            </option>
           </select>
         </div>
       </div>
 
       <div>
-        <label for="message" class="block text-sm mb-1">Mensaje</label>
+        <label for="message" class="block text-sm mb-1">
+          Mensaje
+        </label>
+
         <textarea
           id="message"
-          name="message"
+          name="Mensaje"
           required
           maxlength="2000"
           rows="5"
@@ -119,27 +141,25 @@ const description =
         ></textarea>
       </div>
 
-      <!-- metadatos útiles -->
       <input
         type="hidden"
         name="_subject"
         value="Nueva consulta desde iabot.com.ar"
       />
-      <input type="hidden" name="page" value={Astro.url.pathname} />
-      <input type="hidden" name="ts" value={Date.now().toString()} />
 
       <div class="flex items-center gap-4 pt-2">
         <button
           type="submit"
           class="inline-flex items-center justify-center px-6 py-3 rounded-full font-medium bg-[var(--color-primary)] text-[var(--color-black)]
-                       hover:bg-[var(--color-primary-hover)] transition-colors shadow-md hover:shadow-lg"
+                 hover:bg-[var(--color-primary-hover)] transition-colors shadow-md hover:shadow-lg disabled:opacity-60 disabled:cursor-not-allowed"
         >
           Enviar
         </button>
+
         <a
           href="https://wa.me/+5492324468366"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
           class="text-sm underline hover:no-underline"
         >
           O escribinos por WhatsApp
@@ -151,57 +171,70 @@ const description =
         role="status"
         aria-live="polite"
         class="text-sm mt-3"
-      >
-      </p>
+      ></p>
     </form>
   </div>
 </section>
 
 <script is:inline>
-  // Envío sin redirección; fallback: el <form> sigue teniendo action/method
   (() => {
     const form = document.getElementById("contact-form");
     const status = document.getElementById("contact-status");
+
     if (!form || !status) return;
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
+
       const submitBtn = form.querySelector('button[type="submit"]');
-      submitBtn && (submitBtn.disabled = true);
+      if (submitBtn) submitBtn.disabled = true;
 
       const data = new FormData(form);
-      // anti-spam simple
-      if (data.get("website")) {
+
+      if (data.get("_gotcha")) {
         status.textContent = "Error de validación.";
-        submitBtn && (submitBtn.disabled = false);
+        if (submitBtn) submitBtn.disabled = false;
         return;
       }
 
       try {
         const res = await fetch(form.action, {
           method: "POST",
-          headers: { Accept: "application/json" },
+          headers: {
+            Accept: "application/json",
+          },
           body: data,
         });
 
         if (res.ok) {
           form.reset();
-          status.textContent = "Gracias! Te contactamos a la brevedad.";
-          // GTM
+
+          status.className = "text-sm mt-3 text-green-500";
+          status.textContent =
+            "¡Gracias! Recibimos tu consulta y te responderemos a la brevedad.";
+
           window.dataLayer = window.dataLayer || [];
           window.dataLayer.push({
             event: "contact_submit",
-            topic: data.get("topic"),
+            topic: data.get("Interés"),
             page: window.location.pathname,
           });
         } else {
+          const error = await res.json().catch(() => null);
+          console.error("Formspree:", error);
+
+          status.className = "text-sm mt-3 text-red-500";
           status.textContent =
-            "No pudimos enviar el formulario. Probá de nuevo en unos minutos.";
+            "No pudimos enviar el formulario. Probá nuevamente en unos minutos.";
         }
-      } catch {
-        status.textContent = "Sin conexión. Intentá nuevamente.";
+      } catch (err) {
+        console.error(err);
+
+        status.className = "text-sm mt-3 text-red-500";
+        status.textContent =
+          "No se pudo establecer conexión. Intentá nuevamente.";
       } finally {
-        submitBtn && (submitBtn.disabled = false);
+        if (submitBtn) submitBtn.disabled = false;
       }
     });
   })();
