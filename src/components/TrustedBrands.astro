@@ -1,0 +1,94 @@
+---
+const logos = [
+  {
+    name: "Municipalidad de Mercedes",
+    src: "/assets/img/marcas/webp/municipalidad-mercedes.webp",
+  },
+  {
+    name: "Colegio Los Robles",
+    src: "/assets/img/marcas/webp/colegio-los-robles-logo.webp",
+  },
+  {
+    name: "Colegio Norbridge",
+    src: "/assets/img/marcas/webp/colegio-norbridge.webp",
+  },
+  {
+    name: "Colegio Nuevo",
+    src: "/assets/img/marcas/webp/cole-nuevo.webp",
+  },
+  {
+    name: "FK Latam",
+    src: "/assets/img/marcas/webp/fk-latam.webp",
+  },
+  {
+    name: "Sauces",
+    src: "/assets/img/marcas/webp/sauces.webp",
+  },
+  {
+    name: "La Lomada de Pilar",
+    src: "/assets/img/marcas/webp/la-lomada.webp",
+  },
+  {
+    name: "Internet Services",
+    src: "/assets/img/marcas/webp/internet-services.webp",
+  }
+];
+
+const items = logos.map((l) => {
+  const filename = l.src.split("/").pop() || "";
+  const base = filename.replace(/\.webp$/i, "");
+  return { name: l.name, base };
+});
+---
+
+<section
+  class="cv-auto bg-[var(--color-bg)] text-[var(--color-text)] py-16 px-6 text-center animate-fade-in"
+  role="region"
+  aria-labelledby="brands-title"
+>
+  <h2 id="brands-title" class="text-3xl sm:text-4xl font-bold font-title mb-4">
+    Confían en nosotros
+  </h2>
+
+  <p
+    class="text-sm sm:text-base text-[var(--color-text)]/70 max-w-2xl mx-auto mb-10 leading-relaxed"
+  >
+    Empresas, colegios y organizaciones que han confiado en nosotros para
+    desarrollar talleres y propuestas educativas.
+  </p>
+
+  <ul
+    class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 place-items-center max-w-6xl mx-auto"
+  >
+    {
+      items.map(({ name, base }) => (
+        <li
+          class="flex items-center justify-center p-4 bg-[var(--glass-bg)] border border-[var(--glass-border)]
+               rounded-xl shadow-sm transition-all duration-300 hover:scale-[1.03] group w-full h-20"
+        >
+          <picture>
+            <source
+              type="image/avif"
+              srcset={`/assets/img/avif/48/${base}@1x.avif 1x, /assets/img/avif/96/${base}@2x.avif 2x`}
+            />
+            <source
+              type="image/webp"
+              srcset={`/assets/img/webp/48/${base}@1x.webp 1x, /assets/img/webp/96/${base}@2x.webp 2x`}
+            />
+            <img
+              src={`/assets/img/webp/48/${base}@1x.webp`}
+              alt={`Logo de ${name}`}
+              width="48"
+              height="48"
+              loading="lazy"
+              decoding="async"
+              fetchpriority="low"
+              draggable="false"
+              class="max-h-14 max-w-[180px] w-auto object-contain opacity-90 group-hover:opacity-100 sm:grayscale sm:group-hover:grayscale-0 transition duration-300 ease-in-out"
+            />
+          </picture>
+        </li>
+      ))
+    }
+  </ul>
+</section>

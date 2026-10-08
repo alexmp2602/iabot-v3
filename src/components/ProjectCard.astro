@@ -1,0 +1,53 @@
+---
+const { title, kit, description, image, featured = false } = Astro.props;
+---
+
+<article
+  tabindex="0"
+  role="group"
+  aria-label={`Proyecto: ${title}`}
+  class={`relative card flex flex-col gap-4 p-6 text-left transition-transform duration-300 hover:-translate-y-1 focus-within:ring-2 focus-within:ring-[var(--color-primary)] focus-within:ring-offset-2
+    ${featured ? "ring-2 ring-[var(--color-primary)]/30 bg-[var(--glass-bg)]" : ""}
+  `}
+>
+  <!-- Imagen -->
+  <div class="overflow-hidden rounded-lg shadow-sm">
+    <img
+      src={image}
+      alt={`Proyecto ${title} con ${kit}`}
+      width="600"
+      height="300"
+      loading="lazy"
+      decoding="async"
+      class="w-full h-48 sm:h-52 md:h-48 object-cover object-center transition-all duration-500 ease-out hover:scale-105 hover:brightness-110 group-focus-within:scale-105"
+    />
+  </div>
+
+  <!-- Contenido -->
+  <div class="flex flex-col gap-3 flex-1">
+    <header>
+      <h3 class="text-xl font-semibold font-title text-[var(--color-text)]">
+        {title}
+      </h3>
+      <p
+        class="text-sm font-medium text-[var(--color-primary)] dark:text-[var(--color-secondary)] italic"
+      >
+        {kit}
+      </p>
+    </header>
+
+    <p
+      class="text-sm text-[var(--color-text)] opacity-90 font-body leading-relaxed"
+    >
+      {description}
+    </p>
+  </div>
+
+  {
+    featured && (
+      <div class="absolute top-3 right-3 bg-[var(--color-primary)] text-black text-xs px-2 py-1 rounded-full font-bold shadow-md tracking-wide">
+        DESTACADO
+      </div>
+    )
+  }
+</article>

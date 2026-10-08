@@ -1,0 +1,82 @@
+---
+import IconLego from "./icons/IconLego.astro";
+import IconCode from "./icons/IconCode.astro";
+import IconUsersGroup from "./icons/IconUsersGroup.astro";
+import IconRocket from "./icons/IconRocket.astro";
+
+const beneficios = [
+  {
+    icon: IconLego,
+    title: "Aprendé jugando",
+    text: "Usamos kits LEGO para despertar la curiosidad y el pensamiento lógico.",
+  },
+  {
+    icon: IconCode,
+    title: "Programación creativa",
+    text: "Resolvé desafíos reales mediante programación visual y divertida.",
+  },
+  {
+    icon: IconUsersGroup,
+    title: "Trabajo en equipo",
+    text: "Fomentamos la empatía, la colaboración y la comunicación.",
+  },
+  {
+    icon: IconRocket,
+    title: "Proyectos reales",
+    text: "Cada grupo diseña, construye y programa su propio robot funcional. ",
+  },
+];
+---
+
+<section
+  id="benefits"
+  class="section text-center px-6 animate-fade-in"
+  role="region"
+  aria-labelledby="benefits-title"
+>
+  <h2
+    id="benefits-title"
+    class="section-title mb-4 text-3xl sm:text-4xl font-bold text-[var(--color-title)] font-title"
+  >
+    ¿Por qué elegir IABOT?
+  </h2>
+
+  <p
+    class="text-lg sm:text-xl text-[var(--color-text)] opacity-80 mb-12 max-w-2xl mx-auto font-body leading-relaxed"
+  >
+    Transformamos el aprendizaje en una experiencia lúdica y significativa,
+    potenciando habilidades clave como la creatividad, la lógica y la resolución
+    de desafíos.
+  </p>
+
+  <ul class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
+    {
+      beneficios.map(({ icon: Icon, title, text }, i) => (
+        <li>
+          <article
+            class="group card flex flex-col items-center gap-4 px-6 py-8 text-center rounded-xl bg-white/80 dark:bg-white/5 backdrop-blur-sm shadow-md hover:shadow-xl transition-all duration-300"
+            aria-labelledby={`benef-${i}`}
+          >
+            <div
+              class="flex items-center justify-center w-12 h-12 text-[var(--color-primary)] dark:text-[var(--color-secondary)] group-hover:scale-110 transition-transform duration-300"
+              aria-hidden="true"
+            >
+              <Icon aria-hidden="true" />
+            </div>
+
+            <h3
+              id={`benef-${i}`}
+              class="text-xl font-semibold font-title text-[var(--color-title)]"
+            >
+              {title}
+            </h3>
+
+            <p class="text-sm leading-relaxed text-[var(--color-text)] opacity-80 font-body">
+              {text}
+            </p>
+          </article>
+        </li>
+      ))
+    }
+  </ul>
+</section>
